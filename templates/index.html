@@ -1,112 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HustleHUB – Web App</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Material+Symbols+Outlined" rel="stylesheet">
-<link rel="icon" href="https://www.google.com/favicon.ico" />
-<style>
-/* === inlined styles.css (with .btn.danger added) === */
-:root{--g-blue:#1a73e8;--g-green:#34a853;--g-yellow:#fbbc04;--g-red:#ea4335;--g-text:#202124;--g-sub:#5f6368;--g-bg:#f8f9fa;--g-card:#fff;--g-border:#dadce0;--radius:14px;--elev:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);--elev-lg:0 6px 18px rgba(60,64,67,.18)}
-*{box-sizing:border-box}body{margin:0;font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--g-text);background:linear-gradient(180deg,#fff 0,var(--g-bg) 100%)}
-.elevation{box-shadow:var(--elev)}.appbar{position:sticky;top:0;z-index:10;background:var(--g-card);display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--g-border)}
-.brand{font-weight:700;font-size:22px;letter-spacing:.2px}.brand .h1{color:var(--g-blue)}.brand .h2{color:var(--g-red)}.brand .h3{color:var(--g-yellow)}.brand .h4{color:var(--g-blue)}.brand .h5{color:var(--g-green)}.brand .h6{color:var(--g-red)}.brand .h7{color:var(--g-yellow)}
-.brand span{display:inline-block;opacity:0;transform:translateY(-6px)}
-@keyframes brandPop{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
-.view-enter{animation:viewEnter .32s cubic-bezier(.22,.9,.2,1) both}
-@keyframes viewEnter{from{opacity:0;transform:translateY(8px) scale(.995)}to{opacity:1;transform:none}}
-.search{display:flex;align-items:center;gap:8px;border:1px solid var(--g-border);padding:8px 10px;border-radius:999px;min-width:280px;background:#fff;transition:box-shadow .2s,border-color .2s}
-.search input{border:none;outline:none;width:100%;font-size:14px;background:transparent}
-.search:focus-within{border-color:var(--g-blue);box-shadow:0 0 0 3px rgba(26,115,232,.12)}
-.actions{margin-left:auto;display:flex;align-items:center;gap:8px}
-.icon-btn{border:none;background:transparent;border-radius:8px;padding:8px;cursor:pointer;position:relative}
-.icon-btn:hover{background:#eef3fd}.icon-btn:active{transform:translateY(1px)}
-.avatar{width:32px;height:32px;border-radius:50%;background:#e8f0fe;color:#1a73e8;display:flex;align-items:center;justify-content:center;font-weight:700}
-.progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,#1a73e8,#34a853,#fbbc04,#ea4335);background-size:300% 100%;animation:none}
-.progress.active{animation:indet 1.4s infinite linear}
-@keyframes indet{0%{background-position:0 0}100%{background-position:300% 0}}
-.layout{display:grid;grid-template-columns:280px 1fr;gap:16px;padding:16px}
-.sidebar{background:var(--g-card);border:1px solid var(--g-border);border-radius:12px;padding:16px;height:fit-content}
-.sidebar-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:16px}
-.field{display:flex;align-items:center;gap:10px;border:1px solid var(--g-border);border-radius:10px;padding:10px 12px;background:#fff;margin-bottom:10px}
-.field:focus-within{border-color:var(--g-blue);box-shadow:0 0 0 3px rgba(26,115,232,.12)}
-.field input{border:none;outline:none;width:100%;font-size:15px;background:transparent}
-.btn{appearance:none;border:none;cursor:pointer;padding:12px 16px;border-radius:10px;font-weight:600;font-size:15px;color:#fff;background:var(--g-blue);box-shadow:var(--elev)}
-.btn.green{background:var(--g-green)}.btn.text{background:transparent;color:var(--g-blue)}.btn.danger{background:#ea4335}
-.btn .left{margin-right:8px}
-.ripple{position:relative;overflow:hidden}
-.ripple::after{content:"";position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.35);width:100px;height:100px;opacity:0;pointer-events:none;animation:none}
-.ripple:active::after{left:var(--x,50%);top:var(--y,50%);transform:translate(-50%,-50%) scale(0);animation:ripple .6s ease-out;opacity:1}
-@keyframes ripple{to{transform:translate(-50%,-50%) scale(4);opacity:0}}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.card{background:var(--g-card);border:1px solid var(--g-border);border-radius:12px;padding:18px;transition:box-shadow .2s,transform .1s}
-.card:hover{box-shadow:var(--elev-lg);transform:translateY(-1px)}
-.card-title{display:flex;align-items:center;gap:8px;margin:0 0 12px}
-.jobs{display:grid;gap:10px}
-.job-card{border:1px solid var(--g-border);border-radius:10px;padding:12px;background:#fff;display:grid;gap:4px}
-.job-card .meta{color:var(--g-sub);font-size:12px}
-.snackbar{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#323232;color:#fff;padding:12px 16px;border-radius:8px;opacity:0;transition:opacity .2s,transform .2s}
-.snackbar.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.view{display:none}.view.active{display:block}
-body.dark{--g-bg:#121212;--g-card:#1f1f1f;--g-text:#eaeaea;--g-sub:#b6b6b6;--g-border:#2d2d2d;background:linear-gradient(180deg,#121212 0,#191919 100%)}
-@media (max-width:980px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HustleHUB – Web App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="icon" href="https://www.google.com/favicon.ico" />
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
+
 <header class="appbar elevation">
   <div class="brand">
     <span class="h1">H</span><span class="h2">u</span><span class="h3">s</span><span class="h4">t</span><span class="h5">l</span><span class="h6">e</span><span class="h7">HUB</span>
   </div>
   <div class="search">
     <span class="material-symbols-outlined">search</span>
-    <input id="globalSearch" placeholder="Search jobs, companies…"/>
+    <input id="globalSearch" placeholder="Search jobs, companies…" />
   </div>
   <nav class="actions">
-    <button class="icon-btn" data-view="dashboard" title="Dashboard"><span class="material-symbols-outlined">home</span></button>
-    <button class="icon-btn" data-view="companies" title="Companies"><span class="material-symbols-outlined">business</span></button>
-    <button class="icon-btn" data-view="settings" title="Settings"><span class="material-symbols-outlined">settings</span></button>
-    <button class="icon-btn" title="Notifications"><span class="material-symbols-outlined">notifications</span></button>
+    <button class="icon-btn" data-view="dashboard"  title="Dashboard"><span class="material-symbols-outlined">home</span></button>
+    <button class="icon-btn" data-view="companies"  title="Companies"><span class="material-symbols-outlined">business</span></button>
+    <button class="icon-btn" data-view="settings"   title="Settings"><span class="material-symbols-outlined">settings</span></button>
+    <button class="icon-btn"                        title="Notifications"><span class="material-symbols-outlined">notifications</span></button>
     <div class="avatar" title="Profile">RS</div>
   </nav>
   <div id="topProgress" class="progress"></div>
 </header>
 
 <main class="layout">
+  <!-- ── Sidebar filters ── -->
   <aside class="sidebar elevation">
     <h3 class="sidebar-title"><span class="material-symbols-outlined">tune</span> Filters</h3>
-    <label class="field"><span class="material-symbols-outlined">work</span><input id="fltRole" placeholder="Role e.g. SWE"/></label>
-    <label class="field"><span class="material-symbols-outlined">location_on</span><input id="fltLoc" placeholder="Location e.g. US-Remote"/></label>
-    <label class="field"><span class="material-symbols-outlined">schedule</span><input id="fltAge" type="number" placeholder="Max post age (days)"/></label>
+    <label class="field"><span class="material-symbols-outlined">work</span><input id="fltRole" placeholder="Role e.g. SWE" /></label>
+    <label class="field"><span class="material-symbols-outlined">location_on</span><input id="fltLoc" placeholder="Location e.g. US-Remote" /></label>
+    <label class="field"><span class="material-symbols-outlined">schedule</span><input id="fltAge" type="number" placeholder="Max post age (days)" /></label>
     <button class="btn ripple" id="applyFilters"><span class="material-symbols-outlined left">filter_alt</span>Apply</button>
     <button class="btn text ripple" id="clearFilters">Clear</button>
     <div class="hint">Tip: visual demo; filters apply to the local list.</div>
   </aside>
 
+  <!-- ── Main content ── -->
   <section class="content">
+
+    <!-- Dashboard view -->
     <div class="view active" id="view-dashboard">
       <div class="cards">
-        <div class="card elevation fade-up" style="grid-column:span 2;">
+        <div class="card elevation fade-up" style="grid-column: span 2;">
           <h2 class="card-title"><span class="material-symbols-outlined left">apartment</span>Add Company Details</h2>
           <form id="companyForm">
             <label class="field"><span class="material-symbols-outlined">business</span>
-              <input type="text" id="company" placeholder="Company name" required/>
+              <input type="text"   id="company"      placeholder="Company name"              required />
             </label>
             <label class="field"><span class="material-symbols-outlined">schedule</span>
-              <input type="number" id="postdays" placeholder="Max post age (days)" required/>
+              <input type="number" id="postdays"     placeholder="Max post age (days)"       required />
             </label>
             <label class="field"><span class="material-symbols-outlined">public</span>
-              <input type="url" id="careers" placeholder="Careers page URL" required/>
+              <input type="url"    id="careers"      placeholder="Careers page URL"          required />
             </label>
             <label class="field"><span class="material-symbols-outlined">sell</span>
-              <input type="text" id="keywords" placeholder="Keywords (e.g., software, backend)"/>
+              <input type="text"   id="keywords"     placeholder="Keywords (e.g., software, backend)" />
             </label>
             <label class="field"><span class="material-symbols-outlined">alternate_email</span>
-              <input type="email" id="contactEmail" placeholder="Contact email for alerts (used by Email button)"/>
+              <input type="email"  id="contactEmail" placeholder="Contact email for alerts (used by Email button)" />
             </label>
-            <div class="row" style="display:flex;gap:8px;flex-wrap:wrap">
-              <button type="submit" class="btn green ripple"><span class="material-symbols-outlined left">save</span>Submit</button>
-              <button type="button" class="btn text ripple" id="loadExample"><span class="material-symbols-outlined left">auto_fix_high</span>Example</button>
+            <div class="row" style="display:flex; gap:8px; flex-wrap:wrap">
+              <button type="submit"  class="btn green ripple"><span class="material-symbols-outlined left">save</span>Submit</button>
+              <button type="button"  class="btn text ripple"  id="loadExample"><span class="material-symbols-outlined left">auto_fix_high</span>Example</button>
             </div>
           </form>
         </div>
@@ -118,6 +79,7 @@ body.dark{--g-bg:#121212;--g-card:#1f1f1f;--g-text:#eaeaea;--g-sub:#b6b6b6;--g-b
       </div>
     </div>
 
+    <!-- Companies view -->
     <div class="view" id="view-companies">
       <div class="card elevation fade-up">
         <h2 class="card-title"><span class="material-symbols-outlined left">business</span>Companies</h2>
@@ -125,153 +87,23 @@ body.dark{--g-bg:#121212;--g-card:#1f1f1f;--g-text:#eaeaea;--g-sub:#b6b6b6;--g-b
       </div>
     </div>
 
+    <!-- Settings view -->
     <div class="view" id="view-settings">
       <div class="card elevation fade-up">
         <h2 class="card-title"><span class="material-symbols-outlined left">settings</span>Settings</h2>
         <label class="switch">
-          <input type="checkbox" id="darkModeToggle"><span class="slider"></span>
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
           <span class="switch-label">Dark mode</span>
         </label>
       </div>
     </div>
+
   </section>
 </main>
 
 <div id="snackbar" class="snackbar"></div>
 
-<script>
-/* === inlined script.js (trimmed to what we use) === */
-// SPA nav
-document.querySelectorAll('.icon-btn[data-view]').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const view=btn.getAttribute('data-view');
-    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-    const target=document.getElementById('view-'+view);
-    if(!target) return;
-    target.classList.add('active','view-enter');
-    target.addEventListener('animationend',()=>target.classList.remove('view-enter'),{once:true});
-    snack('Switched to '+view); staggerFadeUps(target);
-  });
-});
-// ripple coords
-document.querySelectorAll('.ripple').forEach(el=>{
-  el.addEventListener('pointerdown',e=>{
-    const r=el.getBoundingClientRect();
-    el.style.setProperty('--x',(e.clientX-r.left)+'px');
-    el.style.setProperty('--y',(e.clientY-r.top)+'px');
-  });
-});
-const topProgress=document.getElementById('topProgress'); function prog(on){ topProgress.classList.toggle('active',!!on); }
-const sb=document.getElementById('snackbar'); function snack(msg){ sb.textContent=msg; sb.classList.add('show'); setTimeout(()=>sb.classList.remove('show'),1800); }
-
-// API helpers
-async function apiGet(p){ const r=await fetch(p,{cache:'no-cache'}); if(!r.ok) throw new Error(r.status+' '+r.statusText); return r.json(); }
-async function apiPost(p,b){ const r=await fetch(p,{method:'POST',headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):null}); const d=await r.json().catch(()=>({})); if(!r.ok) throw new Error(d.detail||r.statusText); return d; }
-
-// Create company
-document.getElementById('companyForm').addEventListener('submit',async (e)=>{
-  e.preventDefault();
-  try{
-    prog(true);
-    const payload={
-      name: document.getElementById('company').value.trim(),
-      list_url: document.getElementById('careers').value.trim(),
-      role_keywords: (document.getElementById('keywords').value || 'software,developer,engineer').trim(),
-      max_age_days: Number(document.getElementById('postdays').value || 7),
-      detail_fetch_limit: 40,
-      active: true
-    };
-    await apiPost('/companies',payload);
-    await renderCompanies(); snack('Company saved'); e.target.reset();
-  }catch(err){ console.error(err); snack('Save failed: '+err.message); }
-  finally{ prog(false); }
-});
-
-// Example
-document.getElementById('loadExample').addEventListener('click',()=>{
-  document.getElementById('company').value='Amazon';
-  document.getElementById('postdays').value=7;
-  document.getElementById('careers').value='https://www.amazon.jobs/en/search?category=Software%20Development';
-  document.getElementById('keywords').value='software, developer, engineer';
-  document.getElementById('contactEmail').value='you@example.com';
-  snack('Example filled');
-});
-
-// Jobs preview/email
-async function previewCompanyJobs(id){
-  try{
-    prog(true);
-    const data=await apiPost('/run/'+id+'?dry_run=1');
-    if(data.ran===false){ snack(data.reason||'Not supported'); renderJobs([]); return; }
-    renderJobs(data.jobs||[]); snack('Loaded '+(data.count||(data.jobs||[]).length)+' job(s)');
-  }catch(err){ console.error(err); snack('Preview failed: '+err.message); renderJobs([]); }
-  finally{ prog(false); }
-}
-async function emailCompanyJobs(id){
-  const email=(document.getElementById('contactEmail').value||'').trim();
-  if(!email){ snack('Enter an email in “Contact email for alerts”'); return; }
-  try{
-    prog(true);
-    const data=await apiPost('/run/'+id, { recipient_email: email });
-    snack('Emailed '+(data.count||0)+' job(s) to '+email);
-  }catch(err){ console.error(err); snack('Email failed: '+err.message); }
-  finally{ prog(false); }
-}
-
-// Delete
-async function deleteCompany(id){
-  if(!confirm('Delete this company?')) return;
-  try{ prog(true); await fetch('/companies/'+id,{method:'DELETE'}); await renderCompanies(); document.getElementById('jobsList').innerHTML='<div class="hint">No jobs to show.</div>'; snack('Company deleted'); }
-  catch(err){ console.error(err); snack('Delete failed: '+err.message); }
-  finally{ prog(false); }
-}
-
-// Render jobs
-function renderJobs(jobs){
-  const c=document.getElementById('jobsList'); c.innerHTML='';
-  if(!jobs||!jobs.length){ c.innerHTML='<div class="hint">No jobs to show.</div>'; return; }
-  jobs.forEach(j=>{
-    const card=document.createElement('div'); card.className='job-card fade-up';
-    card.innerHTML=`<div style="font-weight:600">${esc(j.title)}</div>
-      <div class="meta">${esc(j.company||'')} • ${esc(j.location||'—')}</div>
-      <a href="${j.link}" target="_blank" rel="noopener">Open ↗</a>
-      <div class="meta">${esc(j.posted_text||'')}</div>`;
-    c.appendChild(card);
-  });
-  staggerFadeUps(c);
-}
-
-// Companies view
-async function renderCompanies(){
-  const mount=document.getElementById('companiesList'); if(!mount) return;
-  try{
-    const data=await apiGet('/companies');
-    const rows=(data.companies||[]).map(c=>`
-      <div class="row" style="display:grid;grid-template-columns:2fr 2fr .6fr 1.4fr;gap:10px;border:1px solid var(--g-border);border-radius:10px;padding:10px;background:#fff">
-        <div>${esc(c.name)}</div>
-        <div><small>${esc(c.list_url)}</small></div>
-        <div>${Number(c.max_age_days)||7}d</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn ripple" onclick="previewCompanyJobs(${c.id})">Preview</button>
-          <button class="btn text ripple" onclick="emailCompanyJobs(${c.id})">Email</button>
-          <button class="btn danger ripple" onclick="deleteCompany(${c.id})">Delete</button>
-        </div>
-      </div>`).join('');
-    mount.innerHTML=`
-      <div class="row head" style="display:grid;grid-template-columns:2fr 2fr .6fr 1.4fr;gap:10px;border:1px solid var(--g-border);border-radius:10px;padding:10px;background:#eef3fd;border-color:#c9d7ff;font-weight:600">
-        <div>Name</div><div>Careers URL</div><div>Max Age</div><div>Actions</div>
-      </div>${rows || '<div class="hint">No companies yet.</div>'}`;
-  }catch(err){ console.error(err); mount.innerHTML='<div class="hint">Failed to load companies.</div>'; }
-}
-
-// helpers / init
-function esc(s){return (s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
-function staggerFadeUps(root=document,baseDelay=0){const nodes=Array.from(root.querySelectorAll('.fade-up')).filter(n=>n.offsetParent!==null);nodes.forEach((el,i)=>{el.style.animationDelay=(baseDelay+i*80)+'ms';});}
-function animateBrand(){const letters=Array.from(document.querySelectorAll('.brand span'));letters.forEach((el,i)=>{el.style.animation='brandPop .45s cubic-bezier(.2,.9,.2,1) forwards';el.style.animationDelay=(i*70)+'ms';});}
-document.getElementById('applyFilters').addEventListener('click',()=>snack('Filters applied (demo)'));
-document.getElementById('clearFilters').addEventListener('click',()=>{['fltRole','fltLoc','fltAge'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});snack('Filters cleared');});
-const darkToggle=document.getElementById('darkModeToggle'); if(darkToggle) darkToggle.addEventListener('change',e=>document.body.classList.toggle('dark',e.target.checked));
-document.addEventListener('DOMContentLoaded',async()=>{requestAnimationFrame(()=>{animateBrand();staggerFadeUps();});await renderCompanies();try{const d=await apiGet('/companies');if((d.companies||[]).length){await previewCompanyJobs(d.companies[0].id);} }catch{}});
-</script>
+<script src="/static/script.js"></script>
 </body>
 </html>

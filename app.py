@@ -10,6 +10,7 @@ from typing import List, Dict, Any, Optional
 
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, Text
@@ -27,7 +28,10 @@ except Exception:
 
 # ---------- FastAPI ----------
 app = FastAPI(title="JobWatch Local")
-templates = Jinja2Templates(directory="templates")
+# Use absolute path so the static mount works regardless of where uvicorn is launched from
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app.mount("/static", StaticFiles(directory=os.path.join(_BASE_DIR, "templates", "static")), name="static")
+templates = Jinja2Templates(directory=os.path.join(_BASE_DIR, "templates"))
 
 # ---------- SQLite ----------
 class Base(DeclarativeBase):
