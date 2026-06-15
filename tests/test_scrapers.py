@@ -27,7 +27,7 @@ def _utcnow() -> datetime:
 
 
 # ---------------------------------------------------------------------------
-# is_junior_enough (shared across all scrapers)
+# is_junior_enough
 # ---------------------------------------------------------------------------
 
 class TestIsJuniorEnough(unittest.TestCase):
@@ -72,15 +72,10 @@ class TestIsJuniorEnough(unittest.TestCase):
         self.assertFalse(is_junior_enough("SENIOR SOFTWARE ENGINEER"))
 
     def test_mid_level_passes(self):
-        # "mid" is not in the exclusion list — mid-level is acceptable
         self.assertTrue(is_junior_enough("Mid-Level Software Engineer"))
 
     def test_safeguards_does_not_trigger_lead(self):
-        # "lead" appears in "Safeguards Evals" — should not be excluded
-        # "lead" only matches " lead" (with space prefix) to avoid false positives
-        # This test documents expected behaviour for comma-separated role suffixes
-        result = is_junior_enough("Software Engineer, Safeguards")
-        self.assertTrue(result)
+        self.assertTrue(is_junior_enough("Software Engineer, Safeguards"))
 
 
 # ---------------------------------------------------------------------------
@@ -90,15 +85,15 @@ class TestIsJuniorEnough(unittest.TestCase):
 class TestParseDate(unittest.TestCase):
 
     def test_iso_date(self):
-        txt, dt = _parse_date("Posted 2025-06-01")
-        self.assertEqual(txt, "2025-06-01")
-        self.assertEqual(dt, datetime(2025, 6, 1, tzinfo=timezone.utc))
+        txt, dt = _parse_date("Posted 2026-06-15")
+        self.assertEqual(txt, "2026-06-15")
+        self.assertEqual(dt, datetime(2026, 6, 15, tzinfo=timezone.utc))
 
     def test_month_name(self):
-        txt, dt = _parse_date("June 5, 2025")
+        txt, dt = _parse_date("June 15, 2026")
         self.assertIsNotNone(dt)
         self.assertEqual(dt.month, 6)
-        self.assertEqual(dt.day, 5)
+        self.assertEqual(dt.day, 15)
         self.assertEqual(dt.tzinfo, timezone.utc)
 
     def test_relative_days(self):
@@ -112,7 +107,7 @@ class TestParseDate(unittest.TestCase):
         self.assertAlmostEqual(dt.timestamp(), expected.timestamp(), delta=5)
 
     def test_returned_datetime_is_timezone_aware(self):
-        for text in ["2025-06-01", "June 5, 2025", "3 days ago", "2 hours ago"]:
+        for text in ["2026-06-15", "June 15, 2026", "3 days ago", "2 hours ago"]:
             _, dt = _parse_date(text)
             self.assertIsNotNone(dt, f"Expected a datetime for '{text}'")
             self.assertIsNotNone(dt.tzinfo, f"Expected timezone-aware datetime for '{text}'")
@@ -254,13 +249,13 @@ class TestScrapeIntegration(unittest.TestCase):
                 "posted_date": (_utcnow() - timedelta(days=2)).strftime("%Y-%m-%d"),
             },
             {
-                "title":       "Senior Software Engineer",  # excluded by seniority
+                "title":       "Senior Software Engineer",
                 "job_path":    "/en/jobs/103/senior-swe",
                 "location":    "Seattle, WA",
                 "posted_date": (_utcnow() - timedelta(days=1)).strftime("%Y-%m-%d"),
             },
             {
-                "title":       "Accountant",               # excluded by keyword
+                "title":       "Accountant",
                 "job_path":    "/en/jobs/102/acct",
                 "location":    "New York",
                 "posted_date": (_utcnow() - timedelta(days=1)).strftime("%Y-%m-%d"),
