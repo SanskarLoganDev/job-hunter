@@ -1,0 +1,98 @@
+# config.yaml
+# One entry per company. poller.py reads this on every run.
+# Add a new company by adding a new block — no code changes needed.
+#
+# Fields:
+#   name              : display name (used in emails + logs)
+#   ats               : which scraper to use — amazon | greenhouse | lever | workday
+#   keywords          : role title must contain AT LEAST ONE of these (case-insensitive)
+#   locations         : job location must contain AT LEAST ONE of these (case-insensitive)
+#                       leave empty ([]) to accept all locations
+#   max_age_days      : ignore jobs older than this many days (0 = no filter)
+#   detail_fetch_limit: (amazon/workday only) max detail pages to fetch for dates
+#   active            : set to false to pause without deleting
+#   slug              : (greenhouse/lever only) the company slug in the ATS URL
+
+companies:
+
+  - name: Amazon
+    ats: amazon
+    keywords:
+      - software engineer
+      - software developer
+      - python developer
+      - full stack
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+      - cloud architect
+      - ai engineer
+      - ml engineer
+    locations:
+      - United States
+      - US
+      - USA
+      - Remote
+      - Seattle
+      - New York
+      - Austin
+      - San Francisco
+      - Boston
+      - Chicago
+      - Dallas
+      - Atlanta
+      - Arlington
+      - Bellevue
+      - Redmond
+      - Sunnyvale
+      - Santa Clara
+      - Washington
+      - Virginia
+    max_age_days: 2
+    detail_fetch_limit: 30
+    active: true
+
+  # ── Greenhouse companies ──
+  # - name: Carvana
+  #   ats: greenhouse
+  #   slug: carvana
+  #   keywords: [software engineer, backend, python, devops, cloud]
+  #   locations: [United States, US, Remote]
+  #   max_age_days: 2
+  #   active: true
+
+  # - name: Lacework
+  #   ats: greenhouse
+  #   slug: lacework
+  #   keywords: [software engineer, backend, python, cloud, devops]
+  #   locations: [United States, US, Remote]
+  #   max_age_days: 2
+  #   active: true
+
+  # - name: Deltek
+  #   ats: greenhouse
+  #   slug: deltek
+  #   keywords: [software engineer, python, full stack, backend]
+  #   locations: [United States, US, Remote]
+  #   max_age_days: 2
+  #   active: true
+
+  # ── Lever companies ──
+  # - name: Impetus
+  #   ats: lever
+  #   slug: impetus
+  #   keywords: [software engineer, python, backend, devops]
+  #   locations: [United States, US, Remote]
+  #   max_age_days: 2
+  #   active: true
+
+  # ── Workday companies ──
+  # - name: ADP
+  #   ats: workday
+  #   slug: adp
+  #   workday_host: adp.wd1.myworkdayjobs.com
+  #   keywords: [software engineer, python, full stack, devops, cloud]
+  #   locations: [United States, US, Remote]
+  #   max_age_days: 2
+  #   detail_fetch_limit: 20
+  #   active: true

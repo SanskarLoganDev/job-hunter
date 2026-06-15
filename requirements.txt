@@ -8,3 +8,5 @@ sqlalchemy
 python-dotenv
 Jinja2
 aiofiles
+pyyaml
+pytest
