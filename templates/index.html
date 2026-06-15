@@ -5,9 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HustleHUB – Web App</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
   <link rel="icon" href="https://www.google.com/favicon.ico" />
   <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+      font-size: 20px !important;
+      font-weight: normal !important;
+      font-style: normal !important;
+      line-height: 1 !important;
+      letter-spacing: normal !important;
+      text-transform: none !important;
+      display: inline-block !important;
+      white-space: nowrap !important;
+      word-wrap: normal !important;
+      direction: ltr !important;
+      -webkit-font-smoothing: antialiased !important;
+      vertical-align: middle !important;
+      width: 20px !important;
+      height: 20px !important;
+      overflow: hidden !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,7 +56,10 @@
     <label class="field"><span class="material-symbols-outlined">work</span><input id="fltRole" placeholder="Role e.g. SWE" /></label>
     <label class="field"><span class="material-symbols-outlined">location_on</span><input id="fltLoc" placeholder="Location e.g. US-Remote" /></label>
     <label class="field"><span class="material-symbols-outlined">schedule</span><input id="fltAge" type="number" placeholder="Max post age (days)" /></label>
-    <button class="btn ripple" id="applyFilters"><span class="material-symbols-outlined left">filter_alt</span>Apply</button>
+    <button class="btn ripple" id="applyFilters">
+      <span class="material-symbols-outlined">filter_alt</span>
+      <span>Apply</span>
+    </button>
     <button class="btn text ripple" id="clearFilters">Clear</button>
     <div class="hint">Tip: visual demo; filters apply to the local list.</div>
   </aside>
@@ -48,7 +71,7 @@
     <div class="view active" id="view-dashboard">
       <div class="cards">
         <div class="card elevation fade-up" style="grid-column: span 2;">
-          <h2 class="card-title"><span class="material-symbols-outlined left">apartment</span>Add Company Details</h2>
+          <h2 class="card-title"><span class="material-symbols-outlined">apartment</span><span>Add Company Details</span></h2>
           <form id="companyForm">
             <label class="field"><span class="material-symbols-outlined">business</span>
               <input type="text"   id="company"      placeholder="Company name"              required />
@@ -66,15 +89,21 @@
               <input type="email"  id="contactEmail" placeholder="Contact email for alerts (used by Email button)" />
             </label>
             <div class="row" style="display:flex; gap:8px; flex-wrap:wrap">
-              <button type="submit"  class="btn green ripple"><span class="material-symbols-outlined left">save</span>Submit</button>
-              <button type="button"  class="btn text ripple"  id="loadExample"><span class="material-symbols-outlined left">auto_fix_high</span>Example</button>
+              <button type="submit" class="btn green ripple">
+                <span class="material-symbols-outlined">save</span>
+                <span>Submit</span>
+              </button>
+              <button type="button" class="btn text ripple" id="loadExample">
+                <span class="material-symbols-outlined">auto_fix_high</span>
+                <span>Example</span>
+              </button>
             </div>
           </form>
         </div>
       </div>
 
       <div class="card elevation fade-up">
-        <h2 class="card-title"><span class="material-symbols-outlined left">list_alt</span>Latest Jobs</h2>
+        <h2 class="card-title"><span class="material-symbols-outlined">list_alt</span><span>Latest Jobs</span></h2>
         <div id="jobsList" class="jobs"></div>
       </div>
     </div>
@@ -82,7 +111,7 @@
     <!-- Companies view -->
     <div class="view" id="view-companies">
       <div class="card elevation fade-up">
-        <h2 class="card-title"><span class="material-symbols-outlined left">business</span>Companies</h2>
+        <h2 class="card-title"><span class="material-symbols-outlined">business</span><span>Companies</span></h2>
         <div id="companiesList" class="table"></div>
       </div>
     </div>
@@ -90,7 +119,7 @@
     <!-- Settings view -->
     <div class="view" id="view-settings">
       <div class="card elevation fade-up">
-        <h2 class="card-title"><span class="material-symbols-outlined left">settings</span>Settings</h2>
+        <h2 class="card-title"><span class="material-symbols-outlined">settings</span><span>Settings</span></h2>
         <label class="switch">
           <input type="checkbox" id="darkModeToggle">
           <span class="slider"></span>
