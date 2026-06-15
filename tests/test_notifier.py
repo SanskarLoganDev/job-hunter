@@ -3,26 +3,36 @@ tests/test_notifier.py
 
 Tests for notifier.py — email rendering + send path.
 
-render_email() is a pure function and tested directly.
-send_email() is tested with SMTP mocked so no real email is sent.
-
 Run with:  python -m pytest tests/test_notifier.py -v
 """
 
 import unittest
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch, MagicMock
 
 from scrapers import Job
 from notifier import render_email, send_email
 
 
-def _make_job(n: int) -> Job:
+def _make_job(n: int, days_old: int = 0) -> Job:
     return Job(
         title=f"Software Engineer {n}",
         company="Amazon",
         link=f"https://www.amazon.jobs/en/jobs/{n}/swe",
         location="Seattle, WA",
-        posted_text="2025-06-01",
+        posted_text=(datetime.now(timezone.utc) - timedelta(days=days_old)).strftime("%Y-%m-%d"),
+        posted_dt=datetime.now(timezone.utc) - timedelta(days=days_old),
+    )
+
+
+def _make_job_no_date(n: int) -> Job:
+    return Job(
+        title=f"Software Engineer {n}",
+        company="Amazon",
+        link=f"https://www.amazon.jobs/en/jobs/{n}/swe",
+        location="Remote",
+        posted_text="",
+        posted_dt=None,
     )
 
 
@@ -73,6 +83,35 @@ class TestRenderEmail(unittest.TestCase):
                   location="")
         _, html = render_email("Amazon", [job])
         self.assertIn("—", html)
+
+    # ── Sorting tests ─────────────────────────────────────────────────────
+
+    def test_jobs_sorted_newest_first(self):
+        """Newest job must appear before older job in the rendered HTML."""
+        old_job  = _make_job(1, days_old=5)   # older
+        new_job  = _make_job(2, days_old=0)   # newer
+        # Pass old first deliberately to confirm sorting overrides input order
+        _, html = render_email("Amazon", [old_job, new_job])
+        pos_new = html.index(f"Software Engineer 2")
+        pos_old = html.index(f"Software Engineer 1")
+        self.assertLess(pos_new, pos_old,
+                        "Newer job should appear before older job in HTML")
+
+    def test_jobs_with_no_date_go_to_bottom(self):
+        """Jobs with no posted_dt must appear after dated jobs."""
+        dated_job   = _make_job(1, days_old=0)
+        no_date_job = _make_job_no_date(2)
+        _, html = render_email("Amazon", [no_date_job, dated_job])
+        pos_dated   = html.index("Software Engineer 1")
+        pos_no_date = html.index("Software Engineer 2")
+        self.assertLess(pos_dated, pos_no_date,
+                        "Job with date should appear before job without date")
+
+    def test_sort_does_not_change_count(self):
+        jobs = [_make_job(i, days_old=i) for i in range(5)]
+        _, html = render_email("Amazon", jobs)
+        for i in range(5):
+            self.assertIn(f"Software Engineer {i}", html)
 
 
 class TestSendEmail(unittest.TestCase):

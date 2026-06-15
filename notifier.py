@@ -2,15 +2,6 @@
 notifier.py
 
 Builds and sends the alert email.
-
-Kept deliberately isolated from the scrapers and store so it can be
-tested independently (render_email has no side effects; send_email
-is the only function that touches the network).
-
-Gmail app-password setup (one-time):
-  1. Google account → Security → 2-Step Verification → ON
-  2. Search "App passwords" → create one for "Mail / Windows Computer"
-  3. Copy the 16-char password into .env as SMTP_PASS
 """
 
 import os
@@ -25,16 +16,23 @@ from scrapers import Job
 logger = logging.getLogger(__name__)
 
 
-# ---------------------------------------------------------------------------
-# Email rendering  (pure function — no side effects, easy to test)
-# ---------------------------------------------------------------------------
-
 def render_email(company: str, jobs: List[Job]) -> tuple[str, str]:
     """
     Return (subject, html_body) for a batch of new jobs at one company.
-    Never raises.
+
+    Jobs are sorted newest-first before rendering. Jobs with no date
+    are placed at the end.
     """
-    subject = f"[JobHunter] {len(jobs)} new role{'s' if len(jobs) != 1 else ''} at {company}"
+    # Sort newest first — None dates go to the bottom
+    sorted_jobs = sorted(
+        jobs,
+        key=lambda j: j.posted_dt if j.posted_dt is not None
+                      else __import__("datetime").datetime.min.replace(
+                          tzinfo=__import__("datetime").timezone.utc),
+        reverse=True,
+    )
+
+    subject = f"[JobHunter] {len(sorted_jobs)} new role{'s' if len(sorted_jobs) != 1 else ''} at {company}"
 
     rows = "\n".join(
         f"""<tr>
@@ -46,11 +44,11 @@ def render_email(company: str, jobs: List[Job]) -> tuple[str, str]:
           <td style="padding:8px 12px;border-bottom:1px solid #e8eaed;color:#5f6368;">
             {j.location or "—"}
           </td>
-          <td style="padding:8px 12px;border-bottom:1px solid #e8eaed;color:#5f6368;">
+          <td style="padding:8px 12px;border-bottom:1px solid #e8eaed;color:#5f6368;white-space:nowrap;">
             {j.posted_text or "—"}
           </td>
         </tr>"""
-        for j in jobs
+        for j in sorted_jobs
     )
 
     html = f"""<!DOCTYPE html>
@@ -71,8 +69,8 @@ def render_email(company: str, jobs: List[Job]) -> tuple[str, str]:
     <tr>
       <td style="padding:20px 24px 8px;">
         <p style="margin:0;font-size:15px;color:#202124;">
-          Found <strong>{len(jobs)}</strong> new
-          role{'s' if len(jobs) != 1 else ''} at <strong>{company}</strong>:
+          Found <strong>{len(sorted_jobs)}</strong> new
+          role{'s' if len(sorted_jobs) != 1 else ''} at <strong>{company}</strong>:
         </p>
       </td>
     </tr>
@@ -115,17 +113,7 @@ def render_email(company: str, jobs: List[Job]) -> tuple[str, str]:
     return subject, html
 
 
-# ---------------------------------------------------------------------------
-# Sending
-# ---------------------------------------------------------------------------
-
 def send_email(subject: str, html: str) -> None:
-    """
-    Send an HTML email using SMTP credentials from .env.
-
-    Raises RuntimeError with a human-readable message on failure so
-    poller.py can log it without crashing the whole run.
-    """
     smtp_user = os.getenv("SMTP_USER")
     smtp_pass = os.getenv("SMTP_PASS")
     smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")

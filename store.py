@@ -4,26 +4,14 @@ store.py
 SQLite persistence layer.
 
 Two tables:
-  - seen_jobs   : every job uid we have ever notified about.
-                  The poller diffs incoming jobs against this table
-                  and only emails NEW ones.
-  - poll_log    : one row per poll run — timestamp, company, how many
-                  jobs were found, how many were new, and any error.
-
-Design decisions:
-  - We use uid (the normalised job URL) as the primary key so the same
-    posting never triggers a second email even if the scraper returns it
-    across multiple runs.
-  - We never delete from seen_jobs. Over time this table will grow to
-    maybe a few thousand rows — trivial for SQLite.
-  - All writes use retry logic with exponential backoff to handle the
-    rare case of the DB being locked by another process.
+  - seen_jobs : every job uid we have ever notified about.
+  - poll_log  : one row per poll run — timestamp, company, counts, error.
 """
 
 import sqlite3
 import time
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -31,15 +19,8 @@ from scrapers import Job
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# DB path — sits next to this file, same location as the existing jobs.db
-# ---------------------------------------------------------------------------
 _DB_PATH = Path(__file__).parent / "jobs.db"
 
-
-# ---------------------------------------------------------------------------
-# Schema
-# ---------------------------------------------------------------------------
 _DDL = """
 CREATE TABLE IF NOT EXISTS seen_jobs (
     uid          TEXT PRIMARY KEY,
@@ -48,27 +29,27 @@ CREATE TABLE IF NOT EXISTS seen_jobs (
     link         TEXT NOT NULL,
     location     TEXT,
     posted_text  TEXT,
-    first_seen   TEXT NOT NULL   -- ISO datetime string (UTC)
+    first_seen   TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS poll_log (
     id           INTEGER PRIMARY KEY AUTOINCREMENT,
-    ran_at       TEXT NOT NULL,   -- ISO datetime string (UTC)
+    ran_at       TEXT NOT NULL,
     company      TEXT NOT NULL,
     scraper      TEXT NOT NULL,
     found        INTEGER NOT NULL DEFAULT 0,
     new_jobs     INTEGER NOT NULL DEFAULT 0,
-    error        TEXT              -- NULL if no error
+    error        TEXT
 );
 """
 
 
-# ---------------------------------------------------------------------------
-# Connection helper with retry
-# ---------------------------------------------------------------------------
+def _now_iso() -> str:
+    """Return the current UTC time as an ISO string. Single source of truth."""
+    return datetime.now(timezone.utc).isoformat()
+
 
 def _connect(retries: int = 3, backoff: float = 1.0) -> sqlite3.Connection:
-    """Open a connection; retry on OperationalError (DB locked)."""
     last_err = None
     for attempt in range(retries):
         try:
@@ -85,22 +66,13 @@ def _connect(retries: int = 3, backoff: float = 1.0) -> sqlite3.Connection:
     raise last_err
 
 
-# ---------------------------------------------------------------------------
-# Public API
-# ---------------------------------------------------------------------------
-
 def init_db() -> None:
-    """Create tables if they don't exist. Safe to call on every startup."""
     with _connect() as conn:
         conn.executescript(_DDL)
     logger.debug("DB initialised at %s", _DB_PATH)
 
 
 def filter_new(jobs: List[Job]) -> List[Job]:
-    """
-    Return only jobs whose uid is NOT already in seen_jobs.
-    Does NOT write anything — call mark_seen() after emailing.
-    """
     if not jobs:
         return []
     try:
@@ -114,19 +86,13 @@ def filter_new(jobs: List[Job]) -> List[Job]:
             return [j for j in jobs if j.uid not in already_seen]
     except Exception as e:
         logger.error("filter_new failed: %s — treating all %d jobs as new", e, len(jobs))
-        # Fail open: if we can't check, assume all new. Better a duplicate
-        # email than a missed job.
         return jobs
 
 
 def mark_seen(jobs: List[Job]) -> None:
-    """
-    Insert jobs into seen_jobs.
-    Uses INSERT OR IGNORE so re-running never raises on duplicates.
-    """
     if not jobs:
         return
-    now = datetime.utcnow().isoformat()
+    now = _now_iso()
     rows = [
         (j.uid, j.title, j.company, j.link, j.location, j.posted_text, now)
         for j in jobs
@@ -150,20 +116,18 @@ def log_poll(
     new_jobs: int,
     error: Optional[str] = None,
 ) -> None:
-    """Write one row to poll_log. Non-fatal if it fails."""
     try:
         with _connect() as conn:
             conn.execute(
                 """INSERT INTO poll_log (ran_at, company, scraper, found, new_jobs, error)
                    VALUES (?, ?, ?, ?, ?, ?)""",
-                (datetime.utcnow().isoformat(), company, scraper, found, new_jobs, error),
+                (_now_iso(), company, scraper, found, new_jobs, error),
             )
     except Exception as e:
         logger.warning("log_poll failed (non-fatal): %s", e)
 
 
 def get_seen_count() -> int:
-    """Return total number of jobs in seen_jobs. Useful for diagnostics."""
     try:
         with _connect() as conn:
             return conn.execute("SELECT COUNT(*) FROM seen_jobs").fetchone()[0]
@@ -172,7 +136,6 @@ def get_seen_count() -> int:
 
 
 def get_recent_poll_logs(limit: int = 20) -> list:
-    """Return the most recent poll_log rows as dicts. Used in tests + diagnostics."""
     try:
         with _connect() as conn:
             rows = conn.execute(
