@@ -5,7 +5,7 @@ Entry point called by Windows Task Scheduler every 30 minutes.
 
 Flow:
   1. Acquire a lock file — exit immediately if another instance is running.
-  2. Load all yaml files from the config/ folder.
+  2. Load all config-*.yaml files from the config/ folder alphabetically.
   3. For each active company across all configs:
        a. Route to the right scraper module.
        b. Diff results against seen_jobs in the DB.
@@ -16,10 +16,11 @@ Flow:
 One company failing never affects the others.
 
 CONFIG FOLDER: config/
-  config.yaml         — Amazon + Greenhouse companies
-  config-ashby.yaml   — Ashby companies
-  config-lever.yaml   — Lever companies
-  config-*.yaml       — any future ATS config, auto-discovered at startup
+  config-amazon.yaml      — Amazon
+  config-greenhouse.yaml  — Greenhouse companies
+  config-ashby.yaml       — Ashby companies
+  config-lever.yaml       — Lever companies
+  config-*.yaml           — any future ATS config, auto-discovered at startup
 
 Windows notes:
   - Uses msvcrt.locking() for the lock file (fcntl is Unix-only).
@@ -116,46 +117,47 @@ def _release_lock() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Config loader — loads all yaml files from config/ folder
+# Config loader — loads ALL config-*.yaml files from config/ folder
 # ---------------------------------------------------------------------------
 
 def _load_config() -> list:
     """
-    Load and merge companies from all yaml files in the config/ folder.
+    Load and merge companies from all config-*.yaml files in config/.
 
-    Load order:
-      1. config/config.yaml          — required, aborts if missing
-      2. config/config-ashby.yaml    — optional
-      3. config/config-lever.yaml    — optional
-      4. config/config-*.yaml        — any others, alphabetical order
+    All files are treated equally — no single required primary file.
+    Files are loaded in alphabetical order so load order is predictable:
+      config-amazon.yaml      → Amazon
+      config-ashby.yaml       → Ashby companies
+      config-greenhouse.yaml  → Greenhouse companies
+      config-lever.yaml       → Lever companies
+
+    To add a new ATS: create config-<ats>.yaml and drop it in config/.
+    No code changes needed.
 
     Returns a flat list of all company dicts across all files.
+    Aborts only if the config/ folder itself is missing.
     """
     if not CONFIG_DIR.exists():
         logger.critical("config/ folder not found at %s — aborting.", CONFIG_DIR)
         sys.exit(1)
 
-    # Always load config.yaml first, then config-*.yaml alphabetically
-    primary = CONFIG_DIR / "config.yaml"
-    extras  = sorted(CONFIG_DIR.glob("config-*.yaml"))
-    all_paths = [primary] + extras
+    all_paths = sorted(CONFIG_DIR.glob("config-*.yaml"))
+
+    if not all_paths:
+        logger.critical("No config-*.yaml files found in %s — aborting.", CONFIG_DIR)
+        sys.exit(1)
 
     all_companies = []
 
     for path in all_paths:
-        if not path.exists():
-            if path == primary:
-                logger.critical("config/config.yaml not found — aborting.")
-                sys.exit(1)
-            else:
-                logger.debug("Optional %s not found — skipping.", path.name)
-                continue
-
         try:
             with open(path, encoding="utf-8") as f:
                 data = yaml.safe_load(f) or {}
         except yaml.YAMLError as e:
-            logger.error("%s is malformed: %s — skipping.", path.name, e)
+            logger.error("%s is malformed: %s — skipping this file.", path.name, e)
+            continue
+        except OSError as e:
+            logger.error("Cannot read %s: %s — skipping.", path.name, e)
             continue
 
         companies = data.get("companies", [])
@@ -163,7 +165,7 @@ def _load_config() -> list:
         all_companies.extend(companies)
 
     if not all_companies:
-        logger.warning("No companies found in config/ — nothing to poll.")
+        logger.warning("No companies found across all config files — nothing to poll.")
 
     return all_companies
 
