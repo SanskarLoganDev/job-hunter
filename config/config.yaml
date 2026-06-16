@@ -1,23 +1,11 @@
-# config.yaml
-# One entry per company. poller.py reads this on every run.
-#
-# GREENHOUSE COMPANIES: enable one at a time after live testing confirms correctness.
-# Run to see raw location strings for any company:
-#   $env:RUN_LIVE_TESTS=1; .venv\Scripts\python -m pytest tests/test_greenhouse.py::TestLive::test_print_actual_location_strings -v -s
-#
-# LOCATION FILTER NOTES (learned from live test output):
-#   Anthropic : concatenates cities with | and ; e.g. "San Francisco, CA | New York City, NY"
-#               Use city names + "United States" to catch remote roles
-#   Datadog   : "New York, New York, USA" — "USA" suffix on all US roles
-#   DoorDash  : "San Francisco, CA; Seattle, WA" semicolon-separated
-#               Remote roles say "United States - Remote"
-#   Figma     : "San Francisco, CA • New York, NY • United States"
-#               "United States" appears in all multi-location US strings
+# config/config.yaml
+# Amazon + Greenhouse companies.
+# Loaded automatically by poller.py.
 
 companies:
 
   # ════════════════════════════════════════════════════════════
-  #  AMAZON — tested and active
+  #  AMAZON
   # ════════════════════════════════════════════════════════════
   - name: Amazon
     ats: amazon
@@ -56,10 +44,15 @@ companies:
     active: true
 
   # ════════════════════════════════════════════════════════════
-  #  GREENHOUSE — enable one at a time after live tests pass
+  #  GREENHOUSE
+  #  Location notes per company (learned from live API output):
+  #    Anthropic : "San Francisco, CA | New York City, NY" pipe/semicolon concat
+  #    Datadog   : "New York, New York, USA" — USA suffix on all US roles
+  #    DoorDash  : "San Francisco, CA; Seattle, WA" semicolon-separated
+  #    Figma     : "San Francisco, CA • New York, NY • United States"
   # ════════════════════════════════════════════════════════════
 
-  - name: Anthropic
+  - name: Anthropic                  # https://job-boards.greenhouse.io/anthropic
     ats: greenhouse
     slug: anthropic
     keywords:
@@ -73,17 +66,15 @@ companies:
       - ai engineer
       - ml engineer
     locations:
-      # Anthropic concatenates cities: "San Francisco, CA | New York City, NY | Seattle, WA"
-      # Substring matching catches all combinations
       - San Francisco
       - New York City
       - Seattle
       - Washington, DC
       - Boston
-      - United States        # catches "Remote-Friendly, United States"
-      - Remote-Friendly      # catches all remote variants
+      - United States
+      - Remote-Friendly
     max_age_days: 1
-    active: true   # flip to true after Step 4 testing
+    active: true
 
   - name: Datadog
     ats: greenhouse
@@ -98,9 +89,8 @@ companies:
       - cloud engineer
       - ai engineer
     locations:
-      # Datadog format: "New York, New York, USA" — USA suffix on all US roles
-      - USA             # single term catches every US location
-      - United States   # fallback for remote roles
+      - USA
+      - United States
       - Remote
     max_age_days: 1
     active: true
@@ -116,11 +106,9 @@ companies:
       - devops engineer
       - cloud engineer
     locations:
-      # Figma format: "San Francisco, CA • New York, NY • United States"
-      # "United States" appears in all multi-location US strings
-      - United States   # catches all US multi-location strings
-      - San Francisco   # catches SF-only roles
-      - New York        # catches NY-only roles
+      - United States
+      - San Francisco
+      - New York
       - Remote
     max_age_days: 1
     active: true
@@ -137,8 +125,6 @@ companies:
       - devops engineer
       - cloud engineer
     locations:
-      # DoorDash format: "San Francisco, CA; Seattle, WA; Austin, TX"
-      # Remote roles: "United States - Remote"
       - San Francisco
       - Seattle
       - New York
@@ -147,7 +133,7 @@ companies:
       - Atlanta
       - Boston
       - Washington
-      - United States   # catches "United States - Remote"
+      - United States
       - Remote
     max_age_days: 1
     active: true
@@ -333,73 +319,51 @@ companies:
     max_age_days: 1
     active: true
 
-  # ════════════════════════════════════════════════════════════
-  #  UNVERIFIED — check slug before uncommenting
-  #  Open https://job-boards.greenhouse.io/SLUG in browser first
-  # ════════════════════════════════════════════════════════════
+  - name: Robinhood
+    ats: greenhouse
+    slug: robinhood
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - devops engineer
+      - cloud engineer
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
 
-  # - name: Robinhood
-  #   ats: greenhouse
-  #   slug: robinhood
-  #   keywords: [software engineer, backend engineer, python developer, devops engineer]
-  #   locations: [United States, Remote]
-  #   max_age_days: 1
-  #   active: false
+  - name: Stripe            # https://job-boards.greenhouse.io/stripe
+    ats: greenhouse
+    slug: stripe
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - devops engineer
+      - cloud engineer
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
 
-  # - name: Notion
-  #   ats: greenhouse
-  #   slug: notion
-  #   keywords: [software engineer, backend engineer, full stack]
-  #   locations: [San Francisco, New York, United States, Remote]
-  #   max_age_days: 1
-  #   active: false
-
-  # - name: Ramp
-  #   ats: greenhouse
-  #   slug: ramp
-  #   keywords: [software engineer, backend engineer, python developer]
-  #   locations: [New York, United States, Remote]
-  #   max_age_days: 1
-  #   active: false
-
-  # - name: Stripe
-  #   ats: greenhouse
-  #   slug: stripe
-  #   keywords: [software engineer, backend engineer, devops engineer]
-  #   locations: [San Francisco, New York, United States, Remote]
-  #   max_age_days: 1
-  #   active: false
-
-  # - name: Cloudflare
-  #   ats: greenhouse
-  #   slug: cloudflare
-  #   keywords: [software engineer, backend engineer, devops engineer, cloud engineer]
-  #   locations: [San Francisco, Austin, United States, Remote]
-  #   max_age_days: 1
-  #   active: false
-
-  # ════════════════════════════════════════════════════════════
-  #  LEVER — scraper not built yet
-  # ════════════════════════════════════════════════════════════
-
-  # - name: Impetus
-  #   ats: lever
-  #   slug: impetus
-  #   keywords: [software engineer, python, backend, devops]
-  #   locations: [United States, Remote]
-  #   max_age_days: 1
-  #   active: false
-
-  # ════════════════════════════════════════════════════════════
-  #  WORKDAY — scraper not built yet
-  # ════════════════════════════════════════════════════════════
-
-  # - name: ADP
-  #   ats: workday
-  #   slug: adp
-  #   workday_host: adp.wd1.myworkdayjobs.com
-  #   keywords: [software engineer, python, full stack, devops, cloud]
-  #   locations: [United States, Remote]
-  #   max_age_days: 1
-  #   detail_fetch_limit: 20
-  #   active: false
+  - name: CloudFlare            # https://job-boards.greenhouse.io/cloudflare
+    ats: greenhouse
+    slug: cloudflare
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - devops engineer
+      - cloud engineer
+      - ai engineer
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true

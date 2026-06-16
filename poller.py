@@ -5,7 +5,7 @@ Entry point called by Windows Task Scheduler every 30 minutes.
 
 Flow:
   1. Acquire a lock file — exit immediately if another instance is running.
-  2. Load config.yaml + config-ashby.yaml (and any other config-*.yaml files).
+  2. Load all yaml files from the config/ folder.
   3. For each active company across all configs:
        a. Route to the right scraper module.
        b. Diff results against seen_jobs in the DB.
@@ -15,12 +15,11 @@ Flow:
 
 One company failing never affects the others.
 
-CONFIG FILES:
-  config.yaml        — Amazon, Greenhouse, Lever, Workday companies
-  config-ashby.yaml  — Ashby companies (separate to keep config manageable)
-  Any config-*.yaml  — poller auto-discovers all matching files at startup.
-                       Add a new file (e.g. config-lever.yaml) without
-                       changing any code.
+CONFIG FOLDER: config/
+  config.yaml         — Amazon + Greenhouse companies
+  config-ashby.yaml   — Ashby companies
+  config-lever.yaml   — Lever companies
+  config-*.yaml       — any future ATS config, auto-discovered at startup
 
 Windows notes:
   - Uses msvcrt.locking() for the lock file (fcntl is Unix-only).
@@ -46,14 +45,10 @@ import notifier
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-BASE_DIR  = Path(__file__).parent
-LOG_FILE  = BASE_DIR / "logs" / "poller.log"
-LOCK_FILE = BASE_DIR / "logs" / "poller.lock"
-
-# Primary config + any config-*.yaml side files (ashby, lever, etc.)
-CONFIG_FILES = [BASE_DIR / "config.yaml"] + sorted(
-    BASE_DIR.glob("config-*.yaml")
-)
+BASE_DIR   = Path(__file__).parent
+LOG_FILE   = BASE_DIR / "logs" / "poller.log"
+LOCK_FILE  = BASE_DIR / "logs" / "poller.lock"
+CONFIG_DIR = BASE_DIR / "config"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -121,36 +116,46 @@ def _release_lock() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Config loader — merges all config files into one list
+# Config loader — loads all yaml files from config/ folder
 # ---------------------------------------------------------------------------
 
 def _load_config() -> list:
     """
-    Load and merge companies from all config files.
+    Load and merge companies from all yaml files in the config/ folder.
 
-    Files loaded:
-      config.yaml          — always required, aborts if missing
-      config-ashby.yaml    — optional, loaded if present
-      config-*.yaml        — any future side configs auto-discovered
+    Load order:
+      1. config/config.yaml          — required, aborts if missing
+      2. config/config-ashby.yaml    — optional
+      3. config/config-lever.yaml    — optional
+      4. config/config-*.yaml        — any others, alphabetical order
 
-    Returns a flat list of all company configs across all files.
+    Returns a flat list of all company dicts across all files.
     """
+    if not CONFIG_DIR.exists():
+        logger.critical("config/ folder not found at %s — aborting.", CONFIG_DIR)
+        sys.exit(1)
+
+    # Always load config.yaml first, then config-*.yaml alphabetically
+    primary = CONFIG_DIR / "config.yaml"
+    extras  = sorted(CONFIG_DIR.glob("config-*.yaml"))
+    all_paths = [primary] + extras
+
     all_companies = []
 
-    for path in CONFIG_FILES:
+    for path in all_paths:
         if not path.exists():
-            if path.name == "config.yaml":
-                logger.critical("config.yaml not found at %s — aborting.", path)
+            if path == primary:
+                logger.critical("config/config.yaml not found — aborting.")
                 sys.exit(1)
             else:
-                logger.debug("Optional config %s not found — skipping.", path.name)
+                logger.debug("Optional %s not found — skipping.", path.name)
                 continue
 
         try:
             with open(path, encoding="utf-8") as f:
                 data = yaml.safe_load(f) or {}
         except yaml.YAMLError as e:
-            logger.error("%s is malformed: %s — skipping this file.", path.name, e)
+            logger.error("%s is malformed: %s — skipping.", path.name, e)
             continue
 
         companies = data.get("companies", [])
@@ -158,7 +163,7 @@ def _load_config() -> list:
         all_companies.extend(companies)
 
     if not all_companies:
-        logger.warning("No companies found across all config files — nothing to poll.")
+        logger.warning("No companies found in config/ — nothing to poll.")
 
     return all_companies
 
@@ -171,8 +176,8 @@ _SCRAPER_MAP = {
     "amazon":     "scrapers.amazon",
     "greenhouse": "scrapers.greenhouse",
     "ashby":      "scrapers.ashby",
-    "workday":    "scrapers.workday",
     "lever":      "scrapers.lever",
+    "workday":    "scrapers.workday",   # not yet built — will log error if used
 }
 
 
@@ -212,7 +217,6 @@ def _poll_company(cfg: dict) -> None:
         store.log_poll(name, ats, 0, 0, error=f"No scraper for ATS '{ats}'")
         return
 
-    # Build kwargs — all scrapers accept keywords, locations, max_age_days, company_name
     scrape_kwargs = dict(
         keywords=keywords,
         locations=locations,
@@ -220,14 +224,13 @@ def _poll_company(cfg: dict) -> None:
         company_name=name,
     )
 
-    # ATS-specific extras
     if ats in ("amazon", "workday"):
         scrape_kwargs["detail_fetch_limit"] = limit
 
     if ats in ("greenhouse", "lever", "ashby"):
         slug = cfg.get("slug", "")
         if not slug:
-            logger.error("%s: 'slug' is required for the %s scraper", name, ats)
+            logger.error("%s: 'slug' required for %s scraper", name, ats)
             store.log_poll(name, ats, 0, 0, error="Missing slug in config")
             return
         scrape_kwargs["slug"] = slug

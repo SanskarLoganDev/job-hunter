@@ -1,0 +1,87 @@
+# config/config-lever.yaml
+# Lever ATS companies.
+# Loaded automatically by poller.py.
+#
+# HOW TO FIND THE SLUG:
+#   Go to https://jobs.lever.co/{SLUG} — if jobs load, slug is correct.
+#   Also try: curl https://api.lever.co/v0/postings/{SLUG}?mode=json
+#   If you get a JSON array back, it works.
+#
+# LOCATION NOTES:
+#   Lever returns location inside categories.location e.g. "San Francisco, CA"
+#   Some roles also have workplaceType: "Remote" or "Hybrid" at the top level.
+#   The scraper appends "; Remote" to the location string for remote roles
+#   so "Remote" in your locations list correctly matches them.
+#
+# DATE NOTES:
+#   Lever createdAt is Unix timestamp in MILLISECONDS — the scraper handles this.
+#   This is the actual posting creation date — accurate for freshness filtering.
+#
+# ✅ = slug confirmed from live jobs.lever.co URL in search results
+# ❓ = inferred, needs browser verification
+
+companies:
+
+  # ════════════════════════════════════════════════════════════
+  #  CONFIRMED SLUGS
+  # ════════════════════════════════════════════════════════════
+
+  - name: Voleon Group
+    ats: lever
+    slug: voleon                    # ✅ jobs.lever.co/voleon (confirmed from search results)
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - python developer
+      - devops engineer
+    locations:
+      - San Francisco
+      - Berkeley
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: NimbleRx
+    ats: lever
+    slug: nimblerx                  # ✅ jobs.lever.co/nimblerx (confirmed from search results)
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - python developer
+      - devops engineer
+    locations:
+      - Redwood City
+      - San Francisco
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Level AI
+    ats: lever
+    slug: levelai                   # ✅ jobs.lever.co/levelai (confirmed from search results)
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - ai engineer
+      - ml engineer
+    locations:
+      - San Francisco
+      - Mountain View
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  # ════════════════════════════════════════════════════════════
+  #  UNVERIFIED — check before enabling
+  #  Open https://jobs.lever.co/SLUG in browser, or run:
+  #  curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"
+  # ════════════════════════════════════════════════════════════
