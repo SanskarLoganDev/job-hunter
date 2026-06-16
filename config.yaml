@@ -103,7 +103,7 @@ companies:
       - United States   # fallback for remote roles
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Figma
     ats: greenhouse
@@ -123,7 +123,7 @@ companies:
       - New York        # catches NY-only roles
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: DoorDash
     ats: greenhouse
@@ -150,7 +150,7 @@ companies:
       - United States   # catches "United States - Remote"
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Okta
     ats: greenhouse
@@ -171,7 +171,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Affirm
     ats: greenhouse
@@ -191,7 +191,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: ZipRecruiter
     ats: greenhouse
@@ -209,7 +209,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Scale AI
     ats: greenhouse
@@ -230,7 +230,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Hightouch
     ats: greenhouse
@@ -247,7 +247,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Glean
     ats: greenhouse
@@ -265,7 +265,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Life360
     ats: greenhouse
@@ -281,7 +281,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Xometry
     ats: greenhouse
@@ -299,7 +299,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: SmithRx
     ats: greenhouse
@@ -315,7 +315,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   - name: Canonical
     ats: greenhouse
@@ -331,7 +331,7 @@ companies:
       - United States
       - Remote
     max_age_days: 1
-    active: false
+    active: true
 
   # ════════════════════════════════════════════════════════════
   #  UNVERIFIED — check slug before uncommenting

@@ -5,20 +5,26 @@ Entry point called by Windows Task Scheduler every 30 minutes.
 
 Flow:
   1. Acquire a lock file — exit immediately if another instance is running.
-  2. Load config.yaml — defines which companies to poll and with what settings.
-  3. For each active company:
+  2. Load config.yaml + config-ashby.yaml (and any other config-*.yaml files).
+  3. For each active company across all configs:
        a. Route to the right scraper module.
        b. Diff results against seen_jobs in the DB.
        c. If new jobs found: send email, then mark them as seen.
-       d. Log the outcome (success or failure) to poll_log + log file.
+       d. Log the outcome to poll_log + log file.
   4. Release lock file.
 
 One company failing never affects the others.
 
+CONFIG FILES:
+  config.yaml        — Amazon, Greenhouse, Lever, Workday companies
+  config-ashby.yaml  — Ashby companies (separate to keep config manageable)
+  Any config-*.yaml  — poller auto-discovers all matching files at startup.
+                       Add a new file (e.g. config-lever.yaml) without
+                       changing any code.
+
 Windows notes:
   - Uses msvcrt.locking() for the lock file (fcntl is Unix-only).
-  - Uses os.getpid() for the PID written to the lock file.
-  - Path separator is handled by pathlib throughout — no hardcoded slashes.
+  - Path separator handled by pathlib throughout.
 """
 
 import importlib
@@ -43,10 +49,14 @@ import notifier
 BASE_DIR  = Path(__file__).parent
 LOG_FILE  = BASE_DIR / "logs" / "poller.log"
 LOCK_FILE = BASE_DIR / "logs" / "poller.lock"
-CONFIG    = BASE_DIR / "config.yaml"
+
+# Primary config + any config-*.yaml side files (ashby, lever, etc.)
+CONFIG_FILES = [BASE_DIR / "config.yaml"] + sorted(
+    BASE_DIR.glob("config-*.yaml")
+)
 
 # ---------------------------------------------------------------------------
-# Logging — rotating file + stdout
+# Logging
 # ---------------------------------------------------------------------------
 
 def _setup_logging() -> None:
@@ -111,23 +121,46 @@ def _release_lock() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Config loader
+# Config loader — merges all config files into one list
 # ---------------------------------------------------------------------------
 
 def _load_config() -> list:
-    if not CONFIG.exists():
-        logger.critical("config.yaml not found at %s — aborting.", CONFIG)
-        sys.exit(1)
-    try:
-        with open(CONFIG, encoding="utf-8") as f:
-            data = yaml.safe_load(f)
-    except yaml.YAMLError as e:
-        logger.critical("config.yaml is malformed: %s — aborting.", e)
-        sys.exit(1)
-    companies = data.get("companies", [])
-    if not companies:
-        logger.warning("No companies found in config.yaml — nothing to poll.")
-    return companies
+    """
+    Load and merge companies from all config files.
+
+    Files loaded:
+      config.yaml          — always required, aborts if missing
+      config-ashby.yaml    — optional, loaded if present
+      config-*.yaml        — any future side configs auto-discovered
+
+    Returns a flat list of all company configs across all files.
+    """
+    all_companies = []
+
+    for path in CONFIG_FILES:
+        if not path.exists():
+            if path.name == "config.yaml":
+                logger.critical("config.yaml not found at %s — aborting.", path)
+                sys.exit(1)
+            else:
+                logger.debug("Optional config %s not found — skipping.", path.name)
+                continue
+
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = yaml.safe_load(f) or {}
+        except yaml.YAMLError as e:
+            logger.error("%s is malformed: %s — skipping this file.", path.name, e)
+            continue
+
+        companies = data.get("companies", [])
+        logger.debug("Loaded %d company config(s) from %s", len(companies), path.name)
+        all_companies.extend(companies)
+
+    if not all_companies:
+        logger.warning("No companies found across all config files — nothing to poll.")
+
+    return all_companies
 
 
 # ---------------------------------------------------------------------------
@@ -137,6 +170,7 @@ def _load_config() -> list:
 _SCRAPER_MAP = {
     "amazon":     "scrapers.amazon",
     "greenhouse": "scrapers.greenhouse",
+    "ashby":      "scrapers.ashby",
     "workday":    "scrapers.workday",
     "lever":      "scrapers.lever",
 }
@@ -162,7 +196,7 @@ def _poll_company(cfg: dict) -> None:
     name      = cfg.get("name", "Unknown")
     ats       = cfg.get("ats", "")
     keywords  = cfg.get("keywords", [])
-    locations = cfg.get("locations", [])   # ← new: read locations from config
+    locations = cfg.get("locations", [])
     max_age   = int(cfg.get("max_age_days", 2))
     limit     = int(cfg.get("detail_fetch_limit", 30))
     active    = cfg.get("active", True)
@@ -178,16 +212,19 @@ def _poll_company(cfg: dict) -> None:
         store.log_poll(name, ats, 0, 0, error=f"No scraper for ATS '{ats}'")
         return
 
-    # Build kwargs — pass locations to every scraper that accepts it
+    # Build kwargs — all scrapers accept keywords, locations, max_age_days, company_name
     scrape_kwargs = dict(
         keywords=keywords,
-        locations=locations,        # ← passed to scraper
+        locations=locations,
         max_age_days=max_age,
         company_name=name,
     )
+
+    # ATS-specific extras
     if ats in ("amazon", "workday"):
         scrape_kwargs["detail_fetch_limit"] = limit
-    if ats in ("greenhouse", "lever"):
+
+    if ats in ("greenhouse", "lever", "ashby"):
         slug = cfg.get("slug", "")
         if not slug:
             logger.error("%s: 'slug' is required for the %s scraper", name, ats)
@@ -245,7 +282,7 @@ def main() -> None:
     try:
         store.init_db()
         companies = _load_config()
-        logger.info("Loaded %d company config(s)", len(companies))
+        logger.info("Loaded %d total company config(s)", len(companies))
 
         for cfg in companies:
             try:

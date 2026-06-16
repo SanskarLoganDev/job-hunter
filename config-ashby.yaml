@@ -1,0 +1,159 @@
+# config-ashby.yaml
+# Ashby ATS companies — polled by poller.py alongside config.yaml.
+# Add a new company by adding a new block — no code changes needed.
+#
+# HOW TO FIND THE SLUG:
+#   Go to the company's job board URL: https://jobs.ashbyhq.com/{SLUG}
+#   If jobs load, the slug is correct. Add it here.
+#
+# LOCATION NOTES:
+#   Ashby provides richer location data than Greenhouse:
+#   - primary location string ("San Francisco, CA")
+#   - secondaryLocations list (multiple offices)
+#   - isRemote flag and workplaceType ("Remote" | "Hybrid" | "OnSite")
+#   The scraper combines all of these into one string for filtering.
+#   "Remote" in your locations list matches any role where isRemote=True.
+#
+# SLUG VERIFICATION STATUS:
+#   ✅ = confirmed by browser check
+#   ❓ = inferred from company name, needs browser verification
+#       Open https://jobs.ashbyhq.com/SLUG to confirm before enabling.
+
+companies:
+
+  # ════════════════════════════════════════════════════════════
+  #  VERIFIED SLUGS — confirmed on jobs.ashbyhq.com
+  # ════════════════════════════════════════════════════════════
+
+  - name: Cohere
+    ats: ashby
+    slug: cohere                    # ✅ jobs.ashbyhq.com/cohere
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - python developer
+      - devops engineer
+      - cloud engineer
+      - ml engineer
+      - ai engineer
+    locations:
+      - United States
+      - USA
+      - San Francisco
+      - New York
+      - Remote
+    max_age_days: 1
+    active: true   # enable after live test confirms slug + location strings
+
+  # ════════════════════════════════════════════════════════════
+  #  UNVERIFIED SLUGS — check before enabling
+  #  Open https://jobs.ashbyhq.com/SLUG in browser first
+  # ════════════════════════════════════════════════════════════
+
+  - name: Notion
+    ats: ashby
+    slug: notion                    # ✅ verify: jobs.ashbyhq.com/notion
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+    locations:
+      - San Francisco
+      - New York
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Airtable
+    ats: ashby
+    slug: airtable                  # ✅ verify: jobs.ashbyhq.com/airtable
+    keywords:
+      - software engineer
+      - software developer
+      - backend engineer
+      - full stack
+      - devops engineer
+    locations:
+      - San Francisco
+      - New York
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Vercel
+    ats: ashby
+    slug: vercel                    # ✅ verify: jobs.ashbyhq.com/vercel
+    keywords:
+      - software engineer
+      - backend engineer
+      - full stack
+      - devops engineer
+      - cloud engineer
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Linear
+    ats: ashby
+    slug: linear                    # ✅ verify: jobs.ashbyhq.com/linear
+    keywords:
+      - software engineer
+      - backend engineer
+      - full stack
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Supabase
+    ats: ashby
+    slug: supabase                  # ✅ verify: jobs.ashbyhq.com/supabase
+    keywords:
+      - software engineer
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+    locations:
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Harvey
+    ats: ashby
+    slug: harvey                    # ✅ verify: jobs.ashbyhq.com/harvey
+    keywords:
+      - software engineer
+      - backend engineer
+      - full stack
+      - ai engineer
+    locations:
+      - San Francisco
+      - New York
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
+
+  - name: Luma AI
+    ats: ashby
+    slug: lumaai                    # ✅ verify: jobs.ashbyhq.com/lumaai
+    keywords:
+      - software engineer
+      - backend engineer
+      - ml engineer
+      - ai engineer
+    locations:
+      - San Francisco
+      - United States
+      - Remote
+    max_age_days: 1
+    active: true
