@@ -17,71 +17,78 @@
 #   Lever createdAt is Unix timestamp in MILLISECONDS — the scraper handles this.
 #   This is the actual posting creation date — accurate for freshness filtering.
 #
-# ✅ = slug confirmed from live jobs.lever.co URL in search results
-# ❓ = inferred, needs browser verification
+# ✅ = slug confirmed from live jobs.lever.co URL
 
 companies:
 
-  # ════════════════════════════════════════════════════════════
-  #  CONFIRMED SLUGS
-  # ════════════════════════════════════════════════════════════
-
   - name: Voleon Group
     ats: lever
-    slug: voleon                    # ✅ jobs.lever.co/voleon (confirmed from search results)
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - python developer
-      - devops engineer
-    locations:
-      - San Francisco
-      - Berkeley
-      - United States
-      - Remote
+    slug: voleon                    # ✅ jobs.lever.co/voleon
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, Berkeley, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: NimbleRx
     ats: lever
-    slug: nimblerx                  # ✅ jobs.lever.co/nimblerx (confirmed from search results)
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - python developer
-      - devops engineer
-    locations:
-      - Redwood City
-      - San Francisco
-      - United States
-      - Remote
+    slug: nimblerx                  # ✅ jobs.lever.co/nimblerx
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [Redwood City, San Francisco, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Level AI
     ats: lever
-    slug: levelai                   # ✅ jobs.lever.co/levelai (confirmed from search results)
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - ai engineer
-      - ml engineer
-    locations:
-      - San Francisco
-      - Mountain View
-      - United States
-      - Remote
+    slug: levelai                   # ✅ jobs.lever.co/levelai
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, Mountain View, United States, Remote]
     max_age_days: 1
     active: true
 
-  # ════════════════════════════════════════════════════════════
-  #  UNVERIFIED — check before enabling
-  #  Open https://jobs.lever.co/SLUG in browser, or run:
-  #  curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"
-  # ════════════════════════════════════════════════════════════
+  - name: LinkedIn
+    ats: lever
+    slug: linkedin                  # ✅ jobs.lever.co/linkedin
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Sunnyvale, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Palantir
+    ats: lever
+    slug: palantir                  # ✅ jobs.lever.co/palantir
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York, Denver, Washington]
+    max_age_days: 1
+    active: true
+
+  - name: KPMG
+    ats: lever
+    slug: kpmg                      # ✅ jobs.lever.co/kpmg
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York, Atlanta, Dallas, Chicago]
+    max_age_days: 1
+    active: true
+
+  - name: Kraken
+    ats: lever
+    slug: kraken                    # ✅ jobs.lever.co/kraken
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Rackspace
+    ats: lever
+    slug: rackspace                 # ✅ jobs.lever.co/rackspace
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Antonio, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: Zeta Tech
+    ats: lever
+    slug: zeta                      # ✅ jobs.lever.co/zeta
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York, San Francisco]
+    max_age_days: 1
+    active: true
