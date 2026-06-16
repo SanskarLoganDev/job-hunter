@@ -10,168 +10,759 @@
 #   and workplaceType. The scraper combines all into one string.
 #   "Remote" matches any role where isRemote=True.
 #
-# ✅ = slug confirmed   ❓ = needs browser verification
+# All slugs verified from jobs.ashbyhq.com URLs provided directly.
+# Keywords: full set including ai engineer on every company.
 
 companies:
 
+  # ════════════════════════════════════════════════════════
+  #  ORIGINAL COMPANIES
+  # ════════════════════════════════════════════════════════
+
   - name: Cohere
     ats: ashby
-    slug: cohere                    # ✅ jobs.ashbyhq.com/cohere
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - python developer
-      - devops engineer
-      - cloud engineer
-      - ml engineer
-      - ai engineer
-    locations:
-      - United States
-      - USA
-      - San Francisco
-      - New York
-      - Remote
+    slug: cohere
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, USA, San Francisco, New York, Remote]
     max_age_days: 1
     active: true
 
   - name: Notion
     ats: ashby
-    slug: notion                    # ✅ jobs.ashbyhq.com/notion
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-    locations:
-      - San Francisco
-      - New York
-      - United States
-      - Remote
+    slug: notion
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, New York, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Airtable
     ats: ashby
-    slug: airtable                  # ✅ jobs.ashbyhq.com/airtable
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - devops engineer
-    locations:
-      - San Francisco
-      - New York
-      - United States
-      - Remote
+    slug: airtable
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, New York, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Vercel
     ats: ashby
-    slug: vercel                    # ✅ jobs.ashbyhq.com/vercel
-    keywords:
-      - software engineer
-      - backend engineer
-      - full stack
-      - devops engineer
-      - cloud engineer
-    locations:
-      - United States
-      - Remote
+    slug: vercel
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Linear
     ats: ashby
-    slug: linear                    # ✅ jobs.ashbyhq.com/linear
-    keywords:
-      - software engineer
-      - backend engineer
-      - full stack
-    locations:
-      - United States
-      - Remote
+    slug: linear
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Supabase
     ats: ashby
-    slug: supabase                  # ✅ jobs.ashbyhq.com/supabase
-    keywords:
-      - software engineer
-      - backend engineer
-      - devops engineer
-      - cloud engineer
-    locations:
-      - United States
-      - Remote
+    slug: supabase
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Harvey
     ats: ashby
-    slug: harvey                    # ✅ jobs.ashbyhq.com/harvey
-    keywords:
-      - software engineer
-      - backend engineer
-      - full stack
-      - ai engineer
-    locations:
-      - San Francisco
-      - New York
-      - United States
-      - Remote
+    slug: harvey
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, New York, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Luma AI
     ats: ashby
-    slug: lumaai                    # ✅ jobs.ashbyhq.com/lumaai
-    keywords:
-      - software engineer
-      - backend engineer
-      - ml engineer
-      - ai engineer
-    locations:
-      - San Francisco
-      - United States
-      - Remote
+    slug: lumaai
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, United States, Remote]
     max_age_days: 1
     active: true
 
   - name: Benchling
     ats: ashby
-    slug: benchling                 # ✅ jobs.ashbyhq.com/benchling (confirmed from search)
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - devops engineer
-      - cloud engineer
-    locations:
-      - San Francisco
-      - United States
-      - Remote
+    slug: benchling
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [San Francisco, United States, Remote]
     max_age_days: 1
     active: true
-    
+
   - name: Ramp
     ats: ashby
-    slug: ramp                 # ✅ jobs.ashbyhq.com/ramp
-    keywords:
-      - software engineer
-      - software developer
-      - backend engineer
-      - full stack
-      - devops engineer
-      - cloud engineer
-    locations:
-      - San Francisco
-      - United States
-      - Remote
+    slug: ramp
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [New York, United States, Remote]
+    max_age_days: 1
+    active: true
+
+  # ════════════════════════════════════════════════════════
+  #  NEW — from manual list + CSV (83 companies, deduped)
+  # ════════════════════════════════════════════════════════
+
+  - name: Snowflake
+    ats: ashby
+    slug: snowflake
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Mateo, Bellevue, Boston]
+    max_age_days: 1
+    active: true
+
+  - name: Shield AI
+    ats: ashby
+    slug: shield-ai
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Diego, Dallas]
+    max_age_days: 1
+    active: true
+
+  - name: Miro
+    ats: ashby
+    slug: miro
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: Sitecore
+    ats: ashby
+    slug: sitecore
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Inovalon
+    ats: ashby
+    slug: inovalon
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Bowie, Maryland]
+    max_age_days: 1
+    active: true
+
+  - name: DDN
+    ats: ashby
+    slug: ddn
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Angi
+    ats: ashby
+    slug: angi
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Denver, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Gainsight
+    ats: ashby
+    slug: gainsight
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Stout
+    ats: ashby
+    slug: stout
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Chicago, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Tekion Corp
+    ats: ashby
+    slug: tekion
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Ramon]
+    max_age_days: 1
+    active: true
+
+  - name: Amplify
+    ats: ashby
+    slug: amplify
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Applied Intuition
+    ats: ashby
+    slug: applied
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Mountain View, Ann Arbor]
+    max_age_days: 1
+    active: true
+
+  - name: Hinge Health
+    ats: ashby
+    slug: hinge-health
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Thumbtack
+    ats: ashby
+    slug: thumbtack
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Redis
+    ats: ashby
+    slug: redis
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Saronic Technologies
+    ats: ashby
+    slug: saronic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: Instructure
+    ats: ashby
+    slug: instructure
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Salt Lake City]
+    max_age_days: 1
+    active: true
+
+  - name: ClickUp
+    ats: ashby
+    slug: clickup
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Diego]
+    max_age_days: 1
+    active: true
+
+  - name: Kayak
+    ats: ashby
+    slug: kayak
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Concord]
+    max_age_days: 1
+    active: true
+
+  - name: Centerfield
+    ats: ashby
+    slug: centerfield
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Los Angeles]
+    max_age_days: 1
+    active: true
+
+  - name: Sequoia
+    ats: ashby
+    slug: sequoia
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Confluent
+    ats: ashby
+    slug: confluent
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Mountain View, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: Netgear
+    ats: ashby
+    slug: netgear
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Jose]
+    max_age_days: 1
+    active: true
+
+  - name: UiPath
+    ats: ashby
+    slug: uipath
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York, Bellevue]
+    max_age_days: 1
+    active: true
+
+  - name: Boomi
+    ats: ashby
+    slug: boomi
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Conshohocken]
+    max_age_days: 1
+    active: true
+
+  - name: Commure
+    ats: ashby
+    slug: commure
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Mountain View]
+    max_age_days: 1
+    active: true
+
+  - name: Crusoe
+    ats: ashby
+    slug: crusoe
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Denver]
+    max_age_days: 1
+    active: true
+
+  - name: Delinea
+    ats: ashby
+    slug: delinea
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Juniper Square
+    ats: ashby
+    slug: junipersquare
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: OpenAI
+    ats: ashby
+    slug: openai
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Seattle]
+    max_age_days: 1
+    active: true
+
+  - name: Perk
+    ats: ashby
+    slug: perk
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Rothy's
+    ats: ashby
+    slug: rothys
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: SpotOn
+    ats: ashby
+    slug: spoton
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Chicago, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: SurveyMonkey
+    ats: ashby
+    slug: surveymonkey
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Mateo]
+    max_age_days: 1
+    active: true
+
+  - name: Vanta
+    ats: ashby
+    slug: vanta
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Virta Health
+    ats: ashby
+    slug: virtahealth
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Cerebras
+    ats: ashby
+    slug: cerebras
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Sunnyvale]
+    max_age_days: 1
+    active: true
+
+  - name: ClickHouse
+    ats: ashby
+    slug: clickhouse
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: WebFX
+    ats: ashby
+    slug: webfx
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Harrisburg]
+    max_age_days: 1
+    active: true
+
+  - name: Recharge
+    ats: ashby
+    slug: recharge
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Headway
+    ats: ashby
+    slug: headway
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Quantcast
+    ats: ashby
+    slug: quantcast
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, New York]
+    max_age_days: 1
+    active: true
+
+  - name: 3E
+    ats: ashby
+    slug: 3e
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Carlsbad, Bethesda]
+    max_age_days: 1
+    active: true
+
+  - name: Whoop
+    ats: ashby
+    slug: whoop
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Boston]
+    max_age_days: 1
+    active: true
+
+  - name: OpenLoop Health
+    ats: ashby
+    slug: openloophealth
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Talkiatry
+    ats: ashby
+    slug: talkiatry
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Teamworks
+    ats: ashby
+    slug: teamworks
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Durham]
+    max_age_days: 1
+    active: true
+
+  - name: ScienceLogic
+    ats: ashby
+    slug: sciencelogic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Reston]
+    max_age_days: 1
+    active: true
+
+  - name: Nexxen
+    ats: ashby
+    slug: nexxen
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Demandbase
+    ats: ashby
+    slug: demandbase
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: MeridianLink
+    ats: ashby
+    slug: meridianlink
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Preply
+    ats: ashby
+    slug: preply
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Payscale
+    ats: ashby
+    slug: payscale
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Seattle]
+    max_age_days: 1
+    active: true
+
+  - name: Solvd
+    ats: ashby
+    slug: solvd
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Drata
+    ats: ashby
+    slug: drata
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Chartis
+    ats: ashby
+    slug: chartis
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Chicago, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Amplitude
+    ats: ashby
+    slug: amplitude
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Bumble
+    ats: ashby
+    slug: bumble
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Austin]
+    max_age_days: 1
+    active: true
+
+  - name: Foursquare
+    ats: ashby
+    slug: foursquare
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Rokt
+    ats: ashby
+    slug: rokt
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Kong
+    ats: ashby
+    slug: kong
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Socure
+    ats: ashby
+    slug: socure
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  - name: OpenGov
+    ats: ashby
+    slug: opengov
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Chicago]
+    max_age_days: 1
+    active: true
+
+  - name: Handshake
+    ats: ashby
+    slug: handshake
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, New York]
+    max_age_days: 1
+    active: true
+
+  - name: Tarro
+    ats: ashby
+    slug: tarro
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: AuditBoard
+    ats: ashby
+    slug: auditboard
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Cerritos]
+    max_age_days: 1
+    active: true
+
+  - name: Avala AI
+    ats: ashby
+    slug: avala
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Docker
+    ats: ashby
+    slug: docker
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Fullstory
+    ats: ashby
+    slug: fullstory
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Atlanta]
+    max_age_days: 1
+    active: true
+
+  - name: Lambda
+    ats: ashby
+    slug: lambda
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: LaunchDarkly
+    ats: ashby
+    slug: launchdarkly
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Oakland]
+    max_age_days: 1
+    active: true
+
+  - name: Lime
+    ats: ashby
+    slug: lime
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Mapbox
+    ats: ashby
+    slug: mapbox
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Mural
+    ats: ashby
+    slug: mural
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Niantic
+    ats: ashby
+    slug: niantic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, Seattle]
+    max_age_days: 1
+    active: true
+
+  - name: Velocity Global
+    ats: ashby
+    slug: pebl
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Plaid
+    ats: ashby
+    slug: plaid
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco, New York]
+    max_age_days: 1
+    active: true
+
+  - name: project44
+    ats: ashby
+    slug: project44
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Chicago]
+    max_age_days: 1
+    active: true
+
+  - name: Revinate
+    ats: ashby
+    slug: revinate
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: Salesloft
+    ats: ashby
+    slug: salesloft
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Atlanta]
+    max_age_days: 1
+    active: true
+
+  - name: Weave
+    ats: ashby
+    slug: weave
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Lehi]
+    max_age_days: 1
+    active: true
+
+  - name: Zapier
+    ats: ashby
+    slug: zapier
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Zip
+    ats: ashby
+    slug: zip
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true

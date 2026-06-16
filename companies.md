@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter, organised by ATS platform.
 Config files live in `config/`.
 
-**Total active: 101 Greenhouse + 1 Amazon + 10 Ashby + 3 Lever = 115 companies**
+**Total active: 101 Greenhouse + 1 Amazon + 93 Ashby + 9 Lever = 204 companies**
 
 **Legend:**
 - ✅ Active — being polled every 30 minutes
@@ -12,7 +12,7 @@ Config files live in `config/`.
 
 ---
 
-## Amazon
+## Amazon (1)
 
 Config: `config/config-amazon.yaml`
 
@@ -22,9 +22,9 @@ Config: `config/config-amazon.yaml`
 
 ---
 
-## Greenhouse (101 companies)
+## Greenhouse (101)
 
-Config: `config/config.yaml` — slugs verified from ATS_Company_Directory.xlsx.
+Config: `config/config-greenhouse.yaml` — slugs verified from ATS_Company_Directory.xlsx.
 Every company has the full keyword set including `ai engineer` and `ml engineer`.
 
 ### Tech / Software
@@ -64,7 +64,7 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Workato | `workato` |
 | Instacart | `instacart` |
 | Fivetran | `fivetran` |
-| ClickHouse | `clickhouse` |
+| ClickHouse (GH) | `clickhouse` |
 | Harness | `harnessinc` |
 | Postman | `postman` |
 | New Relic | `newrelic` |
@@ -178,9 +178,18 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 
 ---
 
-## Ashby (10 companies)
+## Ashby (93)
 
-Config: `config/config-ashby.yaml`
+Config: `config/config-ashby.yaml` — all slugs verified from jobs.ashbyhq.com URLs.
+Every company has the full keyword set including `ai engineer` and `ml engineer`.
+
+Note: ClickHouse appears on both Greenhouse and Ashby — both are active.
+Plaid confirmed on Ashby (slug `plaid`) — removed from Lever backlog.
+Miro confirmed on Ashby (slug `miro`) — removed from Lever backlog.
+OpenAI confirmed on Ashby (slug `openai`) — removed from Lever backlog.
+Amplitude confirmed on Ashby (slug `amplitude`) — removed from Lever backlog.
+
+### Original (10)
 
 | Company | Slug |
 |---|---|
@@ -195,26 +204,141 @@ Config: `config/config-ashby.yaml`
 | Benchling | `benchling` |
 | Ramp | `ramp` |
 
+### Tech / Software
+
+| Company | Slug |
+|---|---|
+| Snowflake | `snowflake` |
+| Miro | `miro` |
+| Sitecore | `sitecore` |
+| DDN | `ddn` |
+| Gainsight | `gainsight` |
+| Tekion Corp | `tekion` |
+| Amplify | `amplify` |
+| Thumbtack | `thumbtack` |
+| Redis | `redis` |
+| Instructure | `instructure` |
+| ClickUp | `clickup` |
+| Kayak | `kayak` |
+| Centerfield | `centerfield` |
+| Sequoia | `sequoia` |
+| Confluent | `confluent` |
+| Netgear | `netgear` |
+| UiPath | `uipath` |
+| Boomi | `boomi` |
+| Commure | `commure` |
+| Delinea | `delinea` |
+| Juniper Square | `junipersquare` |
+| Perk | `perk` |
+| SurveyMonkey | `surveymonkey` |
+| Vanta | `vanta` |
+| ClickHouse (Ashby) | `clickhouse` |
+| WebFX | `webfx` |
+| Recharge | `recharge` |
+| Headway | `headway` |
+| Quantcast | `quantcast` |
+| 3E | `3e` |
+| Teamworks | `teamworks` |
+| ScienceLogic | `sciencelogic` |
+| Nexxen | `nexxen` |
+| Demandbase | `demandbase` |
+| MeridianLink | `meridianlink` |
+| Preply | `preply` |
+| Payscale | `payscale` |
+| Solvd | `solvd` |
+| Drata | `drata` |
+| Amplitude | `amplitude` |
+| Foursquare | `foursquare` |
+| Kong | `kong` |
+| OpenGov | `opengov` |
+| Handshake | `handshake` |
+| Tarro | `tarro` |
+| AuditBoard | `auditboard` |
+| Docker | `docker` |
+| Fullstory | `fullstory` |
+| LaunchDarkly | `launchdarkly` |
+| Mapbox | `mapbox` |
+| Mural | `mural` |
+| Velocity Global | `pebl` |
+| Plaid | `plaid` |
+| project44 | `project44` |
+| Revinate | `revinate` |
+| Salesloft | `salesloft` |
+| Weave | `weave` |
+| Zapier | `zapier` |
+| Zip | `zip` |
+
+### AI / ML
+
+| Company | Slug |
+|---|---|
+| OpenAI | `openai` |
+| Applied Intuition | `applied` |
+| Saronic Technologies | `saronic` |
+| Crusoe | `crusoe` |
+| Cerebras | `cerebras` |
+| Lambda | `lambda` |
+| Avala AI | `avala` |
+
+### Fintech
+
+| Company | Slug |
+|---|---|
+| Kraken (Ashby) | — |
+| SpotOn | `spoton` |
+| Rokt | `rokt` |
+| Socure | `socure` |
+| Stout | `stout` |
+| Chartis | `chartis` |
+
+### Healthcare
+
+| Company | Slug |
+|---|---|
+| Inovalon | `inovalon` |
+| Hinge Health | `hinge-health` |
+| Virta Health | `virtahealth` |
+| Whoop | `whoop` |
+| OpenLoop Health | `openloophealth` |
+| Talkiatry | `talkiatry` |
+
+### Other
+
+| Company | Slug |
+|---|---|
+| Shield AI | `shield-ai` |
+| Angi | `angi` |
+| Rothy's | `rothys` |
+| Bumble | `bumble` |
+| Niantic | `niantic` |
+| Lime | `lime` |
+
 ---
 
-## Lever (3 active + backlog)
+## Lever (9)
 
-Config: `config/config-lever.yaml`
+Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URLs.
 
-| Company | Slug | Status |
+| Company | Slug | Category |
 |---|---|---|
-| Voleon Group | `voleon` | ✅ Active |
-| NimbleRx | `nimblerx` | ✅ Active |
-| Level AI | `levelai` | ✅ Active |
+| Voleon Group | `voleon` | Finance / Quant |
+| NimbleRx | `nimblerx` | Healthcare |
+| Level AI | `levelai` | AI / ML |
+| LinkedIn | `linkedin` | Tech / Software |
+| Palantir | `palantir` | AI / ML |
+| KPMG | `kpmg` | Consulting |
+| Kraken | `kraken` | Fintech |
+| Rackspace | `rackspace` | Cloud / Tech |
+| Zeta Tech | `zeta` | Fintech |
 
-### Lever backlog — from ATS_Company_Directory.xlsx (verify slug then add)
+### Lever backlog — pending verification
+
+These were in the original backlog. Removed confirmed Ashby companies (Plaid, Miro, OpenAI, Amplitude). Remaining to verify via `curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"`:
 
 | Company | Slug |
 |---|---|
 | Netflix | `netflix` |
 | Shopify | `shopify` |
-| LinkedIn | `linkedin` |
-| Palantir | `palantir` |
 | Discord | `discord` |
 | Duolingo | `duolingo` |
 | GitHub | `github` |
@@ -222,9 +346,6 @@ Config: `config/config-lever.yaml`
 | HashiCorp | `hashicorp` |
 | Intercom | `intercom` |
 | Loom | `loom` |
-| Miro | `miro` |
-| OpenAI | `openai` |
-| Plaid | `plaid` |
 | Replit | `replit` |
 | Rubrik | `rubrik` |
 | Snyk | `snyk` |
@@ -234,7 +355,6 @@ Config: `config/config-lever.yaml`
 | Chime | `chime` |
 | Coursera | `coursera` |
 | Klarna | `klarna` |
-| Amplitude | `amplitude` |
 
 ---
 
