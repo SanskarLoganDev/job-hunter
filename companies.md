@@ -153,7 +153,6 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Company | Slug |
 |---|---|
 | SpaceX | `spacex` |
-| Anduril Industries | `andurilindustries` |
 | Rocket Lab | `rocketlab` |
 | Relativity Space | `relativity` |
 | Archer Aviation | `archer56` |
@@ -331,32 +330,6 @@ Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URL
 | Rackspace | `rackspace` | Cloud / Tech |
 | Zeta Tech | `zeta` | Fintech |
 
-### Lever backlog — pending verification
-
-These were in the original backlog. Removed confirmed Ashby companies (Plaid, Miro, OpenAI, Amplitude). Remaining to verify via `curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"`:
-
-| Company | Slug |
-|---|---|
-| Netflix | `netflix` |
-| Shopify | `shopify` |
-| Discord | `discord` |
-| Duolingo | `duolingo` |
-| GitHub | `github` |
-| Gusto | `gusto` |
-| HashiCorp | `hashicorp` |
-| Intercom | `intercom` |
-| Loom | `loom` |
-| Replit | `replit` |
-| Rubrik | `rubrik` |
-| Snyk | `snyk` |
-| Webflow | `webflow` |
-| Zendesk | `zendesk` |
-| Carta | `carta` |
-| Chime | `chime` |
-| Coursera | `coursera` |
-| Klarna | `klarna` |
-
----
 
 ## To verify a slug
 

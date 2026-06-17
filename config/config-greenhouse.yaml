@@ -809,14 +809,6 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Anduril Industries
-    ats: greenhouse
-    slug: andurilindustries
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
-    locations: [United States, Remote, Costa Mesa, Seattle, Atlanta]
-    max_age_days: 1
-    active: true
-
   - name: Rocket Lab
     ats: greenhouse
     slug: rocketlab
