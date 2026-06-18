@@ -766,3 +766,11 @@ companies:
     locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
+
+  - name: Sieve
+    ats: ashby
+    slug: sieve
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true

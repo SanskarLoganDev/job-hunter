@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter, organised by ATS platform.
 Config files live in `config/`.
 
-**Total active: 101 Greenhouse + 1 Amazon + 93 Ashby + 9 Lever = 204 companies**
+**Total active: 103 Greenhouse + 1 Amazon + 94 Ashby + 34 Lever = 232 companies**
 
 **Legend:**
 - ✅ Active — being polled every 30 minutes
@@ -22,7 +22,7 @@ Config: `config/config-amazon.yaml`
 
 ---
 
-## Greenhouse (101)
+## Greenhouse (103)
 
 Config: `config/config-greenhouse.yaml` — slugs verified from ATS_Company_Directory.xlsx.
 Every company has the full keyword set including `ai engineer` and `ml engineer`.
@@ -174,19 +174,18 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Lucid Motors | `lucidmotors` |
 | On Running | `onrunning` |
 | Nscale | `nscaleoperationsukltd` |
+| Traeger Grills | `traegergrills` |
+| NewsBreak | `newsbreak` |
+traegergrills
+newsbreak
 
 ---
 
-## Ashby (93)
+## Ashby (94)
 
 Config: `config/config-ashby.yaml` — all slugs verified from jobs.ashbyhq.com URLs.
 Every company has the full keyword set including `ai engineer` and `ml engineer`.
 
-Note: ClickHouse appears on both Greenhouse and Ashby — both are active.
-Plaid confirmed on Ashby (slug `plaid`) — removed from Lever backlog.
-Miro confirmed on Ashby (slug `miro`) — removed from Lever backlog.
-OpenAI confirmed on Ashby (slug `openai`) — removed from Lever backlog.
-Amplitude confirmed on Ashby (slug `amplitude`) — removed from Lever backlog.
 
 ### Original (10)
 
@@ -202,6 +201,7 @@ Amplitude confirmed on Ashby (slug `amplitude`) — removed from Lever backlog.
 | Luma AI | `lumaai` |
 | Benchling | `benchling` |
 | Ramp | `ramp` |
+sieve
 
 ### Tech / Software
 
@@ -283,7 +283,6 @@ Amplitude confirmed on Ashby (slug `amplitude`) — removed from Lever backlog.
 
 | Company | Slug |
 |---|---|
-| Kraken (Ashby) | — |
 | SpotOn | `spoton` |
 | Rokt | `rokt` |
 | Socure | `socure` |
@@ -311,12 +310,15 @@ Amplitude confirmed on Ashby (slug `amplitude`) — removed from Lever backlog.
 | Bumble | `bumble` |
 | Niantic | `niantic` |
 | Lime | `lime` |
+| Sieve | `sieve` |
 
 ---
 
-## Lever (9)
+## Lever (34)
 
 Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URLs.
+
+### Original (9)
 
 | Company | Slug | Category |
 |---|---|---|
@@ -330,6 +332,70 @@ Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URL
 | Rackspace | `rackspace` | Cloud / Tech |
 | Zeta Tech | `zeta` | Fintech |
 
+### New — Software Development (25)
+
+Note: Revinate skipped — already in Ashby (`revinate`).
+
+| Company | Slug |
+|---|---|
+| ValGenesis | `valgenesis` |
+| PDI Technologies | `pditechnologies` |
+| HHAeXchange | `hhaexchange` |
+| KUBRA | `kubra` |
+| Foxit | `foxitsoftware` |
+| Pipedrive | `pipedrive` |
+| Filevine | `filevine` |
+| SugarCRM | `sugarcrm` |
+| LogRocket | `logrocket` |
+| Sonatype | `sonatype` |
+| BrightEdge | `brightedge` |
+| Actian | `actian` |
+| Enable | `enable` |
+| Nextech Systems | `nextech` |
+| Emburse | `emburse` |
+| WorkWave | `workwave` |
+| Ataccama | `ataccama` |
+| HighLevel | `gohighlevel` |
+| Perforce Software | `perforce` |
+| Magnet Forensics | `magnetforensics` |
+| Saviynt | `saviynt` |
+| Entrata | `entrata` |
+| 3Pillar | `3pillarglobal` |
+| Mendix | `mendix` |
+| Bazaarvoice | `bazaarvoice` |
+
+---
+
+## Not yet scraped
+
+### Jobvite
+Rubrik uses Jobvite (embedded under `rubrik.com/company/careers`). No Jobvite scraper built yet.
+Monitor via Google Alerts as stopgap: `site:rubrik.com/company/careers "software engineer"`
+
+### Lever backlog — pending verification
+
+| Company | Slug to verify |
+|---|---|
+| Netflix | `netflix` |
+| Shopify | `shopify` |
+| Discord | `discord` |
+| Duolingo | `duolingo` |
+| GitHub | `github` |
+| Gusto | `gusto` |
+| HashiCorp | `hashicorp` |
+| Intercom | `intercom` |
+| Loom | `loom` |
+| Replit | `replit` |
+| Rubrik | `rubrik` |
+| Snyk | `snyk` |
+| Webflow | `webflow` |
+| Zendesk | `zendesk` |
+| Carta | `carta` |
+| Chime | `chime` |
+| Coursera | `coursera` |
+| Klarna | `klarna` |
+
+---
 
 ## To verify a slug
 
@@ -347,3 +413,4 @@ Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URL
 4. Tune `locations` list
 5. Set `active: true`
 6. Update this file
+

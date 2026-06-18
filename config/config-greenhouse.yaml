@@ -904,3 +904,19 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+  - name: Traeger Grills
+    ats: greenhouse
+    slug: traegergrills
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Salt Lake City]
+    max_age_days: 1
+    active: true
+
+  - name: NewsBreak
+    ats: greenhouse
+    slug: newsbreak
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Mountain View]
+    max_age_days: 1
+    active: true
