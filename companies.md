@@ -3,12 +3,11 @@
 All companies currently monitored by JobHunter, organised by ATS platform.
 Config files live in `config/`.
 
-**Total active: 103 Greenhouse + 1 Amazon + 94 Ashby + 34 Lever = 232 companies**
+**Total active: 195 Greenhouse + 1 Amazon + 94 Ashby + 34 Lever = 324 companies**
 
 **Legend:**
 - ✅ Active — being polled every 30 minutes
 - ⏸ Inactive — in config but `active: false`
-- 🔍 Unverified — slug not confirmed, commented out in config
 
 ---
 
@@ -22,12 +21,15 @@ Config: `config/config-amazon.yaml`
 
 ---
 
-## Greenhouse (103)
+## Greenhouse (195)
 
-Config: `config/config-greenhouse.yaml` — slugs verified from ATS_Company_Directory.xlsx.
-Every company has the full keyword set including `ai engineer` and `ml engineer`.
+Config: `config/config-greenhouse.yaml`
 
-### Tech / Software
+**Skipped from this batch (already covered):**
+- `dialpad`, `clickhouse`, `gleanwork` — already in Greenhouse
+- `launchdarkly` — already in Ashby
+
+### Original batch (103 companies)
 
 | Company | Slug |
 |---|---|
@@ -64,7 +66,7 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Workato | `workato` |
 | Instacart | `instacart` |
 | Fivetran | `fivetran` |
-| ClickHouse (GH) | `clickhouse` |
+| ClickHouse | `clickhouse` |
 | Harness | `harnessinc` |
 | Postman | `postman` |
 | New Relic | `newrelic` |
@@ -86,11 +88,6 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Astera Labs | `asteralabs` |
 | Oscar Health | `oscar` |
 | Spring Health | `springhealth66` |
-
-### AI / ML
-
-| Company | Slug |
-|---|---|
 | xAI | `xai` |
 | CoreWeave | `coreweave` |
 | Waymo | `waymo` |
@@ -103,11 +100,6 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Motional | `motional` |
 | Graphcore | `graphcore` |
 | Speechify | `speechify` |
-
-### Fintech
-
-| Company | Slug |
-|---|---|
 | Coinbase | `coinbase` |
 | Brex | `brex` |
 | SoFi | `sofi` |
@@ -122,36 +114,16 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Jane Street | `janestreet` |
 | DRW | `drweng` |
 | OKX | `okx` |
-
-### E-Commerce / Marketplace
-
-| Company | Slug |
-|---|---|
 | Coupang | `coupang` |
 | HelloFresh | `hellofresh` |
 | Agoda | `agoda` |
-
-### Gaming
-
-| Company | Slug |
-|---|---|
 | Roblox | `roblox` |
 | Epic Games | `epicgames` |
 | 2K Games | `2k` |
 | Scopely | `scopely` |
 | PlayStation Global | `sonyinteractiveentertainmentglobal` |
-
-### Media / Content
-
-| Company | Slug |
-|---|---|
 | Pinterest | `pinterest` |
 | The New York Times | `thenewyorktimes` |
-
-### Defense / Aerospace
-
-| Company | Slug |
-|---|---|
 | SpaceX | `spacex` |
 | Rocket Lab | `rocketlab` |
 | Relativity Space | `relativity` |
@@ -159,33 +131,116 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | K2 Space | `k2spacecorporation` |
 | Astranis | `astranis` |
 | Vast | `vast` |
-
-### Healthcare
-
-| Company | Slug |
-|---|---|
 | Natera | `natera` |
 | One Medical | `onemedical` |
-
-### Other
-
-| Company | Slug |
-|---|---|
 | Lucid Motors | `lucidmotors` |
 | On Running | `onrunning` |
 | Nscale | `nscaleoperationsukltd` |
 | Traeger Grills | `traegergrills` |
 | NewsBreak | `newsbreak` |
-traegergrills
-newsbreak
+
+### New batch (92 companies)
+
+| Company | Slug |
+|---|---|
+| Epic Kids | `epickids` |
+| Kaseya | `kaseya` |
+| Qualtrics | `qualtrics` |
+| Coherent Solutions | `coherentsolutionsinc` |
+| 6sense | `6sense` |
+| Acquia | `acquia` |
+| Anaplan | `anaplan` |
+| Appian | `appian` |
+| Auctane | `auctane` |
+| Banyan Software | `banyansoftware` |
+| BeyondTrust | `beyondtrust` |
+| Bill.com | `billcom` |
+| Collibra | `collibra` |
+| ConnectWise | `connectwise` |
+| Cribl | `cribl` |
+| Dataiku | `dataiku` |
+| DemandScience | `demandscience` |
+| Druva | `druva` |
+| Fever | `feverup` |
+| Fortra | `fortra` |
+| Globalization Partners | `globalizationpartners` |
+| Motive | `gomotive` |
+| Gong | `gongio` |
+| Grafana Labs | `grafanalabs` |
+| Groupon | `groupon` |
+| HighRadius | `highradius` |
+| InterSystems | `intersystems` |
+| JFrog | `jfrog` |
+| LogicMonitor | `logicmonitor` |
+| Lucid Software | `lucidsoftware` |
+| Nextiva | `nextiva` |
+| Nintex | `nintex` |
+| PagerDuty | `pagerduty` |
+| Ping Identity | `pingidentity` |
+| Platform Science | `platformscience` |
+| Rubrik | `rubrik` |
+| SimilarWeb | `similarweb` |
+| Slintel | `slintel` |
+| Smartsheet | `smartsheet` |
+| SolarWinds | `solarwinds` |
+| Sprout Social | `sproutsocial` |
+| Squarespace | `squarespace` |
+| Suvoda | `suvoda` |
+| Syndigo | `syndigo` |
+| Taboola | `taboola` |
+| Tripadvisor | `tripadvisor` |
+| Nava PBC | `navapbc` |
+| Appfire | `appfire` |
+| Keeper Security | `keepersecurity` |
+| Cognite | `cognite` |
+| GRVTY | `grvty` |
+| Redwood Software | `redwoodsoftware` |
+| PingCAP | `pingcap` |
+| Rithum | `rithum` |
+| Lightspeed DMS | `lightspeeddms` |
+| ABBYY | `abbyy` |
+| Accesso | `accesso` |
+| Affinitiv | `affinitiv` |
+| Algolia | `algolia` |
+| Apollo.io | `apolloio` |
+| AppLovin | `applovin` |
+| Calendly | `calendly` |
+| Celigo | `celigo` |
+| Checkr | `checkr` |
+| Cordance | `cordance` |
+| Dotmatics | `dotmatics` |
+| DoubleVerify | `doubleverify` |
+| Doximity | `doximity` |
+| Everlaw | `everlaw` |
+| Exiger | `exiger` |
+| Fireblocks | `fireblocks` |
+| FourKites | `fourkites` |
+| Fulcrum GT | `fulcrumgt` |
+| InvoiceCloud | `invoicecloud` |
+| Komodo Health | `komodohealth` |
+| Level Access | `levelaccess` |
+| LivePerson | `liveperson` |
+| MetroStar Systems | `metrostarsystems` |
+| Movable Ink | `movableink` |
+| Mozilla | `mozilla` |
+| Neo4j | `neo4j` |
+| Netradyne | `netradyne` |
+| NeuraFlash | `neuraflash` |
+| Octane Lending | `octanelending` |
+| PandaDoc | `pandadoc` |
+| PathAI | `pathai` |
+| Pendo | `pendo` |
+| Picsart | `picsart` |
+| Planet Labs | `planetlabs` |
+| Poppulo | `poppulo` |
+| Riskified | `riskified` |
+| Ooma | `ooma` |
 
 ---
 
 ## Ashby (94)
 
-Config: `config/config-ashby.yaml` — all slugs verified from jobs.ashbyhq.com URLs.
-Every company has the full keyword set including `ai engineer` and `ml engineer`.
-
+Config: `config/config-ashby.yaml`
 
 ### Original (10)
 
@@ -201,7 +256,6 @@ Every company has the full keyword set including `ai engineer` and `ml engineer`
 | Luma AI | `lumaai` |
 | Benchling | `benchling` |
 | Ramp | `ramp` |
-sieve
 
 ### Tech / Software
 
@@ -266,6 +320,7 @@ sieve
 | Weave | `weave` |
 | Zapier | `zapier` |
 | Zip | `zip` |
+| Sieve | `sieve` |
 
 ### AI / ML
 
@@ -310,31 +365,28 @@ sieve
 | Bumble | `bumble` |
 | Niantic | `niantic` |
 | Lime | `lime` |
-| Sieve | `sieve` |
 
 ---
 
 ## Lever (34)
 
-Config: `config/config-lever.yaml` — all slugs verified from jobs.lever.co URLs.
+Config: `config/config-lever.yaml`
 
 ### Original (9)
 
-| Company | Slug | Category |
-|---|---|---|
-| Voleon Group | `voleon` | Finance / Quant |
-| NimbleRx | `nimblerx` | Healthcare |
-| Level AI | `levelai` | AI / ML |
-| LinkedIn | `linkedin` | Tech / Software |
-| Palantir | `palantir` | AI / ML |
-| KPMG | `kpmg` | Consulting |
-| Kraken | `kraken` | Fintech |
-| Rackspace | `rackspace` | Cloud / Tech |
-| Zeta Tech | `zeta` | Fintech |
+| Company | Slug |
+|---|---|
+| Voleon Group | `voleon` |
+| NimbleRx | `nimblerx` |
+| Level AI | `levelai` |
+| LinkedIn | `linkedin` |
+| Palantir | `palantir` |
+| KPMG | `kpmg` |
+| Kraken | `kraken` |
+| Rackspace | `rackspace` |
+| Zeta Tech | `zeta` |
 
-### New — Software Development (25)
-
-Note: Revinate skipped — already in Ashby (`revinate`).
+### Software Development batch (25)
 
 | Company | Slug |
 |---|---|
@@ -369,31 +421,7 @@ Note: Revinate skipped — already in Ashby (`revinate`).
 ## Not yet scraped
 
 ### Jobvite
-Rubrik uses Jobvite (embedded under `rubrik.com/company/careers`). No Jobvite scraper built yet.
-Monitor via Google Alerts as stopgap: `site:rubrik.com/company/careers "software engineer"`
-
-### Lever backlog — pending verification
-
-| Company | Slug to verify |
-|---|---|
-| Netflix | `netflix` |
-| Shopify | `shopify` |
-| Discord | `discord` |
-| Duolingo | `duolingo` |
-| GitHub | `github` |
-| Gusto | `gusto` |
-| HashiCorp | `hashicorp` |
-| Intercom | `intercom` |
-| Loom | `loom` |
-| Replit | `replit` |
-| Rubrik | `rubrik` |
-| Snyk | `snyk` |
-| Webflow | `webflow` |
-| Zendesk | `zendesk` |
-| Carta | `carta` |
-| Chime | `chime` |
-| Coursera | `coursera` |
-| Klarna | `klarna` |
+Rubrik now on Greenhouse (slug `rubrik`) — no longer needs separate monitoring.
 
 ---
 
@@ -413,4 +441,3 @@ Monitor via Google Alerts as stopgap: `site:rubrik.com/company/careers "software
 4. Tune `locations` list
 5. Set `active: true`
 6. Update this file
-
