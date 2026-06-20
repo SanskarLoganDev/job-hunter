@@ -124,7 +124,6 @@ Config: `config/config-greenhouse.yaml`
 | PlayStation Global | `sonyinteractiveentertainmentglobal` |
 | Pinterest | `pinterest` |
 | The New York Times | `thenewyorktimes` |
-| SpaceX | `spacex` |
 | Rocket Lab | `rocketlab` |
 | Relativity Space | `relativity` |
 | Archer Aviation | `archer56` |
@@ -365,7 +364,7 @@ Config: `config/config-ashby.yaml`
 | Bumble | `bumble` |
 | Niantic | `niantic` |
 | Lime | `lime` |
-
+https://jobs.ashbyhq.com/reducto
 ---
 
 ## Lever (34)

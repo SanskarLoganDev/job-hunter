@@ -1315,14 +1315,6 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: GRVTY
-    ats: greenhouse
-    slug: grvty
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
-    locations: [United States, Remote]
-    max_age_days: 1
-    active: true
-
   - name: Redwood Software
     ats: greenhouse
     slug: redwoodsoftware
