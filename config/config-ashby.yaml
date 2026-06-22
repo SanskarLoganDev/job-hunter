@@ -774,3 +774,19 @@ companies:
     locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
+
+  - name: Reducto
+    ats: ashby
+    slug: reducto
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Francisco]
+    max_age_days: 1
+    active: true
+
+  - name: HUD
+    ats: ashby
+    slug: hud
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true

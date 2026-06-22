@@ -17,9 +17,10 @@ One company failing never affects the others.
 
 CONFIG FOLDER: config/
   config-amazon.yaml      — Amazon
-  config-greenhouse.yaml  — Greenhouse companies
   config-ashby.yaml       — Ashby companies
+  config-greenhouse.yaml  — Greenhouse companies
   config-lever.yaml       — Lever companies
+  config-workable.yaml    — Workable companies
   config-*.yaml           — any future ATS config, auto-discovered at startup
 
 Windows notes:
@@ -123,19 +124,8 @@ def _release_lock() -> None:
 def _load_config() -> list:
     """
     Load and merge companies from all config-*.yaml files in config/.
-
-    All files are treated equally — no single required primary file.
-    Files are loaded in alphabetical order so load order is predictable:
-      config-amazon.yaml      → Amazon
-      config-ashby.yaml       → Ashby companies
-      config-greenhouse.yaml  → Greenhouse companies
-      config-lever.yaml       → Lever companies
-
-    To add a new ATS: create config-<ats>.yaml and drop it in config/.
-    No code changes needed.
-
-    Returns a flat list of all company dicts across all files.
-    Aborts only if the config/ folder itself is missing.
+    Files loaded alphabetically — all treated equally, no required primary.
+    Aborts only if the config/ folder itself is missing or empty.
     """
     if not CONFIG_DIR.exists():
         logger.critical("config/ folder not found at %s — aborting.", CONFIG_DIR)
@@ -154,7 +144,7 @@ def _load_config() -> list:
             with open(path, encoding="utf-8") as f:
                 data = yaml.safe_load(f) or {}
         except yaml.YAMLError as e:
-            logger.error("%s is malformed: %s — skipping this file.", path.name, e)
+            logger.error("%s is malformed: %s — skipping.", path.name, e)
             continue
         except OSError as e:
             logger.error("Cannot read %s: %s — skipping.", path.name, e)
@@ -179,8 +169,12 @@ _SCRAPER_MAP = {
     "greenhouse": "scrapers.greenhouse",
     "ashby":      "scrapers.ashby",
     "lever":      "scrapers.lever",
-    "workday":    "scrapers.workday",   # not yet built — will log error if used
+    "workable":   "scrapers.workable",
+    # "workday":    "scrapers.workday",   # not yet built
 }
+
+# ATS platforms that use a slug for the per-company API call
+_SLUG_BASED = {"greenhouse", "lever", "ashby", "workable"}
 
 
 def _get_scraper(ats: str):
@@ -226,10 +220,12 @@ def _poll_company(cfg: dict) -> None:
         company_name=name,
     )
 
+    # Amazon and Workday use detail_fetch_limit for date enrichment
     if ats in ("amazon", "workday"):
         scrape_kwargs["detail_fetch_limit"] = limit
 
-    if ats in ("greenhouse", "lever", "ashby"):
+    # Slug-based scrapers (greenhouse, lever, ashby, workable) need the slug
+    if ats in _SLUG_BASED:
         slug = cfg.get("slug", "")
         if not slug:
             logger.error("%s: 'slug' required for %s scraper", name, ats)

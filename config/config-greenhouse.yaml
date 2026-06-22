@@ -2380,3 +2380,11 @@ companies:
     locations: [United States, Remote, Sunnyvale]
     max_age_days: 1
     active: true
+
+  - name: Mindbody
+    ats: greenhouse
+    slug: mindbody
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, San Luis Obispo]
+    max_age_days: 1
+    active: true
