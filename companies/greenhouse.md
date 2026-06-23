@@ -207,3 +207,5 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | Riskified | `riskified` |
 | Ooma | `ooma` |
 | Mindbody | `mindbody` |
+| HiddenLayer | `hiddenlayer` |
+| HackerRank | `hackerrank` |

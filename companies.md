@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter.
 Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 
-**Total active: 196 Greenhouse + 1 Amazon + 97 Ashby + 34 Lever = 328 companies**
+**Total active unique targets: 197 Greenhouse + 1 Amazon + 96 Ashby + 34 Lever + 22 Workable = 350 companies**
 
 ---
 
@@ -12,10 +12,10 @@ Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 | ATS | Companies | Detail file | Config file |
 |---|---|---|---|
 | Amazon | 1 | — | `config/config-amazon.yaml` |
-| Greenhouse | 196 | `companies/greenhouse.md` | `config/config-greenhouse.yaml` |
-| Ashby | 97 | `companies/ashby.md` | `config/config-ashby.yaml` |
+| Greenhouse | 197 unique | `companies/greenhouse.md` | `config/config-greenhouse.yaml` |
+| Ashby | 96 | `companies/ashby.md` | `config/config-ashby.yaml` |
 | Lever | 34 | `companies/lever.md` | `config/config-lever.yaml` |
-| Workable | coming soon | `companies/workable.md` | `config/config-workable.yaml` |
+| Workable | 22 active | `companies/workable.md` | `config/config-workable.yaml` |
 
 ---
 
