@@ -209,3 +209,4 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | Mindbody | `mindbody` |
 | HiddenLayer | `hiddenlayer` |
 | HackerRank | `hackerrank` |
+| Vectra AI | `vectranetworks` |

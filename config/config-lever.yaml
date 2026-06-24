@@ -302,3 +302,11 @@ companies:
     locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
+
+  - name: Symplicity
+    ats: lever
+    slug: symplicity               # ✅ jobs.lever.co/symplicity
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote, Austin]
+    max_age_days: 1
+    active: true

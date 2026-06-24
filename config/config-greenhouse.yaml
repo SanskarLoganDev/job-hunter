@@ -2396,3 +2396,11 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+  - name: Vectra AI
+    ats: greenhouse
+    slug: vectranetworks
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
