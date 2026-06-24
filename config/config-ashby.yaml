@@ -799,3 +799,30 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+# https://jobs.ashbyhq.com/foundationhealthcareers
+  - name: FoundationHealth
+    ats: ashby
+    slug: foundationhealthcareers
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+# https://jobs.ashbyhq.com/cheiron
+  - name: Cheiron
+    ats: ashby
+    slug: cheiron
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+# https://jobs.ashbyhq.com/cognition
+  - name: Cognition
+    ats: ashby
+    slug: cognition
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
