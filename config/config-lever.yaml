@@ -29,7 +29,7 @@ companies:
   - name: Voleon Group
     ats: lever
     slug: voleon                    # ✅ jobs.lever.co/voleon
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [San Francisco, Berkeley, United States, Remote]
     max_age_days: 1
     active: true
@@ -37,7 +37,7 @@ companies:
   - name: NimbleRx
     ats: lever
     slug: nimblerx                  # ✅ jobs.lever.co/nimblerx
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [Redwood City, San Francisco, United States, Remote]
     max_age_days: 1
     active: true
@@ -45,7 +45,7 @@ companies:
   - name: Level AI
     ats: lever
     slug: levelai                   # ✅ jobs.lever.co/levelai
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [San Francisco, Mountain View, United States, Remote]
     max_age_days: 1
     active: true
@@ -53,7 +53,7 @@ companies:
   - name: LinkedIn
     ats: lever
     slug: linkedin                  # ✅ jobs.lever.co/linkedin
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, San Francisco, Sunnyvale, New York]
     max_age_days: 1
     active: true
@@ -61,7 +61,7 @@ companies:
   - name: Palantir
     ats: lever
     slug: palantir                  # ✅ jobs.lever.co/palantir
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, New York, Denver, Washington]
     max_age_days: 1
     active: true
@@ -69,7 +69,7 @@ companies:
   - name: KPMG
     ats: lever
     slug: kpmg                      # ✅ jobs.lever.co/kpmg
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, New York, Atlanta, Dallas, Chicago]
     max_age_days: 1
     active: true
@@ -77,7 +77,7 @@ companies:
   - name: Kraken
     ats: lever
     slug: kraken                    # ✅ jobs.lever.co/kraken
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -85,7 +85,7 @@ companies:
   - name: Rackspace
     ats: lever
     slug: rackspace                 # ✅ jobs.lever.co/rackspace
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, San Antonio, Austin]
     max_age_days: 1
     active: true
@@ -93,7 +93,7 @@ companies:
   - name: Zeta Tech
     ats: lever
     slug: zeta                      # ✅ jobs.lever.co/zeta
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, New York, San Francisco]
     max_age_days: 1
     active: true
@@ -106,7 +106,7 @@ companies:
   - name: ValGenesis
     ats: lever
     slug: valgenesis                # ✅ jobs.lever.co/valgenesis
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -114,7 +114,7 @@ companies:
   - name: PDI Technologies
     ats: lever
     slug: pditechnologies            # ✅ jobs.lever.co/pditechnologies
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -122,7 +122,7 @@ companies:
   - name: HHAeXchange
     ats: lever
     slug: hhaexchange               # ✅ jobs.lever.co/hhaexchange
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
@@ -130,7 +130,7 @@ companies:
   - name: KUBRA
     ats: lever
     slug: kubra                     # ✅ jobs.lever.co/kubra
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -138,7 +138,7 @@ companies:
   - name: Foxit
     ats: lever
     slug: foxitsoftware             # ✅ jobs.lever.co/foxitsoftware
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Fremont]
     max_age_days: 1
     active: true
@@ -146,7 +146,7 @@ companies:
   - name: Pipedrive
     ats: lever
     slug: pipedrive                 # ✅ jobs.lever.co/pipedrive
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
@@ -154,7 +154,7 @@ companies:
   - name: Filevine
     ats: lever
     slug: filevine                  # ✅ jobs.lever.co/filevine
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Salt Lake City]
     max_age_days: 1
     active: true
@@ -162,7 +162,7 @@ companies:
   - name: SugarCRM
     ats: lever
     slug: sugarcrm                  # ✅ jobs.lever.co/sugarcrm
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -170,7 +170,7 @@ companies:
   - name: LogRocket
     ats: lever
     slug: logrocket                 # ✅ jobs.lever.co/logrocket
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
@@ -178,7 +178,7 @@ companies:
   - name: Sonatype
     ats: lever
     slug: sonatype                  # ✅ jobs.lever.co/sonatype
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -186,7 +186,7 @@ companies:
   - name: BrightEdge
     ats: lever
     slug: brightedge                # ✅ jobs.lever.co/brightedge
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Cleveland, San Mateo]
     max_age_days: 1
     active: true
@@ -194,7 +194,7 @@ companies:
   - name: Actian
     ats: lever
     slug: actian                    # ✅ jobs.lever.co/actian
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -202,7 +202,7 @@ companies:
   - name: Enable
     ats: lever
     slug: enable                    # ✅ jobs.lever.co/enable
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
@@ -210,7 +210,7 @@ companies:
   - name: Nextech Systems
     ats: lever
     slug: nextech                   # ✅ jobs.lever.co/nextech
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Tampa]
     max_age_days: 1
     active: true
@@ -218,7 +218,7 @@ companies:
   - name: Emburse
     ats: lever
     slug: emburse                   # ✅ jobs.lever.co/emburse
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Los Angeles]
     max_age_days: 1
     active: true
@@ -226,7 +226,7 @@ companies:
   - name: WorkWave
     ats: lever
     slug: workwave                  # ✅ jobs.lever.co/workwave
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -234,7 +234,7 @@ companies:
   - name: Ataccama
     ats: lever
     slug: ataccama                  # ✅ jobs.lever.co/ataccama
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -242,7 +242,7 @@ companies:
   - name: HighLevel
     ats: lever
     slug: gohighlevel               # ✅ jobs.lever.co/gohighlevel
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -250,7 +250,7 @@ companies:
   - name: Perforce Software
     ats: lever
     slug: perforce                  # ✅ jobs.lever.co/perforce
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Minneapolis]
     max_age_days: 1
     active: true
@@ -258,7 +258,7 @@ companies:
   - name: Magnet Forensics
     ats: lever
     slug: magnetforensics           # ✅ jobs.lever.co/magnetforensics
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -266,7 +266,7 @@ companies:
   - name: Saviynt
     ats: lever
     slug: saviynt                   # ✅ jobs.lever.co/saviynt
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, El Segundo]
     max_age_days: 1
     active: true
@@ -274,7 +274,7 @@ companies:
   - name: Entrata
     ats: lever
     slug: entrata                   # ✅ jobs.lever.co/entrata
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Lehi]
     max_age_days: 1
     active: true
@@ -282,7 +282,7 @@ companies:
   - name: 3Pillar
     ats: lever
     slug: 3pillarglobal             # ✅ jobs.lever.co/3pillarglobal
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote]
     max_age_days: 1
     active: true
@@ -290,7 +290,7 @@ companies:
   - name: Mendix
     ats: lever
     slug: mendix                    # ✅ jobs.lever.co/mendix
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
@@ -298,7 +298,7 @@ companies:
   - name: Bazaarvoice
     ats: lever
     slug: bazaarvoice               # ✅ jobs.lever.co/bazaarvoice
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
@@ -306,7 +306,7 @@ companies:
   - name: Symplicity
     ats: lever
     slug: symplicity               # ✅ jobs.lever.co/symplicity
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer]
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
