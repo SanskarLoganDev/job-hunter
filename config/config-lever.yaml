@@ -310,3 +310,11 @@ companies:
     locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
+
+  - name: Ro
+    ats: lever
+    slug: ro              # ✅ jobs.lever.co/symplicity
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Austin]
+    max_age_days: 1
+    active: true

@@ -826,3 +826,30 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+# https://jobs.ashbyhq.com/netic
+  - name: Netic
+    ats: ashby
+    slug: netic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+# https://jobs.ashbyhq.com/livekit
+  - name: LiveKit
+    ats: ashby
+    slug: livekit
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+# https://jobs.ashbyhq.com/persona
+  - name: Persona
+    ats: ashby
+    slug: persona
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
