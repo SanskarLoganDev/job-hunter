@@ -5,7 +5,7 @@ Scraper: `scrapers/greenhouse.py`
 Config: `config/config-greenhouse.yaml`
 API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 
-**Total: 196 companies**
+**Total: 199 companies**
 
 | Company | Slug |
 |---|---|

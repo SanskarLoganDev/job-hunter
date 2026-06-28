@@ -7,7 +7,7 @@ API endpoint: `https://api.lever.co/v0/postings/{slug}?mode=json&limit=500`
 
 **To verify a slug:** `curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"`
 
-**Total: 34 companies**
+**Total: 36 companies**
 
 | Company | Slug |
 |---|---|
@@ -45,3 +45,5 @@ API endpoint: `https://api.lever.co/v0/postings/{slug}?mode=json&limit=500`
 | 3Pillar | `3pillarglobal` |
 | Mendix | `mendix` |
 | Bazaarvoice | `bazaarvoice` |
+| Symplicity | `symplicity` |
+| Ro | `ro` |

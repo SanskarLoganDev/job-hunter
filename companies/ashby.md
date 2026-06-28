@@ -5,7 +5,7 @@ Scraper: `scrapers/ashby.py`
 Config: `config/config-ashby.yaml`
 API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 
-**Total: 97 companies**
+**Total: 104 companies**
 
 | Company | Slug |
 |---|---|
@@ -105,4 +105,10 @@ API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 | Sieve | `sieve` |
 | Reducto | `reducto` |
 | HUD | `hud` |
-percepta
+| FieldGuide | `fieldguide` |
+| FoundationHealth | `foundationhealthcareers` |
+| Cheiron | `cheiron` |
+| Cognition | `cognition` |
+| Netic | `netic` |
+| LiveKit | `livekit` |
+| Persona | `persona` |

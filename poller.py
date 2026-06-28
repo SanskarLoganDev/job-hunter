@@ -293,7 +293,7 @@ def main() -> None:
                     "Unhandled error for '%s': %s",
                     cfg.get("name", "?"), e, exc_info=True,
                 )
-            time.sleep(random.uniform(2, 5))
+            time.sleep(random.uniform(0.5, 1.0))
 
         logger.info(
             "JobHunter poller finished. Total seen jobs in DB: %d",
