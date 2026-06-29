@@ -112,3 +112,6 @@ API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 | Netic | `netic` |
 | LiveKit | `livekit` |
 | Persona | `persona` |
+| Gecko Robotics | `gecko-robotics` |
+| Harmattan AI | `harmattan-ai` |
+| Spear AI | `spear-ai` |

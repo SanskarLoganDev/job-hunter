@@ -318,3 +318,19 @@ companies:
     locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
+    
+  - name: BETA Technologies
+    ats: lever
+    slug: beta
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote, Burlington]
+    max_age_days: 1
+    active: true
+
+  - name: E-Space
+    ats: lever
+    slug: espace
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true

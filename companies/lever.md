@@ -47,3 +47,5 @@ API endpoint: `https://api.lever.co/v0/postings/{slug}?mode=json&limit=500`
 | Bazaarvoice | `bazaarvoice` |
 | Symplicity | `symplicity` |
 | Ro | `ro` |
+| BETA Technologies | `beta` |
+| E-Space | `espace` |

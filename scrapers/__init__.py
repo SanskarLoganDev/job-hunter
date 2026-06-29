@@ -6,7 +6,7 @@ plus shared filtering utilities used across all scrapers.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional
 
 
 @dataclass
