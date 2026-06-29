@@ -2404,3 +2404,12 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+    # purestorage
+  - name: PureStorage
+    ats: greenhouse
+    slug: purestorage
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true

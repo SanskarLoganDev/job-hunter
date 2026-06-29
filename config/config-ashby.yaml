@@ -877,3 +877,39 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+  # https://jobs.ashbyhq.com/brainco
+  - name: BrainCo
+    ats: ashby
+    slug: brainco
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  # https://jobs.ashbyhq.com/etched
+  - name: Etched
+    ats: ashby
+    slug: etched
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  # https://jobs.ashbyhq.com/brellium
+  - name: Brellium
+    ats: ashby
+    slug: brellium
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  # https://jobs.ashbyhq.com/chalk
+  - name: Chalk
+    ats: ashby
+    slug: chalk
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
