@@ -2413,3 +2413,20 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+  # https://job-boards.greenhouse.io/embed/job_app?for=innophaseiot
+  - name: InnophaseIoT
+    ats: greenhouse
+    slug: innophaseiot
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
+
+  - name: Seatgeek
+    ats: greenhouse
+    slug: seatgeek
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
