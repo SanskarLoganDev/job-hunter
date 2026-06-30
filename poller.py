@@ -16,12 +16,12 @@ Flow:
 One company failing never affects the others.
 
 CONFIG FOLDER: config/
-  config-amazon.yaml      — Amazon
-  config-ashby.yaml       — Ashby companies
-  config-greenhouse.yaml  — Greenhouse companies
-  config-lever.yaml       — Lever companies
-  config-workable.yaml    — Workable companies
-  config-*.yaml           — any future ATS config, auto-discovered at startup
+  config-amazon.yaml          — Amazon
+  config-ashby.yaml           — Ashby companies
+  config-greenhouse.yaml      — Greenhouse companies
+  config-lever.yaml           — Lever companies
+  config-smartrecruiters.yaml — SmartRecruiters companies
+  config-*.yaml                — any future ATS config, auto-discovered at startup
 
 Windows notes:
   - Uses msvcrt.locking() for the lock file (fcntl is Unix-only).
@@ -165,16 +165,16 @@ def _load_config() -> list:
 # ---------------------------------------------------------------------------
 
 _SCRAPER_MAP = {
-    "amazon":     "scrapers.amazon",
-    "greenhouse": "scrapers.greenhouse",
-    "ashby":      "scrapers.ashby",
-    "lever":      "scrapers.lever",
-    "workable":   "scrapers.workable",
+    "amazon":          "scrapers.amazon",
+    "greenhouse":      "scrapers.greenhouse",
+    "ashby":           "scrapers.ashby",
+    "lever":           "scrapers.lever",
+    "smartrecruiters": "scrapers.smartrecruiters",
     # "workday":    "scrapers.workday",   # not yet built
 }
 
 # ATS platforms that use a slug for the per-company API call
-_SLUG_BASED = {"greenhouse", "lever", "ashby", "workable"}
+_SLUG_BASED = {"greenhouse", "lever", "ashby", "smartrecruiters"}
 
 
 def _get_scraper(ats: str):
@@ -220,11 +220,14 @@ def _poll_company(cfg: dict) -> None:
         company_name=name,
     )
 
-    # Amazon and Workday use detail_fetch_limit for date enrichment
-    if ats in ("amazon", "workday"):
+    # Amazon, SmartRecruiters, and Workday use detail_fetch_limit —
+    # Amazon for date enrichment, SmartRecruiters for fetching the real
+    # postingUrl (its list endpoint only returns an API `ref` URL).
+    if ats in ("amazon", "smartrecruiters", "workday"):
         scrape_kwargs["detail_fetch_limit"] = limit
 
-    # Slug-based scrapers (greenhouse, lever, ashby, workable) need the slug
+    # Slug-based scrapers (greenhouse, lever, ashby, workable, smartrecruiters)
+    # need the slug (for smartrecruiters this is the companyIdentifier).
     if ats in _SLUG_BASED:
         slug = cfg.get("slug", "")
         if not slug:

@@ -1,0 +1,349 @@
+# config/config-smartrecruiters.yaml
+# SmartRecruiters ATS companies.
+# Loaded automatically by poller.py.
+#
+# HOW TO FIND THE companyIdentifier (the "slug" field below):
+#   companyIdentifier is NOT always the obvious brand name.
+#   Verify via: https://careers.smartrecruiters.com/{identifier}
+#           or: https://jobs.smartrecruiters.com/{identifier}
+#   Example: Bosch's real identifier is "BoschGroup", not "bosch" — guessing
+#   "bosch" returns totalFound: 0 (a valid empty response, not an error).
+#
+#   IMPORTANT — search snippets are NOT sufficient verification. A search
+#   result showing a careers.smartrecruiters.com/{slug} URL can still be a
+#   stale/defunct instance that redirects to the generic SmartRecruiters
+#   homepage when actually opened (this happened with an early "Skechers1"
+#   guess — Skechers' real, current career site turned out to be on Workday,
+#   not SmartRecruiters at all). ALWAYS open the URL directly in a browser
+#   and confirm real, current job listings load before marking verified.
+#
+# LOCATION NOTES:
+#   SmartRecruiters location is structured (city/region/country/remote/hybrid)
+#   — scraper combines into one string, same approach as Ashby's _build_location().
+
+companies:
+
+  # ════════════════════════════════════════════════════════
+  #  VERIFIED — confirmed by opening the URL directly in browser
+  #  and seeing real, current job listings (not just a search hit)
+  # ════════════════════════════════════════════════════════
+
+  # Verified 2026-06-30: https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/
+  # returned totalFound: 4619. Large hardware/automotive/industrial employer —
+  # relevant for both standard SWE keywords and embedded keywords.
+  - name: Bosch Group
+    ats: smartrecruiters
+    slug: BoschGroup
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Verified 2026-06-30 by user — careers.smartrecruiters.com/Visa loads real jobs.
+  - name: Visa
+    ats: smartrecruiters
+    slug: Visa
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Verified 2026-06-30 by user — careers.smartrecruiters.com/LinkedIn3 loads
+  # fine (the LinkedInQA candidate was not used/tested, discarded as likely
+  # a staging board). The CSV batch below also lists a "linkedin" LinkedIn
+  # entry (guessed slug "Linkedin") — intentionally skipped as a likely
+  # duplicate of this already-verified LinkedIn3 entry.
+  - name: LinkedIn
+    ats: smartrecruiters
+    slug: LinkedIn3
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # ════════════════════════════════════════════════════════
+  #  REJECTED — kept here as a record so this guess isn't
+  #  repeated; do not re-add without solid new evidence.
+  # ════════════════════════════════════════════════════════
+  #
+  # Skechers — candidate slug "Skechers1" surfaced via search (indexed page
+  # at careers.smartrecruiters.com/Skechers1/corporate-careers existed at
+  # some point), but opening careers.smartrecruiters.com/Skechers1 directly
+  # just loads the generic SmartRecruiters homepage, not a Skechers board.
+  # Skechers' real, current career site is on Workday
+  # (skechers.wd5.myworkdayjobs.com), not SmartRecruiters. Not added.
+
+  # ════════════════════════════════════════════════════════
+  #  PENDING VERIFICATION — sourced from SmartRecruiters_users.csv
+  #  (47 companies, minus 1 LinkedIn duplicate = 46 added here).
+  #  ALL slugs below are UNVERIFIED GUESSES derived from each company's
+  #  LinkedIn username — this does NOT reliably match the SmartRecruiters
+  #  companyIdentifier (confirmed by LinkedIn itself: linkedin_username is
+  #  "linkedin" but the real working identifier is "LinkedIn3").
+  #  Test each "TEST THIS URL" comment in a browser, confirm real job
+  #  listings load (not a redirect to the generic SmartRecruiters
+  #  homepage), fix the slug if wrong, then flip active: true.
+  # ════════════════════════════════════════════════════════
+
+  # Source: SmartRecruiters_users.csv (linkedin: canyongbs, domain: canyongbs.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Canyongbs
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Canyon GBS
+    ats: smartrecruiters
+    slug: Canyongbs  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: wiser, domain: wiser.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Wiser
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Wiser Solutions, Inc.
+    ats: smartrecruiters
+    slug: Wiser  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: jitterbit, domain: jitterbit.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Jitterbit
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Jitterbit
+    ats: smartrecruiters
+    slug: Jitterbit  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: bcc-software, domain: bccsoftware.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/BccSoftware
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: BCC Software
+    ats: smartrecruiters
+    slug: BccSoftware  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: unifydots, domain: unifydots.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Unifydots
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: UNIFY Dots
+    ats: smartrecruiters
+    slug: Unifydots  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: campfire-interactive, domain: campfire-interactive.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/CampfireInteractive
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Campfire Interactive
+    ats: smartrecruiters
+    slug: CampfireInteractive  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: redicasystems, domain: redica.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Redicasystems
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Redica Systems
+    ats: smartrecruiters
+    slug: Redicasystems  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: intelerad, domain: intelerad.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Intelerad
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Intelerad
+    ats: smartrecruiters
+    slug: Intelerad  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: outcomes-by-insightsoftware, domain: insightsoftware.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/insightsoftware
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: insightsoftware
+    ats: smartrecruiters
+    slug: insightsoftware  # Changed URL but verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: mirantis, domain: mirantis.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Mirantis
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Mirantis
+    ats: smartrecruiters
+    slug: Mirantis  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: cricut, domain: cricut.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Cricut
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Cricut
+    ats: smartrecruiters
+    slug: Cricut  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: docusign, domain: docusign.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Docusign
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Docusign
+    ats: smartrecruiters
+    slug: Docusign  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: fiverr-com, domain: fiverr.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Fiverr
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Fiverr
+    ats: smartrecruiters
+    slug: Fiverr  # Changed URL but verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: mindtickle, domain: mindtickle.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Mindtickle
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Mindtickle
+    ats: smartrecruiters
+    slug: Mindtickle  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: new-relic-inc-, domain: newrelic.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/NewRelic
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: New Relic
+    ats: smartrecruiters
+    slug: NewRelic  # Changed URL but verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: nextgenhealthcareinc, domain: nextgen.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Nextgen
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: NextGen Healthcare
+    ats: smartrecruiters
+    slug: Nextgen  # Changed URL but verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: palantir-technologies, domain: palantir.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Palantir
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: Palantir Technologies
+    ats: smartrecruiters
+    slug: Palantir  # # Changed URL but verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: servicenow, domain: servicenow.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Servicenow
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: ServiceNow
+    ats: smartrecruiters
+    slug: Servicenow  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: servicetitan, domain: servicetitan.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Servicetitan
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: ServiceTitan
+    ats: smartrecruiters
+    slug: Servicetitan  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
+
+  # Source: SmartRecruiters_users.csv (linkedin: solarwinds, domain: solarwinds.com)
+  # TEST THIS URL: https://careers.smartrecruiters.com/Solarwinds
+  # (identifier guessed from LinkedIn slug — NOT verified, confirm in browser
+  # and correct the slug below if the guess is wrong)
+  - name: SolarWinds
+    ats: smartrecruiters
+    slug: Solarwinds  # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
