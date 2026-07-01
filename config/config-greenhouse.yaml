@@ -2430,3 +2430,12 @@ companies:
     locations: [United States, Remote]
     max_age_days: 1
     active: true
+
+  # pitchbookdata
+  - name: Pitchbook
+    ats: greenhouse
+    slug: pitchbookdata
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer]
+    locations: [United States, Remote]
+    max_age_days: 1
+    active: true
