@@ -133,7 +133,7 @@ companies:
     ats: greenhouse
     slug: smithrx
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -141,7 +141,7 @@ companies:
     ats: greenhouse
     slug: canonical
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Austin, Boston]
     max_age_days: 1
     active: true
 
@@ -149,7 +149,7 @@ companies:
     ats: greenhouse
     slug: robinhood
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Menlo Park, Bellevue, Chicago, New York, Denver, Seattle, Charlotte, Washington DC]
     max_age_days: 1
     active: true
 
@@ -157,7 +157,7 @@ companies:
     ats: greenhouse
     slug: stripe
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, South San Francisco, Chicago, New York, Seattle]
     max_age_days: 1
     active: true
 
@@ -165,7 +165,7 @@ companies:
     ats: greenhouse
     slug: cloudflare
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Austin, Boston, Champaign, Denver, Los Angeles, New York, Seattle, Washington DC]
     max_age_days: 1
     active: true
 
@@ -253,7 +253,7 @@ companies:
     ats: greenhouse
     slug: digitalocean98
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, New York, Cambridge]
     max_age_days: 1
     active: true
 
@@ -261,7 +261,7 @@ companies:
     ats: greenhouse
     slug: jetbrains
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Apex]
     max_age_days: 1
     active: true
 
@@ -269,7 +269,7 @@ companies:
     ats: greenhouse
     slug: dropbox
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, San Francisco]
+    locations: [United States, Remote, San Francisco, Austin, Boston, Chicago, Los Angeles, New York, Seattle]
     max_age_days: 1
     active: true
 
@@ -277,7 +277,7 @@ companies:
     ats: greenhouse
     slug: workato
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, Mountain View]
+    locations: [United States, Remote, Mountain View, New York]
     max_age_days: 1
     active: true
 
@@ -301,7 +301,7 @@ companies:
     ats: greenhouse
     slug: clickhouse
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -365,7 +365,7 @@ companies:
     ats: greenhouse
     slug: elastic
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco, Arlington, Austin]
     max_age_days: 1
     active: true
 
@@ -381,7 +381,7 @@ companies:
     ats: greenhouse
     slug: maintainx
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -421,7 +421,7 @@ companies:
     ats: greenhouse
     slug: sentinellabs
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Mountain View]
     max_age_days: 1
     active: true
 
@@ -469,7 +469,7 @@ companies:
     ats: greenhouse
     slug: springhealth66
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
 
@@ -537,7 +537,7 @@ companies:
     ats: greenhouse
     slug: wayve
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -561,7 +561,7 @@ companies:
     ats: greenhouse
     slug: graphcore
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Jose]
     max_age_days: 1
     active: true
 
@@ -569,7 +569,7 @@ companies:
     ats: greenhouse
     slug: speechify
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Los Angeles]
     max_age_days: 1
     active: true
 
@@ -653,7 +653,7 @@ companies:
     ats: greenhouse
     slug: nubank
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Durham]
     max_age_days: 1
     active: true
 
@@ -685,7 +685,7 @@ companies:
     ats: greenhouse
     slug: okx
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Jose]
     max_age_days: 1
     active: true
 
@@ -713,7 +713,7 @@ companies:
     ats: greenhouse
     slug: agoda
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Cambridge]
     max_age_days: 1
     active: true
 
@@ -749,7 +749,7 @@ companies:
     ats: greenhouse
     slug: 2k
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Novato]
     max_age_days: 1
     active: true
 
@@ -865,7 +865,7 @@ companies:
     ats: greenhouse
     slug: onemedical
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco, New York, Seattle, Boston, Austin, Chicago, Los Angeles]
     max_age_days: 1
     active: true
 
@@ -885,7 +885,7 @@ companies:
     ats: greenhouse
     slug: onrunning
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
 
@@ -943,7 +943,7 @@ companies:
     ats: greenhouse
     slug: coherentsolutionsinc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
 
@@ -999,7 +999,7 @@ companies:
     ats: greenhouse
     slug: beyondtrust
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Johns Creek, Atlanta]
     max_age_days: 1
     active: true
 
@@ -1047,7 +1047,7 @@ companies:
     ats: greenhouse
     slug: demandscience
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Burlington]
     max_age_days: 1
     active: true
 
@@ -1071,7 +1071,7 @@ companies:
     ats: greenhouse
     slug: fortra
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Eden Prairie]
     max_age_days: 1
     active: true
 
@@ -1255,7 +1255,7 @@ companies:
     ats: greenhouse
     slug: suvoda
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Philadelphia, Conshohocken]
     max_age_days: 1
     active: true
 
@@ -1287,7 +1287,7 @@ companies:
     ats: greenhouse
     slug: navapbc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Washington DC]
     max_age_days: 1
     active: true
 
@@ -1295,7 +1295,7 @@ companies:
     ats: greenhouse
     slug: appfire
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -1319,7 +1319,7 @@ companies:
     ats: greenhouse
     slug: redwoodsoftware
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Frisco]
     max_age_days: 1
     active: true
 
@@ -1343,7 +1343,7 @@ companies:
     ats: greenhouse
     slug: lightspeeddms
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
 
@@ -1351,7 +1351,7 @@ companies:
     ats: greenhouse
     slug: abbyy
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Milpitas, Austin]
     max_age_days: 1
     active: true
 
@@ -1359,7 +1359,7 @@ companies:
     ats: greenhouse
     slug: accesso
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Lake Mary]
     max_age_days: 1
     active: true
 
@@ -1383,7 +1383,7 @@ companies:
     ats: greenhouse
     slug: apolloio
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -1423,7 +1423,7 @@ companies:
     ats: greenhouse
     slug: cordance
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -1487,7 +1487,7 @@ companies:
     ats: greenhouse
     slug: fulcrumgt
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Chicago]
     max_age_days: 1
     active: true
 
@@ -1511,7 +1511,7 @@ companies:
     ats: greenhouse
     slug: levelaccess
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Arlington]
     max_age_days: 1
     active: true
 
@@ -1543,7 +1543,7 @@ companies:
     ats: greenhouse
     slug: mozilla
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco, Portland]
     max_age_days: 1
     active: true
 
@@ -1567,7 +1567,7 @@ companies:
     ats: greenhouse
     slug: neuraflash
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -1583,7 +1583,7 @@ companies:
     ats: greenhouse
     slug: pandadoc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -1607,7 +1607,7 @@ companies:
     ats: greenhouse
     slug: picsart
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Miami]
     max_age_days: 1
     active: true
 
@@ -1623,7 +1623,7 @@ companies:
     ats: greenhouse
     slug: poppulo
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Denver]
     max_age_days: 1
     active: true
 
@@ -1673,7 +1673,7 @@ companies:
     ats: greenhouse
     slug: coherentsolutionsinc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
 
@@ -1729,7 +1729,7 @@ companies:
     ats: greenhouse
     slug: beyondtrust
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Johns Creek, Atlanta]
     max_age_days: 1
     active: true
 
@@ -1777,7 +1777,7 @@ companies:
     ats: greenhouse
     slug: demandscience
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Burlington]
     max_age_days: 1
     active: true
 
@@ -1801,7 +1801,7 @@ companies:
     ats: greenhouse
     slug: fortra
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Eden Prairie]
     max_age_days: 1
     active: true
 
@@ -1985,7 +1985,7 @@ companies:
     ats: greenhouse
     slug: suvoda
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Philadelphia, Conshohocken]
     max_age_days: 1
     active: true
 
@@ -2017,7 +2017,7 @@ companies:
     ats: greenhouse
     slug: navapbc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Washington DC]
     max_age_days: 1
     active: true
 
@@ -2025,7 +2025,7 @@ companies:
     ats: greenhouse
     slug: appfire
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -2049,7 +2049,7 @@ companies:
     ats: greenhouse
     slug: redwoodsoftware
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Frisco]
     max_age_days: 1
     active: true
 
@@ -2073,7 +2073,7 @@ companies:
     ats: greenhouse
     slug: lightspeeddms
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
 
@@ -2081,7 +2081,7 @@ companies:
     ats: greenhouse
     slug: abbyy
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Milpitas, Austin]
     max_age_days: 1
     active: true
 
@@ -2089,7 +2089,7 @@ companies:
     ats: greenhouse
     slug: accesso
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Lake Mary]
     max_age_days: 1
     active: true
 
@@ -2113,7 +2113,7 @@ companies:
     ats: greenhouse
     slug: apolloio
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -2153,7 +2153,7 @@ companies:
     ats: greenhouse
     slug: cordance
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -2217,7 +2217,7 @@ companies:
     ats: greenhouse
     slug: fulcrumgt
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Chicago]
     max_age_days: 1
     active: true
 
@@ -2241,7 +2241,7 @@ companies:
     ats: greenhouse
     slug: levelaccess
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Arlington]
     max_age_days: 1
     active: true
 
@@ -2273,7 +2273,7 @@ companies:
     ats: greenhouse
     slug: mozilla
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco, Portland]
     max_age_days: 1
     active: true
 
@@ -2297,7 +2297,7 @@ companies:
     ats: greenhouse
     slug: neuraflash
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Boston]
     max_age_days: 1
     active: true
 
@@ -2313,7 +2313,7 @@ companies:
     ats: greenhouse
     slug: pandadoc
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Francisco]
     max_age_days: 1
     active: true
 
@@ -2337,7 +2337,7 @@ companies:
     ats: greenhouse
     slug: picsart
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Miami]
     max_age_days: 1
     active: true
 
@@ -2353,7 +2353,7 @@ companies:
     ats: greenhouse
     slug: poppulo
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Denver]
     max_age_days: 1
     active: true
 
@@ -2385,7 +2385,7 @@ companies:
     ats: greenhouse
     slug: hiddenlayer
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, Austin]
     max_age_days: 1
     active: true
 
@@ -2393,7 +2393,7 @@ companies:
     ats: greenhouse
     slug: hackerrank
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Mateo]
     max_age_days: 1
     active: true
 
@@ -2401,7 +2401,7 @@ companies:
     ats: greenhouse
     slug: vectranetworks
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
+    locations: [United States, Remote, San Jose]
     max_age_days: 1
     active: true
 
@@ -2449,3 +2449,11 @@ companies:
     max_age_days: 1
     active: true
 
+  # pubmatic
+  - name: Pubmatic
+    ats: greenhouse
+    slug: pubmatic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer]
+    locations: [United States, Remote, New York City, New York]
+    max_age_days: 1
+    active: true
