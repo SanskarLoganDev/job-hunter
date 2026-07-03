@@ -166,6 +166,7 @@ def _load_config() -> list:
 
 _SCRAPER_MAP = {
     "amazon":          "scrapers.amazon",
+    "deltek":          "scrapers.deltek",
     "greenhouse":      "scrapers.greenhouse",
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",
@@ -223,6 +224,7 @@ def _poll_company(cfg: dict) -> None:
     # Amazon, SmartRecruiters, and Workday use detail_fetch_limit —
     # Amazon for date enrichment, SmartRecruiters for fetching the real
     # postingUrl (its list endpoint only returns an API `ref` URL).
+    # Deltek does NOT use detail_fetch_limit — url field is in the list response.
     if ats in ("amazon", "smartrecruiters", "workday"):
         scrape_kwargs["detail_fetch_limit"] = limit
 

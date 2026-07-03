@@ -15,7 +15,6 @@ import store
 _COMPANY_DOMAINS = {
     "Amazon":  "https://www.amazon.jobs/en/jobs",
     "Carvana": "https://boards.greenhouse.io/carvana/jobs",
-    "Deltek":  "https://boards.greenhouse.io/deltek/jobs",
 }
 
 
