@@ -2457,3 +2457,21 @@ companies:
     locations: [United States, Remote, New York City, New York]
     max_age_days: 1
     active: true
+
+  # nymbusinc
+  - name: Nymbusinc
+    ats: greenhouse
+    slug: nymbusinc
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Atlanta, Georgia]
+    max_age_days: 1
+    active: true
+
+  # try-picnic
+  - name: Picnic
+    ats: greenhouse
+    slug: try-picnic
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
