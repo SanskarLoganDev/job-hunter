@@ -2475,3 +2475,57 @@ companies:
     locations: [United States, Remote, New York]
     max_age_days: 1
     active: true
+
+  # hibu
+  - name: hibu
+    ats: greenhouse
+    slug: hibu
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Cedar Rapids, Iowa]
+    max_age_days: 1
+    active: true
+
+  # rdccareers
+
+  - name: RDCcareers
+    ats: greenhouse
+    slug: rdccareers
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Austin, Texas]
+    max_age_days: 1
+    active: true
+
+  - name: Waymark
+    ats: greenhouse
+    slug: waymark
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Austin, Texas]
+    max_age_days: 1
+    active: true
+
+  # vaticlabs
+  - name: Vaticlabs
+    ats: greenhouse
+    slug: vaticlabs
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  # delartech
+  - name: DelarTech
+    ats: greenhouse
+    slug: delartech
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
+
+  # eplusinc
+  - name: Eplusinc
+    ats: greenhouse
+    slug: eplusinc
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, New York]
+    max_age_days: 1
+    active: true
