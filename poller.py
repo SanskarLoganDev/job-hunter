@@ -167,6 +167,7 @@ def _load_config() -> list:
 _SCRAPER_MAP = {
     "amazon":          "scrapers.amazon",
     "deltek":          "scrapers.deltek",
+    "microsoft":       "scrapers.microsoft",
     "greenhouse":      "scrapers.greenhouse",
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",

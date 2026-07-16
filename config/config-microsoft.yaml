@@ -1,0 +1,42 @@
+# config/config-microsoft.yaml
+# Microsoft careers scraper.
+# Loaded automatically by poller.py.
+#
+# API: https://apply.careers.microsoft.com/api/pcsx/search
+# Tenant: domain=microsoft.com (Eightfold AI platform)
+# Discovered via devtools on apply.careers.microsoft.com
+# No authentication required.
+#
+# SENIORITY: API-side filter_seniority=Entry&Mid-Level applied but imperfect
+# (Senior/Principal titles still appear). is_junior_enough() applied as
+# second gate in the scraper.
+#
+# LOCATION: API filters to "United States, Multiple Locations, Multiple Locations"
+# which covers all US roles. The `locations` field below is unused by the
+# scraper (already US-filtered at API level) but kept for documentation.
+#
+# PAGINATION: 10 results per page, paginated via `start` offset.
+#
+# NO SLUG: Single fixed tenant (domain=microsoft.com). Unlike GH/Ashby/Lever
+# which are multi-tenant. Not in _SLUG_BASED in poller.py.
+
+companies:
+
+  - name: Microsoft
+    ats: microsoft
+    keywords:
+      - software engineer
+      - software developer
+      - python developer
+      - full stack
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+      - ai engineer
+      - application developer
+      - web developer
+      - data engineer
+      - systems engineer
+      - platform engineer
+    max_age_days: 1
+    active: true
