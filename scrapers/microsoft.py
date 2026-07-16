@@ -255,22 +255,22 @@ def scrape(
         session  = _make_session()
         cutoff   = _now() - timedelta(days=max_age_days) if max_age_days > 0 else None
 
-        # Fetch with each keyword and dedup by position id
-        seen_ids: set = set()
+        # Single empty-query fetch returns all US Entry/Mid-Level roles.
+        # Title filtering is applied locally via _keyword_match() below —
+        # same result as querying per-keyword, but 1 paginated request
+        # instead of N (one per keyword). Safe because the API's query=
+        # param searches title+description, so per-keyword queries would
+        # return the same superset anyway and we filter to title-only matches
+        # ourselves. Empty query = broadest possible result set from the API.
         raw_positions: List[dict] = []
+        seen_ids: set = set()
 
-        # If no keywords, do a single empty-query fetch
-        queries = keywords if keywords else [""]
-
-        for kw in queries:
-            positions = _fetch_all(kw, session)
-            for p in positions:
-                pid = p.get("id")
-                if pid is None or pid in seen_ids:
-                    continue
-                seen_ids.add(pid)
-                raw_positions.append(p)
-            time.sleep(random.uniform(0.5, 1.0))
+        for p in _fetch_all("", session):
+            pid = p.get("id")
+            if pid is None or pid in seen_ids:
+                continue
+            seen_ids.add(pid)
+            raw_positions.append(p)
 
         results: List[Job] = []
 
