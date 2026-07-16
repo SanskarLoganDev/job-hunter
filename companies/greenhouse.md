@@ -5,7 +5,7 @@ Scraper: `scrapers/greenhouse.py`
 Config: `config/config-greenhouse.yaml`
 API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 
-**Total: 199 companies**
+**Total: 208 companies**
 
 | Company | Slug |
 |---|---|
@@ -210,3 +210,12 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | HiddenLayer | `hiddenlayer` |
 | HackerRank | `hackerrank` |
 | Vectra AI | `vectranetworks` |
+| Pubmatic | `pubmatic` |
+| Nymbusinc | `nymbusinc` |
+| Picnic | `try-picnic` |
+| hibu | `hibu` |
+| RDCcareers | `rdccareers` |
+| Waymark | `waymark` |
+| Vaticlabs | `vaticlabs` |
+| DelarTech | `delartech` |
+| Eplusinc | `eplusinc` |

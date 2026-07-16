@@ -7,7 +7,7 @@ API endpoint: `https://api.lever.co/v0/postings/{slug}?mode=json&limit=500`
 
 **To verify a slug:** `curl "https://api.lever.co/v0/postings/SLUG?mode=json&limit=1"`
 
-**Total: 36 companies**
+**Total: 42 companies**
 
 | Company | Slug |
 |---|---|
@@ -49,3 +49,7 @@ API endpoint: `https://api.lever.co/v0/postings/{slug}?mode=json&limit=500`
 | Ro | `ro` |
 | BETA Technologies | `beta` |
 | E-Space | `espace` |
+| Aircall | `aircall` |
+| Aledade | `aledade` |
+| Artera | `artera` |
+| Object Computing, Inc | `oci` |

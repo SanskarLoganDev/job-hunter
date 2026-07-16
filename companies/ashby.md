@@ -5,7 +5,7 @@ Scraper: `scrapers/ashby.py`
 Config: `config/config-ashby.yaml`
 API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 
-**Total: 104 companies**
+**Total: 111 companies**
 
 | Company | Slug |
 |---|---|
@@ -115,3 +115,10 @@ API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 | Gecko Robotics | `gecko-robotics` |
 | Harmattan AI | `harmattan-ai` |
 | Spear AI | `spear-ai` |
+| Brellium | `brellium` |
+| Chalk | `chalk` |
+| EliseAI | `eliseai` |
+| Tessera Labs | `tessera-labs` |
+| Claylabs | `claylabs` |
+| Mercor | `mercor` |
+| Confido | `confido` |
