@@ -1,0 +1,40 @@
+# config/config-google.yaml
+# Google careers scraper.
+# Loaded automatically by poller.py.
+#
+# SOURCE: careers.google.com/jobs/results/
+# METHOD: HTML page fetch — job data is server-side rendered into the page
+#         as an AF_initDataCallback(ds:1) JavaScript blob. No separate API
+#         call, no auth, no JS rendering needed.
+#
+# CATEGORIES SCRAPED (separate page fetches, deduped by job ID):
+#   - SOFTWARE_ENGINEERING
+#   - DEVELOPER_RELATIONS
+#   - TECHNICAL_INFRASTRUCTURE_ENGINEERING
+#
+# LOCATION: page-level filter to United States — all results are US.
+#
+# NO SLUG: Single fixed tenant. Not in _SLUG_BASED in poller.py.
+
+companies:
+
+  - name: Google
+    ats: google
+    keywords:
+      - software engineer
+      - software developer
+      - python developer
+      - full stack
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+      - ai engineer
+      - ml engineer
+      - application developer
+      - web developer
+      - data engineer
+      - systems engineer
+      - platform engineer
+      - forward deployed engineer
+    max_age_days: 1
+    active: true

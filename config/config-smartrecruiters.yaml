@@ -378,3 +378,12 @@ companies:
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
+
+  - name: Wabtec
+    ats: smartrecruiters
+    slug: wabtec # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, West Melbourne, FL]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
