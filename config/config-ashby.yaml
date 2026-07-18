@@ -958,3 +958,12 @@ companies:
     locations: [United States, Remote, New York City, San Francisco, NYC]
     max_age_days: 1
     active: true
+
+  # artosai
+  - name: Artosai
+    ats: ashby
+    slug: artosai
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote, New York City, San Francisco, NYC]
+    max_age_days: 1
+    active: true

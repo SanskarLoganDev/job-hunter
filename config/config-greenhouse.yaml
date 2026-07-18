@@ -2547,3 +2547,12 @@ companies:
     locations: [United States, Remote, Austin, TX]
     max_age_days: 1
     active: true
+
+  # mixpanel
+  - name: Mixpanel
+    ats: greenhouse
+    slug: mixpanel
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, San Francisco, CA, US]
+    max_age_days: 1
+    active: true
