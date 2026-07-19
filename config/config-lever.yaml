@@ -370,3 +370,12 @@ companies:
     locations: [United States, Remote, Remote-US]
     max_age_days: 1
     active: true
+
+  - name: Wellfit
+    ats: smartrecruiters
+    slug: wellfit # Verified
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Irving, TX]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true
