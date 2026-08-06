@@ -1,0 +1,64 @@
+# config/config-eightfold.yaml
+# Companies running the Eightfold AI careers platform ("PCSX" product).
+# Loaded automatically by poller.py. All handled by the single generic
+# scrapers/eightfold.py module — no per-company scraper file needed.
+#
+# API: {base_url}/api/pcsx/search — see scrapers/eightfold.py header for
+# full API/response documentation.
+#
+# ORIGIN: started as Microsoft-only (scrapers/microsoft.py +
+# config-microsoft.yaml). Generalized after confirming CBTS runs the
+# identical Eightfold platform/API. Both companies live here now.
+#
+# TO ADD A NEW COMPANY: confirm via devtools that the careers site calls
+# <base_url>/api/pcsx/search, note the `domain` param value from that
+# request, add an entry below. No code changes needed.
+#
+# NO SLUG: unlike GH/Ashby/Lever, tenants are identified by `domain` +
+# `base_url`, not a slug. Handled by poller.py's own eightfold branch
+# (not in _SLUG_BASED).
+
+companies:
+
+  - name: Microsoft
+    ats: eightfold
+    base_url: https://apply.careers.microsoft.com
+    domain: microsoft.com
+    location_param: "United States, Multiple Locations, Multiple Locations, Remote"
+    keywords:
+      - software engineer
+      - software developer
+      - python developer
+      - full stack
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+      - ai engineer
+      - application developer
+      - web developer
+      - data engineer
+      - systems engineer
+      - platform engineer
+    max_age_days: 1
+    active: true
+
+  - name: CBTS
+    ats: eightfold
+    base_url: https://jobs.cbts.com
+    domain: cbts.com
+    location_param: "United States, Remote, Cincinnati, OH, Grand Rapids, MI, Irving, TX, Chicago, IL, Walker, MI"
+    keywords:
+      - software engineer
+      - software developer
+      - python developer
+      - full stack
+      - backend engineer
+      - devops engineer
+      - cloud engineer
+      - ai engineer
+      - ml engineer
+      - forward deployed engineer
+      - application developer
+      - web developer
+    max_age_days: 2
+    active: true

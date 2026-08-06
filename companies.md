@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter.
 Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 
-**Total: ~199 Greenhouse + 1 Amazon + 107 Ashby + 38 Lever + 3 SmartRecruiters (active) + 1 Deltek = ~349 companies active**
+**Total: ~199 Greenhouse + 1 Amazon + 107 Ashby + 38 Lever + 3 SmartRecruiters (active) + 1 Deltek + 1 Google + 2 Eightfold (Microsoft, CBTS) = ~352 companies active**
 **(+46 SmartRecruiters companies pending slug verification, not yet active — see companies/smartrecruiters.md)**
 
 ---
@@ -18,8 +18,11 @@ Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 | Lever | 38 | `companies/lever.md` | `config/config-lever.yaml` |
 | SmartRecruiters | 3 active (+46 pending) | `companies/smartrecruiters.md` | `config/config-smartrecruiters.yaml` |
 | Deltek | 1 | `companies/deltek.md` | `config/config-deltek.yaml` |
+| Google | 1 | — | `config/config-google.yaml` |
+| Eightfold | 2 (Microsoft, CBTS) | — | `config/config-eightfold.yaml` |
 
 Note: Workable was removed — too few relevant jobs. `companies/workable.md` kept as reference backlog.
+Note: Eightfold is a generic scraper (`scrapers/eightfold.py`) covering any company on the Eightfold AI careers platform, identified by `domain` + `base_url` per company (no slug). Started as Microsoft-only, generalized after CBTS was confirmed to run the identical platform/API. New Eightfold-based companies are a config-only addition.
 
 ---
 

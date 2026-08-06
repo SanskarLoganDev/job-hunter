@@ -168,7 +168,7 @@ _SCRAPER_MAP = {
     "amazon":          "scrapers.amazon",
     "deltek":          "scrapers.deltek",
     "google":          "scrapers.google",
-    "microsoft":       "scrapers.microsoft",
+    "eightfold":       "scrapers.eightfold",
     "greenhouse":      "scrapers.greenhouse",
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",
@@ -178,6 +178,10 @@ _SCRAPER_MAP = {
 
 # ATS platforms that use a slug for the per-company API call
 _SLUG_BASED = {"greenhouse", "lever", "ashby", "smartrecruiters"}
+
+# Eightfold AI tenants are identified by domain + base_url instead of a slug
+# (e.g. Microsoft, CBTS — same scraper module, different tenant params)
+_EIGHTFOLD_BASED = {"eightfold"}
 
 
 def _get_scraper(ats: str):
@@ -239,6 +243,20 @@ def _poll_company(cfg: dict) -> None:
             store.log_poll(name, ats, 0, 0, error="Missing slug in config")
             return
         scrape_kwargs["slug"] = slug
+
+    # Eightfold AI scrapers (Microsoft, CBTS, ...) need domain + base_url to
+    # identify the tenant; location_param is optional (defaults inside the
+    # scraper to "United States" if omitted from config).
+    if ats in _EIGHTFOLD_BASED:
+        domain   = cfg.get("domain", "")
+        base_url = cfg.get("base_url", "")
+        if not domain or not base_url:
+            logger.error("%s: 'domain' and 'base_url' required for %s scraper", name, ats)
+            store.log_poll(name, ats, 0, 0, error="Missing domain/base_url in config")
+            return
+        scrape_kwargs["domain"] = domain
+        scrape_kwargs["base_url"] = base_url
+        scrape_kwargs["location_param"] = cfg.get("location_param", "")
 
     error_msg = None
     jobs      = []
