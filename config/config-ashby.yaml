@@ -976,3 +976,12 @@ companies:
     locations: [United States, Remote, New York City, San Francisco, Bay Area]
     max_age_days: 1
     active: true
+
+  # FSH
+  - name: FSH
+    ats: ashby
+    slug: FSH
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
+    locations: [United States, Remote, Philadelphia, New York City]
+    max_age_days: 1
+    active: true

@@ -1591,7 +1591,7 @@ companies:
     ats: greenhouse
     slug: pathai
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, Boston]
+    locations: [United States, Remote, Boston, MA]
     max_age_days: 1
     active: true
 
@@ -2552,6 +2552,15 @@ companies:
   - name: Mixpanel
     ats: greenhouse
     slug: mixpanel
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, San Francisco, CA, US]
+    max_age_days: 1
+    active: true
+
+  # businessolver
+  - name: Businessolver
+    ats: greenhouse
+    slug: businessolver
     keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
     locations: [United States, Remote, San Francisco, CA, US]
     max_age_days: 1
