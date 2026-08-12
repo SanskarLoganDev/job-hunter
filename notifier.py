@@ -9,6 +9,7 @@ import smtplib
 import ssl
 import logging
 from email.message import EmailMessage
+from email.utils import formataddr
 from typing import List
 
 from scrapers import Job
@@ -32,7 +33,7 @@ def render_email(company: str, jobs: List[Job]) -> tuple[str, str]:
         reverse=True,
     )
 
-    subject = f"[JobHunter] {len(sorted_jobs)} new role{'s' if len(sorted_jobs) != 1 else ''} at {company}"
+    subject = f"{len(sorted_jobs)} new role{'s' if len(sorted_jobs) != 1 else ''} at {company}"
 
     rows = "\n".join(
         f"""<tr>
@@ -129,7 +130,7 @@ def send_email(subject: str, html: str) -> None:
         raise RuntimeError("Missing RECIPIENT_EMAIL in .env.")
 
     msg = EmailMessage()
-    msg["From"]    = smtp_user
+    msg["From"]    = formataddr(("Job Hunter", smtp_user))
     msg["To"]      = recipient
     msg["Subject"] = subject
     msg.set_content("Your email client does not support HTML.")

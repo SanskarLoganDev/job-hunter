@@ -42,6 +42,11 @@ class TestRenderEmail(unittest.TestCase):
         subject, _ = render_email("Amazon", [_make_job(1)])
         self.assertIn("Amazon", subject)
 
+    def test_subject_has_no_bracket_prefix(self):
+        subject, _ = render_email("Amazon", [_make_job(1)])
+        self.assertEqual("1 new role at Amazon", subject)
+        self.assertNotIn("[JobHunter]", subject)
+
     def test_subject_contains_count(self):
         subject, _ = render_email("Amazon", [_make_job(1), _make_job(2)])
         self.assertIn("2", subject)
@@ -130,6 +135,14 @@ class TestSendEmail(unittest.TestCase):
         instance = MockSMTP.return_value.__enter__.return_value
         send_email("Test Subject", "<html>test</html>")
         self.assertTrue(instance.send_message.called)
+
+    @patch("notifier.smtplib.SMTP")
+    @patch.dict("os.environ", _ENV)
+    def test_send_uses_job_hunter_display_name(self, MockSMTP):
+        instance = MockSMTP.return_value.__enter__.return_value
+        send_email("Test Subject", "<html>test</html>")
+        msg = instance.send_message.call_args.args[0]
+        self.assertEqual("Job Hunter <sender@gmail.com>", msg["From"])
 
     @patch.dict("os.environ", {**_ENV, "SMTP_USER": ""})
     def test_missing_smtp_user_raises(self):

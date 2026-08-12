@@ -1,6 +1,6 @@
 # JobHunter
 
-> **Personal automated job alert system** — scrapes ATS job boards directly via public APIs and emails new matching roles every hour. No third-party job boards, no aggregator lag.
+> **Personal automated job alert system** — scrapes ATS job boards directly via public APIs and emails new matching roles every 30 minutes. No third-party job boards, no aggregator lag.
 
 Built initially as **HustleHUB – JobWatch** at a hackathon (local FastAPI + Amazon scraper), then evolved into a full multi-ATS polling engine running on Windows Task Scheduler.
 
@@ -20,7 +20,7 @@ Targeted job hunting is tedious: you must repeatedly check specific companies' c
 
 ## Solution
 
-Poll ATS APIs directly at the source, every hour. The moment a recruiter publishes a job in Greenhouse, Ashby, or Lever, it hits your inbox — not LinkedIn's crawl queue.
+Poll ATS APIs directly at the source, every 30 minutes. The moment a recruiter publishes a job in Greenhouse, Ashby, or Lever, it hits your inbox — not LinkedIn's crawl queue.
 
 - **~345 companies** monitored across Amazon, Greenhouse, Ashby, and Lever
 - **Keyword filtering** — only roles matching your target titles
@@ -34,7 +34,7 @@ Poll ATS APIs directly at the source, every hour. The moment a recruiter publish
 ## Architecture (Local / Windows)
 
 ```
-Windows Task Scheduler (every hour)
+Windows Task Scheduler (every 30 minutes)
   └─► run_poller.bat
         └─► python poller.py
               ├─ loads all config/config-*.yaml
@@ -249,7 +249,7 @@ RECIPIENT_EMAIL=you@example.com
 ## Windows Task Scheduler
 
 - **Action:** `E:\path\to\job-hunter\run_poller.bat`
-- **Trigger:** Daily, repeat every 1 hour, indefinitely, no expiry
+- **Trigger:** Daily, repeat every 30 mins, indefinitely, no expiry
 - **Settings:** Do not start new instance if already running; run on missed start; run on battery
 
 ---
