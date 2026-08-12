@@ -7,6 +7,7 @@ Run with:  python -m pytest tests/test_store.py -v
 """
 
 import unittest
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 from scrapers import Job
@@ -101,6 +102,51 @@ class TestStore(unittest.TestCase):
         self.assertEqual(store.get_seen_count(), 0)
         store.mark_seen([_make_job("a"), _make_job("b")])
         self.assertEqual(store.get_seen_count(), 2)
+
+    def test_prune_old_data_deletes_rows_older_than_retention(self):
+        old = (datetime.now(timezone.utc) - timedelta(days=61)).isoformat()
+        recent = (datetime.now(timezone.utc) - timedelta(days=59)).isoformat()
+
+        old_job = _make_job("old")
+        recent_job = _make_job("recent")
+        store.mark_seen([old_job, recent_job])
+        self._conn.execute(
+            "UPDATE seen_jobs SET first_seen=? WHERE uid=?", (old, old_job.uid)
+        )
+        self._conn.execute(
+            "UPDATE seen_jobs SET first_seen=? WHERE uid=?", (recent, recent_job.uid)
+        )
+        self._conn.execute(
+            """INSERT INTO poll_log (ran_at, company, scraper, found, new_jobs, error)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (old, "OldCo", "greenhouse", 1, 1, None),
+        )
+        self._conn.execute(
+            """INSERT INTO poll_log (ran_at, company, scraper, found, new_jobs, error)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (recent, "RecentCo", "greenhouse", 1, 1, None),
+        )
+
+        deleted = store.prune_old_data(days=60)
+
+        self.assertEqual(deleted, {"seen_jobs": 1, "poll_log": 1})
+        self.assertEqual(store.filter_new([old_job]), [old_job])
+        self.assertEqual(store.filter_new([recent_job]), [])
+        logs = store.get_recent_poll_logs(limit=5)
+        self.assertEqual(len(logs), 1)
+        self.assertEqual(logs[0]["company"], "RecentCo")
+
+    def test_prune_old_data_vacuum_does_not_crash(self):
+        old = (datetime.now(timezone.utc) - timedelta(days=61)).isoformat()
+        job = _make_job("vacuum")
+        store.mark_seen([job])
+        self._conn.execute(
+            "UPDATE seen_jobs SET first_seen=? WHERE uid=?", (old, job.uid)
+        )
+
+        deleted = store.prune_old_data(days=60, vacuum=True)
+
+        self.assertEqual(deleted["seen_jobs"], 1)
 
 
 if __name__ == "__main__":

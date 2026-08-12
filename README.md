@@ -38,6 +38,7 @@ Windows Task Scheduler (every 30 minutes)
   └─► run_poller.bat
         └─► python poller.py
               ├─ loads all config/config-*.yaml
+              ├─ prunes SQLite rows older than 60 days
               ├─ for each active company (~345):
               │    ├─ scraper hits ATS public API → List[Job]
               │    ├─ store.filter_new() → diff vs seen_jobs in SQLite
@@ -266,7 +267,10 @@ RECIPIENT_EMAIL=you@example.com
 - Check logs for the company — `scraped 0 job(s)` could mean the slug is wrong
 
 **Logs not rotating**
-- `RotatingFileHandler` with `backupCount=7` keeps 8 files total (1 active + 7 backups) — this is correct behaviour
+- `RotatingFileHandler` with `backupCount=4` keeps 5 files total (1 active + 4 backups) — this is correct behaviour
+
+**Database size keeps growing**
+- The poller automatically deletes `seen_jobs.first_seen` and `poll_log.ran_at` rows older than 60 days. Deleting rows lets SQLite reuse space; run `VACUUM` manually after a large cleanup if you need the physical `jobs.db` file to shrink immediately.
 
 ---
 

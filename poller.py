@@ -66,7 +66,7 @@ def _setup_logging() -> None:
     root.setLevel(logging.DEBUG)
 
     fh = logging.handlers.RotatingFileHandler(
-        LOG_FILE, maxBytes=5 * 1024 * 1024, backupCount=7, encoding="utf-8"
+        LOG_FILE, maxBytes=5 * 1024 * 1024, backupCount=4, encoding="utf-8"
     )
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(fmt)
@@ -307,6 +307,7 @@ def main() -> None:
 
     try:
         store.init_db()
+        store.prune_old_data(days=60)
         companies = _load_config()
         logger.info("Loaded %d total company config(s)", len(companies))
 

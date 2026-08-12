@@ -11,7 +11,7 @@ Two tables:
 import sqlite3
 import time
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -41,7 +41,10 @@ CREATE TABLE IF NOT EXISTS poll_log (
     new_jobs     INTEGER NOT NULL DEFAULT 0,
     error        TEXT
 );
+
 """
+
+DEFAULT_RETENTION_DAYS = 60
 
 
 def _now_iso() -> str:
@@ -125,6 +128,43 @@ def log_poll(
             )
     except Exception as e:
         logger.warning("log_poll failed (non-fatal): %s", e)
+
+
+def prune_old_data(days: int = DEFAULT_RETENTION_DAYS, vacuum: bool = False) -> dict:
+    """
+    Delete DB rows older than the retention window.
+
+    seen_jobs uses first_seen because that is the reliable timestamp stored in
+    the DB. Individual job posted_dt values are currently not persisted.
+
+    VACUUM is optional because it rewrites the SQLite file. Normal poller runs
+    prune rows so free pages can be reused; use vacuum=True for a one-off/manual
+    physical shrink of jobs.db.
+    """
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+    deleted = {"seen_jobs": 0, "poll_log": 0}
+
+    try:
+        with _connect() as conn:
+            cur = conn.execute("DELETE FROM seen_jobs WHERE first_seen < ?", (cutoff,))
+            deleted["seen_jobs"] = max(cur.rowcount, 0)
+
+            cur = conn.execute("DELETE FROM poll_log WHERE ran_at < ?", (cutoff,))
+            deleted["poll_log"] = max(cur.rowcount, 0)
+
+        if vacuum and any(deleted.values()):
+            with _connect() as conn:
+                conn.execute("VACUUM")
+
+        if any(deleted.values()):
+            logger.info(
+                "Pruned DB rows older than %d days: %d seen_jobs, %d poll_log",
+                days, deleted["seen_jobs"], deleted["poll_log"],
+            )
+        return deleted
+    except Exception as e:
+        logger.warning("prune_old_data failed (non-fatal): %s", e)
+        return deleted
 
 
 def get_seen_count() -> int:
