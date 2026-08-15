@@ -45,7 +45,7 @@ from typing import List, Optional
 
 import requests
 
-from scrapers import Job, is_junior_enough
+from scrapers import Job, is_junior_enough, is_location_allowed
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -98,11 +98,8 @@ def _keyword_match(title: str, keywords: List[str]) -> bool:
 
 
 def _location_match(location: str, allowed: List[str]) -> bool:
-    """Return True if location contains at least one allowed term."""
-    if not allowed:
-        return True
-    loc_lower = location.lower()
-    return any(term.lower() in loc_lower for term in allowed)
+    """Return True if location matches the configured allowed terms."""
+    return is_location_allowed(location, allowed)
 
 
 # ---------------------------------------------------------------------------

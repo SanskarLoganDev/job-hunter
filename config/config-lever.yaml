@@ -379,3 +379,13 @@ companies:
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
+
+  # wealthfront
+  - name: Wealthfront
+    ats: lever
+    slug: wealthfront
+    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
+    locations: [United States, Remote, Palo Alto, CA , New York City, NY , San Francisco, CA , Seattle, WA]
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true

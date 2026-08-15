@@ -32,7 +32,7 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-from scrapers import Job, is_junior_enough
+from scrapers import Job, is_junior_enough, is_location_allowed
 
 # ---------------------------------------------------------------------------
 # UTC helper
@@ -136,10 +136,7 @@ def _normalize_link(href: str) -> str:
 
 
 def _location_allowed(location: str, allowed: List[str]) -> bool:
-    if not allowed:
-        return True
-    loc_lower = location.lower()
-    return any(term.lower() in loc_lower for term in allowed)
+    return is_location_allowed(location, allowed)
 
 
 def _make_session() -> requests.Session:

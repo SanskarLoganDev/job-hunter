@@ -141,10 +141,8 @@ class TestLocationMatch(unittest.TestCase):
         self.assertTrue(_location_match("Austin, TX, US", ["US"]))
 
     def test_brussels_substring_behaviour_documented(self):
-        # "us" is a substring of "Brussels" — known limitation of simple substring match.
-        # In practice config.yaml uses specific city names to avoid this.
         result = _location_match("Brussels, Belgium", ["US"])
-        self.assertIsInstance(result, bool)
+        self.assertFalse(result)
 
 
 # ---------------------------------------------------------------------------

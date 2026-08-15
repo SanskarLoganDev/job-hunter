@@ -2341,14 +2341,6 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Planet Labs
-    ats: greenhouse
-    slug: planetlabs
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, San Francisco]
-    max_age_days: 1
-    active: true
-
   - name: Poppulo
     ats: greenhouse
     slug: poppulo

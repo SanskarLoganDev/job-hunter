@@ -12,7 +12,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
 
-from scrapers import Job, is_junior_enough
+from scrapers import Job, is_junior_enough, is_location_allowed
 from scrapers.amazon import (
     _parse_date,
     _normalize_link,
@@ -76,6 +76,47 @@ class TestIsJuniorEnough(unittest.TestCase):
 
     def test_safeguards_does_not_trigger_lead(self):
         self.assertTrue(is_junior_enough("Software Engineer, Safeguards"))
+
+
+# ---------------------------------------------------------------------------
+# is_location_allowed
+# ---------------------------------------------------------------------------
+
+class TestIsLocationAllowed(unittest.TestCase):
+
+    def test_empty_allowed_passes_any_location(self):
+        self.assertTrue(is_location_allowed("Tel Aviv, Israel", []))
+
+    def test_specific_city_still_matches_by_substring(self):
+        self.assertTrue(is_location_allowed("San Francisco, CA", ["San Francisco"]))
+
+    def test_us_country_terms_match_explicit_country(self):
+        self.assertTrue(is_location_allowed("Remote, United States", ["United States"]))
+        self.assertTrue(is_location_allowed("Austin, TX, US", ["US"]))
+        self.assertTrue(is_location_allowed("Boston, MA, USA", ["USA"]))
+
+    def test_us_filter_matches_state_abbreviations(self):
+        self.assertTrue(is_location_allowed("San Francisco, CA", ["United States"]))
+        self.assertTrue(is_location_allowed("New York, NY", ["US"]))
+        self.assertTrue(is_location_allowed("Seattle, WA", ["USA"]))
+
+    def test_us_filter_matches_state_names(self):
+        self.assertTrue(is_location_allowed("Boston, Massachusetts", ["United States"]))
+        self.assertTrue(is_location_allowed("Austin, Texas", ["US"]))
+
+    def test_us_filter_rejects_international_offices(self):
+        self.assertFalse(is_location_allowed("Tel Aviv, Israel", ["United States"]))
+        self.assertFalse(is_location_allowed("Toronto, Canada", ["US"]))
+        self.assertFalse(is_location_allowed("Brussels, Belgium", ["US"]))
+        self.assertFalse(is_location_allowed("London, United Kingdom", ["US"]))
+
+    def test_remote_allows_international_remote(self):
+        self.assertTrue(is_location_allowed("Remote - Europe", ["Remote"]))
+        self.assertTrue(is_location_allowed("Remote - India", ["United States", "Remote"]))
+        self.assertTrue(is_location_allowed("London, UK; Remote", ["Remote"]))
+
+    def test_us_without_remote_rejects_international_remote(self):
+        self.assertFalse(is_location_allowed("Remote - Europe", ["United States"]))
 
 
 # ---------------------------------------------------------------------------
