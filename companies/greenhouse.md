@@ -5,7 +5,7 @@ Scraper: `scrapers/greenhouse.py`
 Config: `config/config-greenhouse.yaml`
 API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 
-**Total: 208 companies**
+**Total: 323 companies**
 
 | Company | Slug |
 |---|---|
@@ -219,3 +219,15 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | Vaticlabs | `vaticlabs` |
 | DelarTech | `delartech` |
 | Eplusinc | `eplusinc` |
+| Anduril | `andurilindustries` |
+| Chime | `chime` |
+| Duolingo | `duolingo` |
+| Iterable | `iterable` |
+| Attentive | `attentive` |
+| Customer.io | `customerio` |
+| Blend | `blend` |
+| Instabase | `instabase` |
+| Vannevar Labs | `vannevarlabs` |
+| Arize AI | `arizeai` |
+| Tailscale | `tailscale` |
+| CircleCI | `circleci` |

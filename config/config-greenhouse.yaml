@@ -1942,3 +1942,76 @@ companies:
     slug: spire
     max_age_days: 1
     active: true
+
+  # Verified 2026-08-17 via Greenhouse API; current matching target roles found.
+  - name: Anduril
+    ats: greenhouse
+    slug: andurilindustries
+    max_age_days: 1
+    active: true
+
+  - name: Chime
+    ats: greenhouse
+    slug: chime
+    max_age_days: 1
+    active: true
+
+  - name: Duolingo
+    ats: greenhouse
+    slug: duolingo
+    max_age_days: 1
+    active: true
+
+  - name: Iterable
+    ats: greenhouse
+    slug: iterable
+    max_age_days: 1
+    active: true
+
+  - name: Attentive
+    ats: greenhouse
+    slug: attentive
+    max_age_days: 1
+    active: true
+
+  - name: Customer.io
+    ats: greenhouse
+    slug: customerio
+    max_age_days: 1
+    active: true
+
+  - name: Blend
+    ats: greenhouse
+    slug: blend
+    max_age_days: 1
+    active: true
+
+  - name: Instabase
+    ats: greenhouse
+    slug: instabase
+    max_age_days: 1
+    active: true
+
+  - name: Vannevar Labs
+    ats: greenhouse
+    slug: vannevarlabs
+    max_age_days: 1
+    active: true
+
+  - name: Arize AI
+    ats: greenhouse
+    slug: arizeai
+    max_age_days: 1
+    active: true
+
+  - name: Tailscale
+    ats: greenhouse
+    slug: tailscale
+    max_age_days: 1
+    active: true
+
+  - name: CircleCI
+    ats: greenhouse
+    slug: circleci
+    max_age_days: 1
+    active: true
