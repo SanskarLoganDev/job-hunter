@@ -20,21 +20,9 @@ companies:
 
   - name: Google
     ats: google
-    keywords:
-      - software engineer
-      - software developer
-      - python developer
-      - full stack
-      - backend engineer
-      - devops engineer
-      - cloud engineer
-      - ai engineer
-      - ml engineer
-      - application developer
-      - web developer
+    extra_keywords:
       - data engineer
       - systems engineer
       - platform engineer
-      - forward deployed engineer
     max_age_days: 1
     active: true

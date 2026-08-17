@@ -22,7 +22,7 @@ Targeted job hunting is tedious: you must repeatedly check specific companies' c
 
 Poll ATS APIs directly at the source, every 30 minutes. The moment a recruiter publishes a job in Greenhouse, Ashby, or Lever, it hits your inbox — not LinkedIn's crawl queue.
 
-- **~345 companies** monitored across Amazon, Greenhouse, Ashby, and Lever
+- **509 active company entries** monitored across Amazon, Greenhouse, Ashby, Lever, SmartRecruiters, Deltek, Eightfold AI, and Google
 - **Keyword filtering** — only roles matching your target titles
 - **Seniority filtering** — excludes senior/staff/principal/lead/director/manager
 - **Location filtering** — US only (remote + office)
@@ -37,9 +37,9 @@ Poll ATS APIs directly at the source, every 30 minutes. The moment a recruiter p
 Windows Task Scheduler (every 30 minutes)
   └─► run_poller.bat
         └─► python poller.py
-              ├─ loads all config/config-*.yaml
+              ├─ loads config/defaults.yaml + all config/config-*.yaml
               ├─ prunes SQLite rows older than 60 days
-              ├─ for each active company (~345):
+              ├─ for each active company (509):
               │    ├─ scraper hits ATS public API → List[Job]
               │    ├─ store.filter_new() → diff vs seen_jobs in SQLite
               │    ├─ if new: send HTML email via Gmail SMTP
@@ -47,10 +47,14 @@ Windows Task Scheduler (every 30 minutes)
               └─ exits (one-shot, not a daemon)
 
 ATS APIs (all public, no auth required):
-  Amazon    → amazon.jobs/en/search.json
-  Greenhouse → boards-api.greenhouse.io/v1/boards/{slug}/jobs
-  Ashby     → api.ashbyhq.com/posting-api/job-board/{slug}
-  Lever     → api.lever.co/v0/postings/{slug}?mode=json
+  Amazon          → amazon.jobs/en/search.json
+  Greenhouse      → boards-api.greenhouse.io/v1/boards/{slug}/jobs
+  Ashby           → api.ashbyhq.com/posting-api/job-board/{slug}
+  Lever           → api.lever.co/v0/postings/{slug}?mode=json
+  SmartRecruiters → api.smartrecruiters.com/v1/companies/{identifier}/postings
+  Deltek          → jobsapi-internal.m-cloud.io/api/job
+  Eightfold AI    → {base_url}/api/pcsx/search
+  Google          → careers.google.com/jobs/results/ HTML
 ```
 
 ---
@@ -151,14 +155,18 @@ gcloud scheduler jobs create http jobwatch-10min \
 
 ---
 
-## Companies Monitored (~345 total)
+## Companies Monitored (509 active entries)
 
 | ATS | Count | Config |
 |---|---|---|
 | Amazon | 1 | `config/config-amazon.yaml` |
-| Greenhouse | ~199 | `config/config-greenhouse.yaml` |
-| Ashby | 107 | `config/config-ashby.yaml` |
-| Lever | 38 | `config/config-lever.yaml` |
+| Greenhouse | 311 | `config/config-greenhouse.yaml` |
+| Ashby | 121 | `config/config-ashby.yaml` |
+| Lever | 44 | `config/config-lever.yaml` |
+| SmartRecruiters | 28 | `config/config-smartrecruiters.yaml` |
+| Deltek | 1 | `config/config-deltek.yaml` |
+| Eightfold AI | 2 | `config/config-eightfold.yaml` |
+| Google | 1 | `config/config-google.yaml` |
 
 See `companies/` folder for full lists per ATS. Includes pure software companies plus hardware/IoT/embedded companies (Samsara, Verkada, Axon, Waymo, Aurora, SpaceX, Anduril, Gecko Robotics, Harmattan AI, BETA Technologies, E-Space, etc.)
 
@@ -166,12 +174,14 @@ See `companies/` folder for full lists per ATS. Includes pure software companies
 
 ## Target Roles (Keywords)
 
+Shared defaults live in `config/defaults.yaml`, so individual company config entries only need company-specific fields. A company can still override `keywords` / `locations`, or append with `extra_keywords` / `extra_locations`.
+
 ```
 software engineer        software developer      python developer
 full stack               backend engineer        devops engineer
 cloud engineer           ai engineer             ml engineer
 forward deployed engineer  application developer  web developer
-embedded software engineer  iot engineer          embedded systems engineer (hardware companies only)
+embedded software engineer  iot engineer          embedded systems engineer
 ```
 
 ---
@@ -186,20 +196,31 @@ job-hunter/
 ├── run_poller.bat             ← bat wrapper for Task Scheduler
 ├── app.py                     ← original hackathon FastAPI web UI
 ├── config/
+│   ├── defaults.yaml
 │   ├── config-amazon.yaml
+│   ├── config-deltek.yaml
+│   ├── config-google.yaml
 │   ├── config-greenhouse.yaml
 │   ├── config-ashby.yaml
-│   └── config-lever.yaml
+│   ├── config-lever.yaml
+│   ├── config-eightfold.yaml
+│   └── config-smartrecruiters.yaml
 ├── scrapers/
-│   ├── __init__.py            ← Job dataclass + seniority filter
+│   ├── __init__.py            ← Job dataclass + seniority/location filters
 │   ├── amazon.py
+│   ├── deltek.py
+│   ├── google.py
 │   ├── greenhouse.py
 │   ├── ashby.py
-│   └── lever.py
+│   ├── lever.py
+│   ├── eightfold.py
+│   └── smartrecruiters.py
 ├── companies/
 │   ├── greenhouse.md
 │   ├── ashby.md
-│   └── lever.md
+│   ├── lever.md
+│   ├── deltek.md
+│   └── smartrecruiters.md
 ├── tests/
 │   ├── test_scrapers.py
 │   ├── test_store.py
@@ -263,7 +284,7 @@ RECIPIENT_EMAIL=you@example.com
 - Restart poller after editing `.env`
 
 **0 jobs after filters**
-- Temporarily set `max_age_days: 30` and `locations: []` in config to see raw data
+- Temporarily set `max_age_days: 30` and override `locations: []` for that company to see raw data
 - Check logs for the company — `scraped 0 job(s)` could mean the slug is wrong
 
 **Logs not rotating**

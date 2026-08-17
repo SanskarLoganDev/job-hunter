@@ -5,7 +5,7 @@ Entry point called by Windows Task Scheduler every 30 minutes.
 
 Flow:
   1. Acquire a lock file — exit immediately if another instance is running.
-  2. Load all config-*.yaml files from the config/ folder alphabetically.
+  2. Load config/defaults.yaml, then all config-*.yaml files alphabetically.
   3. For each active company across all configs:
        a. Route to the right scraper module.
        b. Diff results against seen_jobs in the DB.
@@ -16,6 +16,7 @@ Flow:
 One company failing never affects the others.
 
 CONFIG FOLDER: config/
+  defaults.yaml               — shared keywords / locations defaults
   config-amazon.yaml          — Amazon
   config-ashby.yaml           — Ashby companies
   config-greenhouse.yaml      — Greenhouse companies
@@ -51,6 +52,7 @@ BASE_DIR   = Path(__file__).parent
 LOG_FILE   = BASE_DIR / "logs" / "poller.log"
 LOCK_FILE  = BASE_DIR / "logs" / "poller.lock"
 CONFIG_DIR = BASE_DIR / "config"
+DEFAULTS_FILE = CONFIG_DIR / "defaults.yaml"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -118,12 +120,83 @@ def _release_lock() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Config loader — loads ALL config-*.yaml files from config/ folder
+# Config loader — loads defaults.yaml + ALL config-*.yaml files
 # ---------------------------------------------------------------------------
+
+_LIST_DEFAULT_FIELDS = ("keywords", "locations")
+
+
+def _dedupe_list(values: list) -> list:
+    """Return a de-duplicated list preserving first-seen order."""
+    seen = set()
+    result = []
+    for value in values or []:
+        if value is None:
+            continue
+        key = str(value).strip().lower()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        result.append(value)
+    return result
+
+
+def _load_defaults() -> dict:
+    """Load shared config defaults from config/defaults.yaml if present."""
+    if not DEFAULTS_FILE.exists():
+        return {}
+
+    try:
+        with open(DEFAULTS_FILE, encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+    except yaml.YAMLError as e:
+        logger.error("%s is malformed: %s — ignoring shared defaults.", DEFAULTS_FILE.name, e)
+        return {}
+    except OSError as e:
+        logger.error("Cannot read %s: %s — ignoring shared defaults.", DEFAULTS_FILE.name, e)
+        return {}
+
+    defaults = data.get("defaults", data)
+    return defaults if isinstance(defaults, dict) else {}
+
+
+def _merge_defaults(base: dict, override: dict) -> dict:
+    """Merge global defaults with optional per-config defaults."""
+    merged = dict(base or {})
+    merged.update(override or {})
+    for field in _LIST_DEFAULT_FIELDS:
+        if field in merged:
+            merged[field] = _dedupe_list(merged.get(field, []))
+    return merged
+
+
+def _apply_defaults(company: dict, defaults: dict) -> dict:
+    """
+    Apply defaults to one company config.
+
+    A company can fully override `keywords` / `locations` by defining those
+    fields directly, or append to the defaults with `extra_keywords` /
+    `extra_locations`.
+    """
+    company = company or {}
+    defaults = defaults or {}
+    cfg = dict(defaults)
+    cfg.update(company)
+
+    for field in _LIST_DEFAULT_FIELDS:
+        extra_field = f"extra_{field}"
+        base_values = company.get(field, defaults.get(field, []))
+        cfg[field] = _dedupe_list(
+            list(base_values or []) + list(company.get(extra_field, []) or [])
+        )
+
+    return cfg
+
 
 def _load_config() -> list:
     """
     Load and merge companies from all config-*.yaml files in config/.
+    config/defaults.yaml supplies shared defaults applied to every company.
     Files loaded alphabetically — all treated equally, no required primary.
     Aborts only if the config/ folder itself is missing or empty.
     """
@@ -137,6 +210,7 @@ def _load_config() -> list:
         logger.critical("No config-*.yaml files found in %s — aborting.", CONFIG_DIR)
         sys.exit(1)
 
+    global_defaults = _load_defaults()
     all_companies = []
 
     for path in all_paths:
@@ -150,7 +224,11 @@ def _load_config() -> list:
             logger.error("Cannot read %s: %s — skipping.", path.name, e)
             continue
 
-        companies = data.get("companies", [])
+        file_defaults = _merge_defaults(global_defaults, data.get("defaults", {}))
+        companies = [
+            _apply_defaults(company, file_defaults)
+            for company in data.get("companies", [])
+        ]
         logger.debug("Loaded %d company config(s) from %s", len(companies), path.name)
         all_companies.extend(companies)
 

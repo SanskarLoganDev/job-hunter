@@ -7,37 +7,8 @@ companies:
 
   - name: Amazon
     ats: amazon
-    keywords:
-      - software engineer
-      - software developer
-      - python developer
-      - full stack
-      - backend engineer
-      - devops engineer
-      - cloud engineer
+    extra_keywords:
       - cloud architect
-      - ai engineer
-      - application developer
-      - forward deployed engineer
-    locations:
-      - United States
-      - US
-      - Remote
-      - Seattle
-      - New York
-      - Austin
-      - San Francisco
-      - Boston
-      - Chicago
-      - Dallas
-      - Atlanta
-      - Arlington
-      - Bellevue
-      - Redmond
-      - Sunnyvale
-      - Santa Clara
-      - Washington
-      - Virginia
     max_age_days: 2
     detail_fetch_limit: 30
     active: true

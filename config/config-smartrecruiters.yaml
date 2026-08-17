@@ -34,8 +34,6 @@ companies:
   - name: Bosch Group
     ats: smartrecruiters
     slug: BoschGroup
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -44,8 +42,6 @@ companies:
   - name: Visa
     ats: smartrecruiters
     slug: Visa
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -58,8 +54,6 @@ companies:
   - name: LinkedIn
     ats: smartrecruiters
     slug: LinkedIn3
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -95,8 +89,6 @@ companies:
   - name: Canyon GBS
     ats: smartrecruiters
     slug: Canyongbs  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -108,8 +100,6 @@ companies:
   - name: Wiser Solutions, Inc.
     ats: smartrecruiters
     slug: Wiser  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -121,8 +111,6 @@ companies:
   - name: Jitterbit
     ats: smartrecruiters
     slug: Jitterbit  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -134,8 +122,6 @@ companies:
   - name: BCC Software
     ats: smartrecruiters
     slug: BccSoftware  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -147,8 +133,6 @@ companies:
   - name: UNIFY Dots
     ats: smartrecruiters
     slug: Unifydots  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -160,8 +144,6 @@ companies:
   - name: Campfire Interactive
     ats: smartrecruiters
     slug: CampfireInteractive  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -173,8 +155,6 @@ companies:
   - name: Redica Systems
     ats: smartrecruiters
     slug: Redicasystems  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -186,8 +166,6 @@ companies:
   - name: Intelerad
     ats: smartrecruiters
     slug: Intelerad  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -199,8 +177,6 @@ companies:
   - name: insightsoftware
     ats: smartrecruiters
     slug: insightsoftware  # Changed URL but verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -212,8 +188,6 @@ companies:
   - name: Mirantis
     ats: smartrecruiters
     slug: Mirantis  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -225,8 +199,6 @@ companies:
   - name: Cricut
     ats: smartrecruiters
     slug: Cricut  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer, embedded software engineer, iot engineer, embedded systems engineer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -238,8 +210,6 @@ companies:
   - name: Docusign
     ats: smartrecruiters
     slug: Docusign  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -251,8 +221,6 @@ companies:
   - name: Fiverr
     ats: smartrecruiters
     slug: Fiverr  # Changed URL but verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -264,8 +232,6 @@ companies:
   - name: Mindtickle
     ats: smartrecruiters
     slug: Mindtickle  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -277,8 +243,6 @@ companies:
   - name: New Relic
     ats: smartrecruiters
     slug: NewRelic  # Changed URL but verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -290,8 +254,6 @@ companies:
   - name: NextGen Healthcare
     ats: smartrecruiters
     slug: Nextgen  # Changed URL but verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -303,8 +265,6 @@ companies:
   - name: Palantir Technologies
     ats: smartrecruiters
     slug: Palantir  # # Changed URL but verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -316,8 +276,6 @@ companies:
   - name: ServiceNow
     ats: smartrecruiters
     slug: Servicenow  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -329,8 +287,6 @@ companies:
   - name: ServiceTitan
     ats: smartrecruiters
     slug: Servicetitan  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -342,8 +298,6 @@ companies:
   - name: SolarWinds
     ats: smartrecruiters
     slug: Solarwinds  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -353,8 +307,6 @@ companies:
   - name: Versant
     ats: smartrecruiters
     slug: Versant3  # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -363,8 +315,6 @@ companies:
   - name: oneclick-ui
     ats: smartrecruiters
     slug: oneclick-ui # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, Denver, CO]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -373,8 +323,6 @@ companies:
   - name: MindLance
     ats: smartrecruiters
     slug: mindlance2 # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, St. Louis, MO]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -382,8 +330,6 @@ companies:
   - name: Wabtec
     ats: smartrecruiters
     slug: wabtec # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, West Melbourne, FL]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
@@ -391,8 +337,6 @@ companies:
   - name: Wellfit
     ats: smartrecruiters
     slug: wellfit # Verified
-    keywords: [software engineer, software developer, python developer, full stack, backend engineer, devops engineer, cloud engineer, ai engineer, ml engineer, forward deployed engineer, application developer, web developer]
-    locations: [United States, Remote, Irving, TX]
     max_age_days: 1
     detail_fetch_limit: 30
     active: true

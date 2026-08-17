@@ -15,8 +15,9 @@
 #     &category[]=Software%20Development%2FDesign
 #
 # LOCATION: API-side filter to education=United States — all results are US.
-# The `locations` field below is kept for future flexibility but the scraper
-# does not apply a secondary location filter (already US-only from the API).
+# Shared default locations still apply at poller config-load time for interface
+# consistency, but the scraper does not apply a secondary location filter
+# because the API response is already US-only.
 #
 # NO SLUG NEEDED: Deltek is a single fixed tenant. The scraper hardcodes
 # org=2458, unlike GH/Ashby/Lever/SmartRecruiters which are multi-tenant.
@@ -25,18 +26,7 @@ companies:
 
   - name: Deltek
     ats: deltek
-    keywords:
-      - software engineer
-      - software developer
-      - python developer
-      - full stack
-      - backend engineer
-      - devops engineer
-      - cloud engineer
-      - ai engineer
-      - ml engineer
-      - application developer
-      - web developer
+    extra_keywords:
       - data engineer
       - systems engineer
     max_age_days: 2
