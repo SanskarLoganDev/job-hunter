@@ -5,7 +5,7 @@ Scraper: `scrapers/ashby.py`
 Config: `config/config-ashby.yaml`
 API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 
-**Total: 111 companies**
+**Total: 133 companies**
 
 | Company | Slug |
 |---|---|
@@ -122,3 +122,15 @@ API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 | Claylabs | `claylabs` |
 | Mercor | `mercor` |
 | Confido | `confido` |
+| Cursor | `cursor` |
+| Modal Labs | `modal` |
+| Baseten | `baseten` |
+| RunPod | `runpod` |
+| ElevenLabs | `elevenlabs` |
+| PostHog | `posthog` |
+| Browserbase | `browserbase` |
+| Exa | `exa` |
+| Tavus | `tavus` |
+| Factory | `factory` |
+| Rilla | `rilla` |
+| Numeric | `numeric` |

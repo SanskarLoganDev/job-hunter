@@ -770,3 +770,76 @@ companies:
     slug: composio
     max_age_days: 1
     active: true
+
+  # Verified 2026-08-17 via Ashby public API; current matching target roles found.
+  - name: Cursor
+    ats: ashby
+    slug: cursor
+    max_age_days: 1
+    active: true
+
+  - name: Modal Labs
+    ats: ashby
+    slug: modal
+    max_age_days: 1
+    active: true
+
+  - name: Baseten
+    ats: ashby
+    slug: baseten
+    max_age_days: 1
+    active: true
+
+  - name: RunPod
+    ats: ashby
+    slug: runpod
+    max_age_days: 1
+    active: true
+
+  - name: ElevenLabs
+    ats: ashby
+    slug: elevenlabs
+    max_age_days: 1
+    active: true
+
+  - name: PostHog
+    ats: ashby
+    slug: posthog
+    max_age_days: 1
+    active: true
+
+  - name: Browserbase
+    ats: ashby
+    slug: browserbase
+    max_age_days: 1
+    active: true
+
+  - name: Exa
+    ats: ashby
+    slug: exa
+    max_age_days: 1
+    active: true
+
+  - name: Tavus
+    ats: ashby
+    slug: tavus
+    max_age_days: 1
+    active: true
+
+  - name: Factory
+    ats: ashby
+    slug: factory
+    max_age_days: 1
+    active: true
+
+  - name: Rilla
+    ats: ashby
+    slug: rilla
+    max_age_days: 1
+    active: true
+
+  - name: Numeric
+    ats: ashby
+    slug: numeric
+    max_age_days: 1
+    active: true

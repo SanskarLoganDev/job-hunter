@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter.
 Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 
-**Total: 323 Greenhouse + 1 Amazon + 121 Ashby + 44 Lever + 28 SmartRecruiters + 1 Deltek + 1 Google + 2 Eightfold (Microsoft, CBTS) = 521 active company entries**
+**Total: 323 Greenhouse + 1 Amazon + 133 Ashby + 44 Lever + 28 SmartRecruiters + 1 Deltek + 1 Google + 2 Eightfold (Microsoft, CBTS) = 533 active company entries**
 
 ---
 
@@ -13,7 +13,7 @@ Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 |---|---|---|---|
 | Amazon | 1 | — | `config/config-amazon.yaml` |
 | Greenhouse | 323 | `companies/greenhouse.md` | `config/config-greenhouse.yaml` |
-| Ashby | 121 | `companies/ashby.md` | `config/config-ashby.yaml` |
+| Ashby | 133 | `companies/ashby.md` | `config/config-ashby.yaml` |
 | Lever | 44 | `companies/lever.md` | `config/config-lever.yaml` |
 | SmartRecruiters | 28 | `companies/smartrecruiters.md` | `config/config-smartrecruiters.yaml` |
 | Deltek | 1 | `companies/deltek.md` | `config/config-deltek.yaml` |
