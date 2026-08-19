@@ -2015,3 +2015,10 @@ companies:
     slug: circleci
     max_age_days: 1
     active: true
+
+# sironamedical
+  - name: Sirona medical
+    ats: greenhouse
+    slug: sironamedical
+    max_age_days: 1
+    active: true
