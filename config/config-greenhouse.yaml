@@ -1944,11 +1944,11 @@ companies:
     active: true
 
   # Verified 2026-08-17 via Greenhouse API; current matching target roles found.
-  - name: Anduril
-    ats: greenhouse
-    slug: andurilindustries
-    max_age_days: 1
-    active: true
+  # - name: Anduril
+  #   ats: greenhouse
+  #   slug: andurilindustries
+  #   max_age_days: 1
+  #   active: true
 
   - name: Chime
     ats: greenhouse
@@ -1992,11 +1992,11 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Vannevar Labs
-    ats: greenhouse
-    slug: vannevarlabs
-    max_age_days: 1
-    active: true
+  # - name: Vannevar Labs
+  #   ats: greenhouse
+  #   slug: vannevarlabs
+  #   max_age_days: 1
+  #   active: true
 
   - name: Arize AI
     ats: greenhouse

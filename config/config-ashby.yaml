@@ -89,11 +89,11 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Shield AI
-    ats: ashby
-    slug: shield-ai
-    max_age_days: 1
-    active: true
+  # - name: Shield AI
+  #   ats: ashby
+  #   slug: shield-ai
+  #   max_age_days: 1
+  #   active: true
 
   - name: Miro
     ats: ashby
@@ -173,11 +173,11 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Saronic Technologies
-    ats: ashby
-    slug: saronic
-    max_age_days: 1
-    active: true
+  # - name: Saronic Technologies
+  #   ats: ashby
+  #   slug: saronic
+  #   max_age_days: 1
+  #   active: true
 
   - name: Instructure
     ats: ashby
@@ -660,11 +660,11 @@ companies:
     max_age_days: 1
     active: true
 
-  - name: Spear AI
-    ats: ashby
-    slug: spear-ai
-    max_age_days: 1
-    active: true
+  # - name: Spear AI
+  #   ats: ashby
+  #   slug: spear-ai
+  #   max_age_days: 1
+  #   active: true
 
   # https://jobs.ashbyhq.com/brainco
   - name: BrainCo
