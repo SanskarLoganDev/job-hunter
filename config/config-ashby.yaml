@@ -843,3 +843,23 @@ companies:
     slug: numeric
     max_age_days: 1
     active: true
+
+  - name: Inductive Automation
+    ats: ashby
+    slug: inductive-automation-llc
+    max_age_days: 1
+    active: true
+
+  - name: Maximor AI
+    ats: ashby
+    slug: maximor
+    max_age_days: 1
+    active: true
+
+  - name: Koah
+    ats: ashby
+    slug: koahlabs
+    extra_locations:
+      - San Francisco
+    max_age_days: 1
+    active: true

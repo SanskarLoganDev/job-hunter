@@ -231,3 +231,4 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | Arize AI | `arizeai` |
 | Tailscale | `tailscale` |
 | CircleCI | `circleci` |
+| Kikoff | `kikoff` |

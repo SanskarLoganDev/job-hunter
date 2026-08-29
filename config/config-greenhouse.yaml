@@ -2022,3 +2022,13 @@ companies:
     slug: sironamedical
     max_age_days: 1
     active: true
+
+  # Greenhouse currently reports this location as "San Francisco" without "CA",
+  # so the extra location keeps the current US office role from being missed.
+  - name: Kikoff
+    ats: greenhouse
+    slug: kikoff
+    extra_locations:
+      - San Francisco
+    max_age_days: 1
+    active: true

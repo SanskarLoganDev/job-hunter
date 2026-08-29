@@ -160,7 +160,7 @@ gcloud scheduler jobs create http jobwatch-10min \
 | ATS | Count | Config |
 |---|---|---|
 | Amazon | 1 | `config/config-amazon.yaml` |
-| Greenhouse | 311 | `config/config-greenhouse.yaml` |
+| Greenhouse | 323 | `config/config-greenhouse.yaml` |
 | Ashby | 133 | `config/config-ashby.yaml` |
 | Lever | 44 | `config/config-lever.yaml` |
 | SmartRecruiters | 28 | `config/config-smartrecruiters.yaml` |

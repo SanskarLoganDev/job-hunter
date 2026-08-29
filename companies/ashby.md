@@ -134,3 +134,6 @@ API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 | Factory | `factory` |
 | Rilla | `rilla` |
 | Numeric | `numeric` |
+| Inductive Automation | `inductive-automation-llc` |
+| Maximor AI | `maximor` |
+| Koah | `koahlabs` |
