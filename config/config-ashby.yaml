@@ -863,3 +863,10 @@ companies:
       - San Francisco
     max_age_days: 1
     active: true
+
+  # https://jobs.ashbyhq.com/Abridge
+  - name: Abridge
+    ats: ashby
+    slug: Abridge
+    max_age_days: 1
+    active: true
