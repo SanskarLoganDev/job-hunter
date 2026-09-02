@@ -19,6 +19,7 @@ CONFIG FOLDER: config/
   defaults.yaml               — shared keywords / locations defaults
   config-amazon.yaml          — Amazon
   config-ashby.yaml           — Ashby companies
+  config-infosys.yaml         — Infosys
   config-greenhouse.yaml      — Greenhouse companies
   config-lever.yaml           — Lever companies
   config-smartrecruiters.yaml — SmartRecruiters companies
@@ -248,6 +249,7 @@ _SCRAPER_MAP = {
     "google":          "scrapers.google",
     "eightfold":       "scrapers.eightfold",
     "greenhouse":      "scrapers.greenhouse",
+    "infosys":         "scrapers.infosys",
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",
     "smartrecruiters": "scrapers.smartrecruiters",
@@ -255,7 +257,7 @@ _SCRAPER_MAP = {
 }
 
 # ATS platforms that use a slug for the per-company API call
-_SLUG_BASED = {"greenhouse", "lever", "ashby", "smartrecruiters"}
+_SLUG_BASED = {"greenhouse", "lever", "ashby", "smartrecruiters", "infosys"}
 
 # Eightfold AI tenants are identified by domain + base_url instead of a slug
 # (e.g. Microsoft, CBTS — same scraper module, different tenant params)
@@ -335,6 +337,14 @@ def _poll_company(cfg: dict) -> None:
         scrape_kwargs["domain"] = domain
         scrape_kwargs["base_url"] = base_url
         scrape_kwargs["location_param"] = cfg.get("location_param", "")
+
+    # Infosys is a custom HTML scraper. It uses slug only for router/config
+    # consistency; pagination/runtime are capped from YAML because the board can
+    # return many jobs and does not expose reliable posted dates.
+    if ats == "infosys":
+        scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 3))
+        scrape_kwargs["per_page"] = int(cfg.get("per_page", 100))
+        scrape_kwargs["location_param"] = cfg.get("location_param", "USA")
 
     error_msg = None
     jobs      = []

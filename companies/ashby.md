@@ -5,7 +5,7 @@ Scraper: `scrapers/ashby.py`
 Config: `config/config-ashby.yaml`
 API endpoint: `https://api.ashbyhq.com/posting-api/job-board/{slug}`
 
-**Total: 133 companies**
+**Total: 134 companies**
 
 | Company | Slug |
 |---|---|

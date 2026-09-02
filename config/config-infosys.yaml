@@ -1,0 +1,21 @@
+# config/config-infosys.yaml
+# Infosys Digital Careers custom scraper.
+# Loaded automatically by poller.py.
+#
+# Infosys does not appear to expose a reliable posted-date field on its public
+# listing/detail HTML, so max_age_days is set to 0. The scraper returns open
+# matching jobs and the existing SQLite seen_jobs table handles dedup by reqid.
+#
+# Runtime guard:
+#   max_pages * per_page caps the number of listing cards fetched per run.
+
+companies:
+
+  - name: Infosys
+    ats: infosys
+    slug: infosys
+    location_param: USA
+    max_pages: 3
+    per_page: 100
+    max_age_days: 0
+    active: true
