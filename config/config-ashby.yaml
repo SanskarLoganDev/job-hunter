@@ -870,3 +870,17 @@ companies:
     slug: Abridge
     max_age_days: 1
     active: true
+
+  # https://jobs.ashbyhq.com/hanover-park
+  - name: Hanover Park
+    ats: ashby
+    slug: hanover-park
+    max_age_days: 1
+    active: true
+
+  # https://jobs.ashbyhq.com/nectar-social
+  - name: Nectar Social
+    ats: ashby
+    slug: nectar-social
+    max_age_days: 1
+    active: true
