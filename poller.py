@@ -20,6 +20,7 @@ CONFIG FOLDER: config/
   config-amazon.yaml          — Amazon
   config-ashby.yaml           — Ashby companies
   config-infosys.yaml         — Infosys
+  config-talentbrew.yaml      — TalentBrew/Radancy companies
   config-greenhouse.yaml      — Greenhouse companies
   config-lever.yaml           — Lever companies
   config-smartrecruiters.yaml — SmartRecruiters companies
@@ -253,6 +254,7 @@ _SCRAPER_MAP = {
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",
     "smartrecruiters": "scrapers.smartrecruiters",
+    "talentbrew":      "scrapers.talentbrew",
     # "workday":    "scrapers.workday",   # not yet built
 }
 
@@ -345,6 +347,21 @@ def _poll_company(cfg: dict) -> None:
         scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 3))
         scrape_kwargs["per_page"] = int(cfg.get("per_page", 100))
         scrape_kwargs["location_param"] = cfg.get("location_param", "USA")
+
+    # TalentBrew/Radancy sites are configured by base URL + search path rather
+    # than a slug. Query params and location facets vary by company.
+    if ats == "talentbrew":
+        base_url = cfg.get("base_url", "")
+        if not base_url:
+            logger.error("%s: 'base_url' required for %s scraper", name, ats)
+            store.log_poll(name, ats, 0, 0, error="Missing base_url in config")
+            return
+        scrape_kwargs["base_url"] = base_url
+        scrape_kwargs["search_path"] = cfg.get("search_path", "/en/search-jobs")
+        scrape_kwargs["query_params"] = cfg.get("query_params", {})
+        scrape_kwargs["location_params"] = cfg.get("location_params", [])
+        scrape_kwargs["location_param_labels"] = cfg.get("location_param_labels", {})
+        scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 5))
 
     error_msg = None
     jobs      = []

@@ -2032,3 +2032,17 @@ companies:
       - San Francisco
     max_age_days: 1
     active: true
+
+   # watershed
+  - name: Watershed
+    ats: greenhouse
+    slug: watershed
+    max_age_days: 1
+    active: true
+
+  # IMC
+  - name: IMC
+    ats: greenhouse
+    slug: imc
+    max_age_days: 1
+    active: true

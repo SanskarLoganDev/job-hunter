@@ -301,3 +301,11 @@ companies:
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
+
+  # nationaljournal
+  - name: National Journal
+    ats: lever
+    slug: nationaljournal
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true

@@ -3,7 +3,7 @@
 All companies currently monitored by JobHunter.
 Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 
-**Total: 323 Greenhouse + 1 Amazon + 134 Ashby + 44 Lever + 28 SmartRecruiters + 1 Deltek + 1 Google + 2 Eightfold (Microsoft, CBTS) + 1 Infosys = 535 active company entries**
+**Total: 324 Greenhouse + 1 Amazon + 136 Ashby + 44 Lever + 28 SmartRecruiters + 1 Deltek + 1 Google + 2 Eightfold (Microsoft, CBTS) + 1 Infosys + 1 TalentBrew/Radancy = 539 active company entries**
 
 ---
 
@@ -12,18 +12,20 @@ Config files live in `config/`. Detailed per-ATS lists live in `companies/`.
 | ATS | Count | Detail file | Config file |
 |---|---|---|---|
 | Amazon | 1 | — | `config/config-amazon.yaml` |
-| Greenhouse | 323 | `companies/greenhouse.md` | `config/config-greenhouse.yaml` |
-| Ashby | 134 | `companies/ashby.md` | `config/config-ashby.yaml` |
+| Greenhouse | 324 | `companies/greenhouse.md` | `config/config-greenhouse.yaml` |
+| Ashby | 136 | `companies/ashby.md` | `config/config-ashby.yaml` |
 | Lever | 44 | `companies/lever.md` | `config/config-lever.yaml` |
 | SmartRecruiters | 28 | `companies/smartrecruiters.md` | `config/config-smartrecruiters.yaml` |
 | Deltek | 1 | `companies/deltek.md` | `config/config-deltek.yaml` |
 | Google | 1 | — | `config/config-google.yaml` |
 | Eightfold | 2 (Microsoft, CBTS) | — | `config/config-eightfold.yaml` |
 | Infosys | 1 | `companies/infosys.md` | `config/config-infosys.yaml` |
+| TalentBrew/Radancy | 1 | `companies/talentbrew.md` | `config/config-talentbrew.yaml` |
 
 Note: Workable was removed — too few relevant jobs. `companies/workable.md` kept as reference backlog.
 Note: Eightfold is a generic scraper (`scrapers/eightfold.py`) covering any company on the Eightfold AI careers platform, identified by `domain` + `base_url` per company (no slug). Started as Microsoft-only, generalized after CBTS was confirmed to run the identical platform/API. New Eightfold-based companies are a config-only addition.
 Note: Infosys uses a custom Digital Careers HTML scraper. Its public pages do not expose a reliable posted date, so alerts are based on newly discovered requisition IDs after the initial baseline is stored in SQLite.
+Note: TalentBrew/Radancy is a generic HTML scraper for sites with `.search-results__job-title-link` rows. McKesson uses this platform and exposes posted dates in the listing HTML.
 
 ---
 
@@ -36,6 +38,7 @@ Note: Infosys uses a custom Digital Careers HTML scraper. Its public pages do no
    - SmartRecruiters: `https://careers.smartrecruiters.com/SLUG` — identifier is NOT always the obvious brand name. **Always open in browser to confirm real jobs load** — a search engine hit is not sufficient (stale/defunct boards exist; Skechers was a confirmed example of this).
    - Deltek: fixed tenant (org 2458), no slug — add keywords only
    - Infosys: custom single-company scraper in `scrapers/infosys.py`
+   - TalentBrew/Radancy: verify `.search-results__job-title-link`, location, and posted-date spans; configure `base_url`, `search_path`, and filters
 2. Add block to the correct config file with `active: false`
 3. Run live test to confirm location strings (see `CLAUDE.md` for commands)
 4. Set `active: true`

@@ -1,0 +1,33 @@
+# config/config-talentbrew.yaml
+# TalentBrew/Radancy career sites.
+# Loaded automatically by poller.py.
+#
+# HOW TO VERIFY:
+#   Open the search_path on base_url and confirm result rows include
+#   .search-results__job-title-link, .search-results__job-location, and
+#   .search-results__job-date-posted.
+#
+# McKesson notes:
+#   - Job Function filter is carried in `ascf`.
+#   - United States and Remote are TalentBrew location facet IDs in `alrpm`.
+#   - The scraper queries those facets separately and appends the facet label
+#     to vague rows like "Multiple" so the shared location filter can work.
+
+companies:
+
+  - name: McKesson
+    ats: talentbrew
+    base_url: https://careers.mckesson.com
+    search_path: /en/search-jobs
+    query_params:
+      acm: ALL
+      ascf: '[{"key":"custom_fields.JobFunction","value":"Information Technology"}]'
+    location_params:
+      - "6252001"        # United States
+      - "1000000000100"  # Remote
+    location_param_labels:
+      "6252001": United States
+      "1000000000100": Remote
+    max_pages: 5
+    max_age_days: 1
+    active: true
