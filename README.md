@@ -22,7 +22,7 @@ Targeted job hunting is tedious: you must repeatedly check specific companies' c
 
 Poll ATS APIs directly at the source, every 30 minutes. The moment a recruiter publishes a job in Greenhouse, Ashby, or Lever, it hits your inbox — not LinkedIn's crawl queue.
 
-- **539 active company entries** monitored across Amazon, Greenhouse, Ashby, Lever, SmartRecruiters, Deltek, Eightfold AI, Google, Infosys, and TalentBrew/Radancy
+- **544 active company entries** monitored across Amazon, Greenhouse, Ashby, Lever, SmartRecruiters, Deltek, Eightfold AI, Google, Infosys, TalentBrew/Radancy, and Zwayam/Openings.co
 - **Keyword filtering** — only roles matching your target titles
 - **Seniority filtering** — excludes senior/staff/principal/lead/director/manager
 - **Location filtering** — US only (remote + office)
@@ -39,7 +39,7 @@ Windows Task Scheduler (every 30 minutes)
         └─► python poller.py
               ├─ loads config/defaults.yaml + all config/config-*.yaml
               ├─ prunes SQLite rows older than 60 days
-              ├─ for each active company (539):
+              ├─ for each active company (544):
               │    ├─ scraper hits ATS public API → List[Job]
               │    ├─ store.filter_new() → diff vs seen_jobs in SQLite
               │    ├─ if new: send HTML email via Gmail SMTP
@@ -57,6 +57,7 @@ ATS APIs (all public, no auth required):
   Google          → careers.google.com/jobs/results/ HTML
   Infosys         → digitalcareers.infosys.com/infosys/global-careers HTML
   TalentBrew      → {base_url}/en/search-jobs HTML
+  Zwayam          → public.zwayam.com/jobs/search
 ```
 
 ---
@@ -157,7 +158,7 @@ gcloud scheduler jobs create http jobwatch-10min \
 
 ---
 
-## Companies Monitored (539 active entries)
+## Companies Monitored (544 active entries)
 
 | ATS | Count | Config |
 |---|---|---|
@@ -170,7 +171,8 @@ gcloud scheduler jobs create http jobwatch-10min \
 | Eightfold AI | 2 | `config/config-eightfold.yaml` |
 | Google | 1 | `config/config-google.yaml` |
 | Infosys | 1 | `config/config-infosys.yaml` |
-| TalentBrew/Radancy | 1 | `config/config-talentbrew.yaml` |
+| TalentBrew/Radancy | 5 | `config/config-talentbrew.yaml` |
+| Zwayam/Openings.co | 1 | `config/config-zwayam.yaml` |
 
 See `companies/` folder for full lists per ATS. Includes pure software companies plus hardware/IoT/embedded companies (Samsara, Verkada, Axon, Waymo, Aurora, SpaceX, Anduril, Gecko Robotics, Harmattan AI, BETA Technologies, E-Space, etc.)
 
@@ -206,6 +208,7 @@ job-hunter/
 │   ├── config-google.yaml
 │   ├── config-infosys.yaml
 │   ├── config-talentbrew.yaml
+│   ├── config-zwayam.yaml
 │   ├── config-greenhouse.yaml
 │   ├── config-ashby.yaml
 │   ├── config-lever.yaml
@@ -218,6 +221,7 @@ job-hunter/
 │   ├── google.py
 │   ├── infosys.py
 │   ├── talentbrew.py
+│   ├── zwayam.py
 │   ├── greenhouse.py
 │   ├── ashby.py
 │   ├── lever.py
@@ -229,6 +233,7 @@ job-hunter/
 │   ├── lever.md
 │   ├── infosys.md
 │   ├── talentbrew.md
+│   ├── zwayam.md
 │   ├── deltek.md
 │   └── smartrecruiters.md
 ├── tests/
@@ -238,6 +243,7 @@ job-hunter/
 │   ├── test_greenhouse.py
 │   ├── test_infosys.py
 │   ├── test_talentbrew.py
+│   ├── test_zwayam.py
 │   ├── test_ashby.py
 │   └── test_lever.py
 ├── function/

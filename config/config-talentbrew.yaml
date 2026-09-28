@@ -12,6 +12,9 @@
 #   - United States and Remote are TalentBrew location facet IDs in `alrpm`.
 #   - The scraper queries those facets separately and appends the facet label
 #     to vague rows like "Multiple" so the shared location filter can work.
+#   - Newer Radancy/TalentBrew sites use `k` keyword searches and sometimes
+#     expose posted dates only on detail pages; detail_fetch_limit caps those
+#     follow-up requests after title/location filters have already passed.
 
 companies:
 
@@ -29,5 +32,78 @@ companies:
       "6252001": United States
       "1000000000100": Remote
     max_pages: 5
+    max_age_days: 1
+    active: true
+
+  - name: Comcast
+    ats: talentbrew
+    base_url: https://jobs.comcast.com
+    search_path: /search-jobs
+    search_terms:
+      - software engineer
+      - software developer
+      - cloud engineer
+      - devops engineer
+      - backend engineer
+      - full stack
+      - ai engineer
+      - ml engineer
+      - application developer
+    max_pages: 2
+    max_age_days: 1
+    active: true
+
+  - name: AT&T
+    ats: talentbrew
+    base_url: https://www.att.jobs
+    search_path: /search-jobs
+    search_terms:
+      - software engineer
+      - software developer
+      - cloud engineer
+      - devops engineer
+      - backend engineer
+      - full stack
+      - application developer
+    max_pages: 2
+    detail_fetch_limit: 15
+    max_age_days: 1
+    active: true
+
+  - name: UnitedHealth Group
+    ats: talentbrew
+    base_url: https://careers.unitedhealthgroup.com
+    search_path: /search-jobs
+    search_terms:
+      - software engineer
+      - software developer
+      - cloud engineer
+      - devops engineer
+      - backend engineer
+      - full stack
+      - ai engineer
+      - ml engineer
+      - application developer
+    max_pages: 2
+    detail_fetch_limit: 15
+    max_age_days: 1
+    active: true
+
+  - name: Walgreens
+    ats: talentbrew
+    base_url: https://jobs.walgreens.com
+    search_path: /en/search-jobs
+    search_terms:
+      - software engineer
+      - software developer
+      - cloud engineer
+      - devops engineer
+      - backend engineer
+      - full stack
+      - ai engineer
+      - ml engineer
+      - application developer
+    max_pages: 2
+    detail_fetch_limit: 10
     max_age_days: 1
     active: true

@@ -1,0 +1,22 @@
+# config/config-zwayam.yaml
+# Zwayam/Openings.co career sites.
+# Loaded automatically by poller.py.
+#
+# Impetus notes:
+#   - Public pages are Angular shells; jobs are fetched from public.zwayam.com.
+#   - Search uses the base64 company id internally; the scraper derives that
+#     from company_id.
+#   - max_pages is intentionally small because Impetus has a compact board and
+#     the shared title/location/date filters run locally.
+
+companies:
+
+  - name: Impetus
+    ats: zwayam
+    domain: impetus.openings.co
+    path_prefix: impetus
+    company_id: 15166
+    tenant_group_id: G1
+    max_pages: 3
+    max_age_days: 1
+    active: true

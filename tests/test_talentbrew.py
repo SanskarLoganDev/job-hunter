@@ -12,6 +12,7 @@ from unittest.mock import MagicMock, patch
 
 from scrapers import Job
 from scrapers.talentbrew import (
+    _fetch_detail_posted_date,
     _fetch_jobs,
     _keyword_match,
     _location_match,
@@ -46,6 +47,26 @@ def _row(
       <button type="button" class="js-save-job-btn" data-job-id="{job_id}">
         <span>Save for Later</span>
       </button>
+    </li>
+    """
+
+
+def _new_row(
+    title: str = "Software Engineer",
+    job_id: str = "2001",
+    location: str = "Austin, TX",
+    posted: str | None = None,
+    href: str | None = None,
+) -> str:
+    href = href or f"/job/austin/software-engineer/117/{job_id}"
+    date_span = f'<span class="job-date-posted">{posted}</span>' if posted else ""
+    return f"""
+    <li>
+      <a href="{href}" data-job-id="{job_id}">
+        <h2>{title}</h2>
+        <span class="job-location">{location}</span>
+        {date_span}
+      </a>
     </li>
     """
 
@@ -100,6 +121,37 @@ class TestParseJobRows(unittest.TestCase):
 
         self.assertEqual(_parse_job_rows(_html(html), "https://careers.example.com"), [])
 
+    def test_parses_newer_search_results_list_shape(self):
+        jobs = _parse_job_rows(
+            _html(_new_row(posted="09/04/2026")),
+            "https://careers.example.com",
+        )
+
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0]["title"], "Software Engineer")
+        self.assertEqual(jobs[0]["job_id"], "2001")
+        self.assertEqual(jobs[0]["location"], "Austin, TX")
+        self.assertEqual(jobs[0]["posted_text"], "09/04/2026")
+        self.assertEqual(
+            jobs[0]["link"],
+            "https://careers.example.com/job/austin/software-engineer/117/2001",
+        )
+
+    def test_parses_newer_shape_with_remote_worksetting(self):
+        html = """
+        <li>
+          <a href="/job/eden-prairie/software-engineer/34088/1001" data-job-id="1001">
+            <h2>Software Engineer</h2>
+            <span class="job-location">Eden Prairie, Minnesota</span>
+            <span class="job-worksetting">Remote</span>
+          </a>
+        </li>
+        """
+
+        jobs = _parse_job_rows(_html(html), "https://careers.example.com")
+
+        self.assertEqual(jobs[0]["location"], "Eden Prairie, Minnesota; Remote")
+
 
 class TestFilters(unittest.TestCase):
 
@@ -134,6 +186,40 @@ class TestFetchJobs(unittest.TestCase):
 
         self.assertEqual(len(jobs), 1)
         self.assertEqual(session.get.call_count, 2)
+
+    def test_fetches_multiple_search_terms_and_dedupes(self):
+        session = MagicMock()
+        session.get.side_effect = [
+            MagicMock(ok=True, text=_html(_row(job_id="1", title="Software Engineer"))),
+            MagicMock(ok=True, text=_html(_row(job_id="1", title="Software Engineer"))),
+        ]
+
+        jobs = _fetch_jobs(
+            session=session,
+            base_url="https://careers.example.com",
+            search_path="/search-jobs",
+            search_terms=["software engineer", "software developer"],
+            max_pages=1,
+        )
+
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(session.get.call_count, 2)
+        self.assertEqual(session.get.call_args_list[0].kwargs["params"]["k"], "software engineer")
+
+    def test_fetch_detail_posted_date_from_json_ld(self):
+        session = MagicMock()
+        session.get.return_value = MagicMock(
+            ok=True,
+            text='<script type="application/ld+json">{"datePosted":"2026-3-6"}</script>',
+        )
+
+        posted_text, posted_dt = _fetch_detail_posted_date(
+            session,
+            "https://careers.example.com/job/software-engineer",
+        )
+
+        self.assertEqual(posted_text, "2026-3-6")
+        self.assertIsNotNone(posted_dt)
 
     def test_returns_empty_on_http_error(self):
         session = MagicMock()

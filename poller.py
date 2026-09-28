@@ -255,6 +255,7 @@ _SCRAPER_MAP = {
     "lever":           "scrapers.lever",
     "smartrecruiters": "scrapers.smartrecruiters",
     "talentbrew":      "scrapers.talentbrew",
+    "zwayam":           "scrapers.zwayam",
     # "workday":    "scrapers.workday",   # not yet built
 }
 
@@ -361,7 +362,24 @@ def _poll_company(cfg: dict) -> None:
         scrape_kwargs["query_params"] = cfg.get("query_params", {})
         scrape_kwargs["location_params"] = cfg.get("location_params", [])
         scrape_kwargs["location_param_labels"] = cfg.get("location_param_labels", {})
+        scrape_kwargs["search_terms"] = cfg.get("search_terms", [])
         scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 5))
+        scrape_kwargs["detail_fetch_limit"] = int(cfg.get("detail_fetch_limit", 20))
+
+    # Zwayam/Openings.co sites (e.g. Impetus) are identified by domain,
+    # company_id, and TenantGroupId.
+    if ats == "zwayam":
+        domain = cfg.get("domain", "")
+        company_id = cfg.get("company_id", "")
+        if not domain or not company_id:
+            logger.error("%s: 'domain' and 'company_id' required for %s scraper", name, ats)
+            store.log_poll(name, ats, 0, 0, error="Missing domain/company_id in config")
+            return
+        scrape_kwargs["domain"] = domain
+        scrape_kwargs["company_id"] = company_id
+        scrape_kwargs["tenant_group_id"] = cfg.get("tenant_group_id", "")
+        scrape_kwargs["path_prefix"] = cfg.get("path_prefix", "")
+        scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 3))
 
     error_msg = None
     jobs      = []

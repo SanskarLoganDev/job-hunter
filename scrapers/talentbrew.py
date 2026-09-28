@@ -7,12 +7,23 @@ McKesson uses this platform. Its search page contains server-rendered result
 rows with title, link, stable job id, location, and posted date. That makes it
 much cleaner than custom sites that omit dates.
 
-Expected result row shape:
+Expected result row shapes:
   <a class="search-results__job-title-link"
      href="/en/job/irving/title/733/100183311136"
      data-job-id="100183311136">Title</a>
   <span class="search-results__job-location">Irving, TX</span>
   <span class="search-results__job-date-posted">09/04/2026</span>
+
+Newer Radancy/TalentBrew sites often render rows as:
+  <section id="search-results-list">
+    <li>
+      <a href="/job/city/title/117/1001" data-job-id="1001">
+        <h2>Title</h2>
+        <span class="job-location">City, ST</span>
+        <span class="job-date-posted">09/04/2026</span>
+      </a>
+    </li>
+  </section>
 
 Pagination:
   TalentBrew uses `p=1`, `p=2`, ... for result pages. Page 1 also works with
@@ -44,6 +55,7 @@ from scrapers import Job, is_junior_enough, is_location_allowed
 
 HTTP_TIMEOUT = 20
 DEFAULT_MAX_PAGES = 5
+DEFAULT_DETAIL_FETCH_LIMIT = 20
 
 
 # ---------------------------------------------------------------------------
@@ -56,17 +68,39 @@ def _now() -> datetime:
 
 def _parse_tb_date(date_str: str) -> Optional[datetime]:
     """
-    Parse TalentBrew's MM/DD/YYYY posted date into UTC midnight.
+    Parse TalentBrew's visible posted date into UTC midnight.
 
     Returns None if parsing fails.
     """
     if not date_str:
         return None
-    try:
-        parsed = datetime.strptime(date_str.strip(), "%m/%d/%Y")
-        return parsed.replace(tzinfo=timezone.utc)
-    except (ValueError, AttributeError):
-        return None
+
+    value = _clean_text(str(date_str))
+    value = re.sub(r"(?i)\bdate\s+posted:?\b", "", value).strip()
+    for fmt in ("%m/%d/%Y", "%Y-%m-%d", "%Y-%-m-%-d"):
+        try:
+            parsed = datetime.strptime(value, fmt)
+            return parsed.replace(tzinfo=timezone.utc)
+        except (ValueError, AttributeError):
+            continue
+
+    match = re.search(r"\b(\d{1,2}/\d{1,2}/\d{4})\b", value)
+    if match:
+        try:
+            parsed = datetime.strptime(match.group(1), "%m/%d/%Y")
+            return parsed.replace(tzinfo=timezone.utc)
+        except ValueError:
+            return None
+
+    match = re.search(r"\b(\d{4}-\d{1,2}-\d{1,2})\b", value)
+    if match:
+        try:
+            parsed = datetime.strptime(match.group(1), "%Y-%m-%d")
+            return parsed.replace(tzinfo=timezone.utc)
+        except ValueError:
+            return None
+
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -132,6 +166,7 @@ def _parse_job_rows(html: str, base_url: str, location_label: str = "") -> List[
     """Parse one TalentBrew search-results page into raw job dicts."""
     soup = BeautifulSoup(html or "", "lxml")
     jobs = []
+    seen_keys = set()
 
     for link_node in soup.select("a.search-results__job-title-link"):
         title = _clean_text(link_node.get_text(" ", strip=True))
@@ -150,6 +185,55 @@ def _parse_job_rows(html: str, base_url: str, location_label: str = "") -> List[
                 location = _clean_text(location_node.get_text(" ", strip=True))
             if date_node:
                 posted_text = _clean_text(date_node.get_text(" ", strip=True))
+
+        key = job_id or link
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+
+        jobs.append({
+            "title": title,
+            "job_id": job_id,
+            "link": link,
+            "location": _with_location_label(location, location_label),
+            "posted_text": posted_text,
+            "posted_dt": _parse_tb_date(posted_text),
+        })
+
+    for row in soup.select("#search-results-list li"):
+        link_node = row.select_one("a[data-job-id][href]")
+        if not link_node:
+            continue
+
+        title_node = link_node.select_one("h2")
+        title = _clean_text(
+            title_node.get_text(" ", strip=True)
+            if title_node else link_node.get_text(" ", strip=True)
+        )
+        link = urljoin(base_url.rstrip("/") + "/", link_node.get("href", ""))
+        job_id = _clean_text(link_node.get("data-job-id", ""))
+        if not title or not link:
+            continue
+
+        key = job_id or link
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+
+        location_nodes = row.select(".job-location")
+        location = "; ".join(
+            _clean_text(node.get_text(" ", strip=True))
+            for node in location_nodes
+            if _clean_text(node.get_text(" ", strip=True))
+        )
+
+        worksetting_node = row.select_one(".job-worksetting")
+        worksetting = _clean_text(worksetting_node.get_text(" ", strip=True)) if worksetting_node else ""
+        if worksetting:
+            location = _with_location_label(location, worksetting)
+
+        date_node = row.select_one(".search-results__job-date-posted, .job-date-posted, .job-date")
+        posted_text = _clean_text(date_node.get_text(" ", strip=True)) if date_node else ""
 
         jobs.append({
             "title": title,
@@ -209,6 +293,7 @@ def _fetch_jobs(
     query_params: Optional[dict] = None,
     location_params: Optional[List[str] | str] = None,
     location_param_labels: Optional[dict] = None,
+    search_terms: Optional[List[str] | str] = None,
     max_pages: int = DEFAULT_MAX_PAGES,
 ) -> List[dict]:
     """
@@ -222,44 +307,87 @@ def _fetch_jobs(
     fallback_location = str(query_params.get("alrpm", "ALL"))
     loc_params = _normalise_location_params(location_params, fallback_location)
     labels = {str(k): str(v) for k, v in (location_param_labels or {}).items()}
+    terms = _normalise_location_params(search_terms, "")
+    if not terms:
+        terms = [""]
 
     all_jobs: List[dict] = []
     seen = set()
 
-    for location_param in loc_params:
-        location_param = str(location_param).strip()
-        location_label = labels.get(location_param, "")
+    for search_term in terms:
+        term_params = dict(query_params)
+        if search_term:
+            term_params["k"] = search_term
 
-        for page in range(1, max_pages + 1):
-            html = _fetch_page(
-                session=session,
-                base_url=base_url,
-                search_path=search_path,
-                query_params=query_params,
-                page=page,
-                location_param=location_param,
-            )
-            if not html:
-                break
+        for location_param in loc_params:
+            location_param = str(location_param).strip()
+            location_label = labels.get(location_param, "")
 
-            page_jobs = _parse_job_rows(html, base_url, location_label)
-            if not page_jobs:
-                break
+            for page in range(1, max_pages + 1):
+                html = _fetch_page(
+                    session=session,
+                    base_url=base_url,
+                    search_path=search_path,
+                    query_params=term_params,
+                    page=page,
+                    location_param=location_param,
+                )
+                if not html:
+                    break
 
-            before = len(all_jobs)
-            for item in page_jobs:
-                key = item.get("job_id") or item.get("link")
-                if not key or key in seen:
-                    continue
-                seen.add(key)
-                all_jobs.append(item)
+                page_jobs = _parse_job_rows(html, base_url, location_label)
+                if not page_jobs:
+                    break
 
-            if len(all_jobs) == before:
-                break
+                before = len(all_jobs)
+                for item in page_jobs:
+                    key = item.get("job_id") or item.get("link")
+                    if not key or key in seen:
+                        continue
+                    seen.add(key)
+                    all_jobs.append(item)
 
-            time.sleep(random.uniform(0.3, 0.6))
+                if len(all_jobs) == before:
+                    break
+
+                time.sleep(random.uniform(0.3, 0.6))
 
     return all_jobs
+
+
+def _fetch_detail_posted_date(session: requests.Session, link: str) -> tuple[str, Optional[datetime]]:
+    """Fetch a TalentBrew detail page and extract a posted date if present."""
+    if not link:
+        return "", None
+
+    try:
+        r = session.get(link, timeout=HTTP_TIMEOUT)
+        if not r.ok:
+            return "", None
+    except Exception:
+        return "", None
+
+    soup = BeautifulSoup(r.text or "", "lxml")
+
+    for script in soup.select("script[type='application/ld+json']"):
+        text = script.string or script.get_text(" ", strip=True)
+        match = re.search(r'"datePosted"\s*:\s*"([^"]+)"', text)
+        if match:
+            posted_text = match.group(1)
+            return posted_text, _parse_tb_date(posted_text)
+
+    date_node = soup.select_one(".job-date")
+    if date_node:
+        posted_text = _clean_text(date_node.get_text(" ", strip=True))
+        return posted_text, _parse_tb_date(posted_text)
+
+    text = soup.get_text(" ", strip=True)
+    match = re.search(r"(?i)\bdate\s+posted:?\s*(\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2})", text)
+    if match:
+        posted_text = match.group(1)
+        return posted_text, _parse_tb_date(posted_text)
+
+    return "", None
 
 
 # ---------------------------------------------------------------------------
@@ -276,7 +404,9 @@ def scrape(
     query_params: Optional[dict] = None,
     location_params: Optional[List[str] | str] = None,
     location_param_labels: Optional[dict] = None,
+    search_terms: Optional[List[str] | str] = None,
     max_pages: int = DEFAULT_MAX_PAGES,
+    detail_fetch_limit: int = DEFAULT_DETAIL_FETCH_LIMIT,
 ) -> List[Job]:
     """
     Scrape a TalentBrew/Radancy careers site and return matching jobs.
@@ -301,11 +431,13 @@ def scrape(
             query_params=query_params,
             location_params=location_params,
             location_param_labels=location_param_labels,
+            search_terms=search_terms,
             max_pages=max_pages,
         )
 
         cutoff = _now() - timedelta(days=max_age_days) if max_age_days > 0 else None
         results: List[Job] = []
+        detail_fetches = 0
 
         for item in raw_jobs:
             title = (item.get("title") or "").strip()
@@ -324,6 +456,13 @@ def scrape(
 
             posted_dt = item.get("posted_dt")
             posted_text = item.get("posted_text") or ""
+            if cutoff is not None and posted_dt is None and detail_fetches < detail_fetch_limit:
+                detail_fetches += 1
+                fetched_text, fetched_dt = _fetch_detail_posted_date(session, item.get("link", ""))
+                if fetched_dt is not None:
+                    posted_text = fetched_text
+                    posted_dt = fetched_dt
+
             if cutoff is not None:
                 if posted_dt is None or posted_dt < cutoff:
                     continue
