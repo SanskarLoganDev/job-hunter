@@ -2046,3 +2046,10 @@ companies:
     slug: imc
     max_age_days: 1
     active: true
+
+  # perpay
+  - name: Perpay
+    ats: greenhouse
+    slug: perpay
+    max_age_days: 1
+    active: true
