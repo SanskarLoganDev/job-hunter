@@ -2053,3 +2053,10 @@ companies:
     slug: perpay
     max_age_days: 1
     active: true
+  
+  # Axle
+  - name: Axle Informatics
+    ats: greenhouse
+    slug: axle
+    max_age_days: 7
+    active: true

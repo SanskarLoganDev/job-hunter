@@ -232,3 +232,5 @@ API endpoint: `https://boards-api.greenhouse.io/v1/boards/{slug}/jobs`
 | Tailscale | `tailscale` |
 | CircleCI | `circleci` |
 | Kikoff | `kikoff` |
+| Perpay | `perpay` |
+| Axle Informatics | `axle` |
