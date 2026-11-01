@@ -1,0 +1,18 @@
+# SAP SuccessFactors Recruiting Marketing. Verify each tenant before adding it.
+# Wipro's robots.txt disallows /services/; scheduled polling was explicitly
+# requested by the owner after disclosure. This is not permission from Wipro.
+companies:
+  - name: Wipro  # Careers: https://careers.wipro.com/search/
+    ats: successfactors
+    base_url: https://careers.wipro.com
+    locale: en_US
+    # Prioritize US, then check worldwide for explicitly labelled remote roles.
+    search_locations:
+      - United States
+      - ""
+    extra_keywords:
+      - ai developer
+    max_age_days: 10
+    max_pages: 200  # Per search scope; warning if coverage is truncated.
+    max_runtime_seconds: 120  # Shared budget across both scopes.
+    active: true

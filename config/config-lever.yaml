@@ -309,3 +309,11 @@ companies:
     max_age_days: 1
     detail_fetch_limit: 30
     active: true
+
+  # nationaljournal
+  - name: Deploy
+    ats: lever
+    slug: hive
+    max_age_days: 1
+    detail_fetch_limit: 30
+    active: true

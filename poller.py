@@ -24,6 +24,7 @@ CONFIG FOLDER: config/
   config-greenhouse.yaml      — Greenhouse companies
   config-lever.yaml           — Lever companies
   config-smartrecruiters.yaml — SmartRecruiters companies
+  config-successfactors.yaml  — SAP SuccessFactors companies (Wipro)
   config-*.yaml                — any future ATS config, auto-discovered at startup
 
 Windows notes:
@@ -254,6 +255,7 @@ _SCRAPER_MAP = {
     "ashby":           "scrapers.ashby",
     "lever":           "scrapers.lever",
     "smartrecruiters": "scrapers.smartrecruiters",
+    "successfactors":  "scrapers.successfactors",
     "talentbrew":      "scrapers.talentbrew",
     "zwayam":           "scrapers.zwayam",
     # "workday":    "scrapers.workday",   # not yet built
@@ -365,6 +367,19 @@ def _poll_company(cfg: dict) -> None:
         scrape_kwargs["search_terms"] = cfg.get("search_terms", [])
         scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 5))
         scrape_kwargs["detail_fetch_limit"] = int(cfg.get("detail_fetch_limit", 20))
+
+    # SuccessFactors Recruiting Marketing uses the tenant's careers base URL.
+    if ats == "successfactors":
+        base_url = cfg.get("base_url", "")
+        if not base_url:
+            logger.error("%s: 'base_url' required for %s scraper", name, ats)
+            store.log_poll(name, ats, 0, 0, error="Missing base_url in config")
+            return
+        scrape_kwargs["base_url"] = base_url
+        scrape_kwargs["locale"] = cfg.get("locale", "en_US")
+        scrape_kwargs["search_locations"] = cfg.get("search_locations")
+        scrape_kwargs["max_pages"] = int(cfg.get("max_pages", 200))
+        scrape_kwargs["max_runtime_seconds"] = float(cfg.get("max_runtime_seconds", 120))
 
     # Zwayam/Openings.co sites (e.g. Impetus) are identified by domain,
     # company_id, and TenantGroupId.

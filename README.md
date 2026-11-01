@@ -22,10 +22,10 @@ Targeted job hunting is tedious: you must repeatedly check specific companies' c
 
 Poll ATS APIs directly at the source, every 30 minutes. The moment a recruiter publishes a job in Greenhouse, Ashby, or Lever, it hits your inbox — not LinkedIn's crawl queue.
 
-- **544 active company entries** monitored across Amazon, Greenhouse, Ashby, Lever, SmartRecruiters, Deltek, Eightfold AI, Google, Infosys, TalentBrew/Radancy, and Zwayam/Openings.co
+- **550 active company entries** monitored across Amazon, Greenhouse, Ashby, Lever, SmartRecruiters, Deltek, Eightfold AI, Google, Infosys, TalentBrew/Radancy, Zwayam/Openings.co, and SAP SuccessFactors
 - **Keyword filtering** — only roles matching your target titles
 - **Seniority filtering** — excludes senior/staff/principal/lead/director/manager
-- **Location filtering** — US only (remote + office)
+- **Location filtering** — US offices plus explicitly labelled remote roles worldwide
 - **Deduplication** — same job never emailed twice (SQLite uid store)
 - **Email alerts** — clean HTML table, sorted newest-first, sent to Gmail
 
@@ -39,7 +39,7 @@ Windows Task Scheduler (every 30 minutes)
         └─► python poller.py
               ├─ loads config/defaults.yaml + all config/config-*.yaml
               ├─ prunes SQLite rows older than 60 days
-              ├─ for each active company (544):
+              ├─ for each active company (550):
               │    ├─ scraper hits ATS public API → List[Job]
               │    ├─ store.filter_new() → diff vs seen_jobs in SQLite
               │    ├─ if new: send HTML email via Gmail SMTP
@@ -58,6 +58,7 @@ ATS APIs (all public, no auth required):
   Infosys         → digitalcareers.infosys.com/infosys/global-careers HTML
   TalentBrew      → {base_url}/en/search-jobs HTML
   Zwayam          → public.zwayam.com/jobs/search
+  SuccessFactors  → {base_url}/services/recruiting/v1/jobs
 ```
 
 ---
@@ -158,14 +159,14 @@ gcloud scheduler jobs create http jobwatch-10min \
 
 ---
 
-## Companies Monitored (544 active entries)
+## Companies Monitored (550 active entries)
 
 | ATS | Count | Config |
 |---|---|---|
 | Amazon | 1 | `config/config-amazon.yaml` |
-| Greenhouse | 324 | `config/config-greenhouse.yaml` |
+| Greenhouse | 327 | `config/config-greenhouse.yaml` |
 | Ashby | 136 | `config/config-ashby.yaml` |
-| Lever | 44 | `config/config-lever.yaml` |
+| Lever | 46 | `config/config-lever.yaml` |
 | SmartRecruiters | 28 | `config/config-smartrecruiters.yaml` |
 | Deltek | 1 | `config/config-deltek.yaml` |
 | Eightfold AI | 2 | `config/config-eightfold.yaml` |
@@ -173,6 +174,16 @@ gcloud scheduler jobs create http jobwatch-10min \
 | Infosys | 1 | `config/config-infosys.yaml` |
 | TalentBrew/Radancy | 5 | `config/config-talentbrew.yaml` |
 | Zwayam/Openings.co | 1 | `config/config-zwayam.yaml` |
+| SAP SuccessFactors | 1 (Wipro) | `config/config-successfactors.yaml` |
+
+Wipro uses a **10-day posting window**, inherited title/location filters plus
+`ai developer`, and date-sorted JSON search results. US results are checked first,
+then worldwide results for explicitly labelled remote roles; no job-description
+requests are needed. The scraper logs partial coverage when its 200-page-per-scope
+or 120-second budget is reached. Other companies' posting windows are unchanged.
+Wipro's `robots.txt` disallows the API path; polling is enabled at the owner's
+explicit direction after disclosure, not with permission from Wipro. See
+[SuccessFactors operating notes](companies/successfactors.md).
 
 See `companies/` folder for full lists per ATS. Includes pure software companies plus hardware/IoT/embedded companies (Samsara, Verkada, Axon, Waymo, Aurora, SpaceX, Anduril, Gecko Robotics, Harmattan AI, BETA Technologies, E-Space, etc.)
 
@@ -209,6 +220,7 @@ job-hunter/
 │   ├── config-infosys.yaml
 │   ├── config-talentbrew.yaml
 │   ├── config-zwayam.yaml
+│   ├── config-successfactors.yaml
 │   ├── config-greenhouse.yaml
 │   ├── config-ashby.yaml
 │   ├── config-lever.yaml
@@ -222,6 +234,7 @@ job-hunter/
 │   ├── infosys.py
 │   ├── talentbrew.py
 │   ├── zwayam.py
+│   ├── successfactors.py
 │   ├── greenhouse.py
 │   ├── ashby.py
 │   ├── lever.py
@@ -234,6 +247,7 @@ job-hunter/
 │   ├── infosys.md
 │   ├── talentbrew.md
 │   ├── zwayam.md
+│   ├── successfactors.md
 │   ├── deltek.md
 │   └── smartrecruiters.md
 ├── tests/
@@ -244,6 +258,7 @@ job-hunter/
 │   ├── test_infosys.py
 │   ├── test_talentbrew.py
 │   ├── test_zwayam.py
+│   ├── test_successfactors.py
 │   ├── test_ashby.py
 │   └── test_lever.py
 ├── function/
